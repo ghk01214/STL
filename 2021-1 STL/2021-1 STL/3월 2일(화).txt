@@ -1,0 +1,71 @@
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-02 오후 3:11:09 화요일
+━━━━━━━━━━━━━━━━━━━━
+#pragma once
+#include "pch.h"
+#include <string_view>
+#include <filesystem>
+#include <fstream>
+#include <ctime>
+
+void Save(std::string_view fileName);
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-02 오후 3:11:09 화요일
+━━━━━━━━━━━━━━━━━━━━
+#include "save.h"
+
+// google coding convention
+void Save(std::string_view fileName)
+{
+	// 어떤 파일을 저장하는지 화면에 출력
+	std::cout << "저장: " << fileName << ", 크기: " << std::filesystem::file_size(fileName) << std::endl;
+
+	std::ofstream out("2021-1 STL 강의 저장.txt", std::ios::app);
+	std::ifstream in(fileName);
+
+	//파일을 기록한 시간도 표시
+	time_t t = std::time(nullptr);
+
+	//시간 기록 지역 변경
+	out.imbue(std::locale("korean"));
+
+	out << "━━━━━━━━━━━━━━━━━━━━" << std::endl;
+	out << "저장시간: " << std::put_time(localtime(&t), "%c %A") << std::endl;
+	out << "━━━━━━━━━━━━━━━━━━━━" << std::endl;
+
+	//파일의 끝을 알려주기 위해서 char 형이 아니라 int 형으로 받아온다
+	int c;
+
+	while ((c = in.get()) != EOF)
+	{
+		out.put(c);
+	}
+
+	out << std::endl << std::endl;
+
+	//RAII
+	/*in.close();
+	out.close();*/
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-02 오후 3:11:09 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━
+//x86 Release 모드에서 코딩
+//
+// 3월 2일 화요일 (1주 1일)
+//
+// 실행될 때마다 소스파일을 저장
+//━━━━━━━━━━━━━━━
+
+#include "save.h"
+
+int main()
+{
+	Save("save.h");
+	Save("save.cpp");
+	Save("main.cpp");
+}
+
