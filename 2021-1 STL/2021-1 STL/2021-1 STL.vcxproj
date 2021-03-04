@@ -141,7 +141,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="3월 2일(화).cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="save.cpp" />
   </ItemGroup>
   <ItemGroup>

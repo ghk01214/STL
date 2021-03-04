@@ -6,7 +6,7 @@ void Save(std::string_view fileName)
 	// 어떤 파일을 저장하는지 화면에 출력
 	std::cout << "저장: " << fileName << ", 크기: " << std::filesystem::file_size(fileName) << std::endl;
 
-	std::ofstream out("2021-1 STL 강의 저장.txt", std::ios::app);
+	std::ofstream out("3월 4일(목).txt", std::ios::app);
 	std::ifstream in(fileName);
 
 	//파일을 기록한 시간도 표시

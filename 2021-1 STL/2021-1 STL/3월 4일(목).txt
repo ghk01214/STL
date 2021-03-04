@@ -1,0 +1,357 @@
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-04 ¿ÀÈÄ 2:02:09 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//x86 Release ¸ðµå¿¡¼­ ÄÚµù
+//
+// 3¿ù 4ÀÏ ¸ñ¿äÀÏ (1ÁÖ 2ÀÏ)
+//
+// C++ ¾ð¾î º¹½À
+// ¸¹Àº ¼öÀÇ µ¥ÀÌÅÍ ´Ù·ç±â
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+
+// [¹®Á¦] main()À» º¯°æÇÏÁö ¾Ê°í ½ÇÇàµÇµµ·Ï ÇÏÀÚ.
+// GameÀº »ç¿ëÀÚ°¡ Á¤ÀÇÇÑ Å¬·¡½ºÀÌ´Ù.
+// È­¸éÃâ·ÂÀº 2, 1
+
+class Game
+{
+private:
+	int num;
+
+	friend std::ostream& operator<<(std::ostream& os, const Game& game);
+public:
+	Game(int num) : num{ num } {}
+	~Game() {};
+};
+
+std::ostream& operator<<(std::ostream& os, const Game& game);
+void change(Game& a, Game& b);
+
+int main()
+{
+	Game a{ 1 };
+	Game b{ 2 };
+
+	change(a, b);
+
+	std::cout << a << ", " << b << std::endl;
+
+	Save("main.cpp");
+}
+
+void change(Game& a, Game& b)
+{
+	Game temp{ a };
+
+	a = b;
+	b = temp;
+}
+
+std::ostream& operator<<(std::ostream& os, const Game& game)
+{
+	os << game.num;
+	return os;
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-04 ¿ÀÈÄ 2:09:05 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//x86 Release ¸ðµå¿¡¼­ ÄÚµù
+//
+// 3¿ù 4ÀÏ ¸ñ¿äÀÏ (1ÁÖ 2ÀÏ)
+//
+// C++ ¾ð¾î º¹½À
+// ¸¹Àº ¼öÀÇ µ¥ÀÌÅÍ ´Ù·ç±â
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+
+// [¹®Á¦] main()À» º¯°æÇÏÁö ¾Ê°í ½ÇÇàµÇµµ·Ï ÇÏÀÚ.
+// ¾Õ¿¡¼­ ¸¸µç change()°¡ ´Ù¸¥ ÀÚ·áÇüµµ ¹Ù²Ü ¼ö ÀÖµµ·Ï ÇÏÀÚ.
+// È­¸éÃâ·ÂÀº 2, 1
+
+template<typename T>
+void change(T& a, T& b)
+{
+	T temp{ a };
+	a = b;
+	b = temp;
+}
+
+int main()
+{
+	int a{ 1 };
+	int b{ 2 };
+
+	change(a, b);
+
+	std::cout << a << ", " << b << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-04 ¿ÀÈÄ 2:39:28 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//x86 Release ¸ðµå¿¡¼­ ÄÚµù
+//
+// 3¿ù 4ÀÏ ¸ñ¿äÀÏ (1ÁÖ 2ÀÏ)
+//
+// Reference - ÇÑ Áö¿ª¿¡¼­ ´Ù¸¥ Áö¿ªÀÇ °´Ã¼¿¡ accessÇÏ´Âµ¥ »ç¿ë
+//
+// ¸¹Àº ¼öÀÇ µ¥ÀÌÅÍ ´Ù·ç±â - int¿¡¼­ ½ÃÀÛ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include <random>
+
+// [¹®Á¦] int 10°³¸¦ ÀúÀåÇÒ °ø°£À» ¸¶·ÃÇÑ´Ù
+// int¸¦ ÀÓÀÇÀÇ °ª(random engine°ú ºÐÆ÷)À¸·Î ¸¸µéÀÚ
+// È­¸é¿¡ int °ªÀ» Ãâ·ÂÇÏÀÚ
+
+int main()
+{
+	int num[10];
+
+	//std::mt19937 gen;
+	std::default_random_engine gen;
+	std::uniform_int_distribution dis;
+
+	for (int i = 0; i < 10; ++i)
+	{
+		num[i] = dis(gen);
+		std::cout << num[i] << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-04 ¿ÀÈÄ 2:57:53 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//x86 Release ¸ðµå¿¡¼­ ÄÚµù
+//
+// 3¿ù 4ÀÏ ¸ñ¿äÀÏ (1ÁÖ 2ÀÏ)
+//
+// Reference - ÇÑ Áö¿ª¿¡¼­ ´Ù¸¥ Áö¿ªÀÇ °´Ã¼¿¡ accessÇÏ´Âµ¥ »ç¿ë
+//
+// ¸¹Àº ¼öÀÇ µ¥ÀÌÅÍ ´Ù·ç±â - int¿¡¼­ ½ÃÀÛ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include <random>
+
+// [¹®Á¦] int 10°³¸¦ ÀúÀåÇÒ °ø°£À» ¸¶·ÃÇÑ´Ù
+// int¸¦ ÀÓÀÇÀÇ °ª(random engine°ú ºÐÆ÷)À¸·Î ¸¸µéÀÚ
+// È­¸é¿¡ int °ªÀ» Ãâ·ÂÇÏÀÚ
+
+// default_random_engineÀÇ Å©±â°¡ 5kbÀÌ¹Ç·Î stack¿¡ ³Ö±â¿¡´Â ºÎÀûÀýÇÏ´Ù.
+// µû¶ó¼­ default_random_engineÀ» Àü¿ªº¯¼öÈ­ÇÑ´Ù.
+std::random_device rd;
+std::default_random_engine gen(rd());
+
+int main()
+{
+	int num[20];
+
+	std::uniform_int_distribution<int> dis(0, 1000);
+
+	for (int& i : num)
+	{
+		i = dis(gen);
+	}
+
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-04 ¿ÀÈÄ 3:11:47 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//x86 Release ¸ðµå¿¡¼­ ÄÚµù
+//
+// 3¿ù 4ÀÏ ¸ñ¿äÀÏ (1ÁÖ 2ÀÏ)
+//
+// Reference - ÇÑ Áö¿ª¿¡¼­ ´Ù¸¥ Áö¿ªÀÇ °´Ã¼¿¡ accessÇÏ´Âµ¥ »ç¿ë
+//
+// ¸¹Àº ¼öÀÇ µ¥ÀÌÅÍ ´Ù·ç±â - int¿¡¼­ ½ÃÀÛ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include <algorithm>
+#include <random>
+
+// [¹®Á¦] int 10°³¸¦ ÀúÀåÇÒ °ø°£À» ¸¶·ÃÇÑ´Ù
+// int¸¦ ÀÓÀÇÀÇ °ª(random engine°ú ºÐÆ÷)À¸·Î ¸¸µéÀÚ
+// È­¸é¿¡ int °ªÀ» Ãâ·ÂÇÏÀÚ
+// °ªÀ» ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÏ¶ó
+// Á¤·Ä °á°ú¸¦ Ãâ·ÂÇÏ¶ó
+
+// default_random_engineÀÇ Å©±â°¡ 5kbÀÌ¹Ç·Î stack¿¡ ³Ö±â¿¡´Â ºÎÀûÀýÇÏ´Ù.
+// µû¶ó¼­ default_random_engineÀ» Àü¿ªº¯¼öÈ­ÇÑ´Ù.
+std::random_device rd;
+std::default_random_engine gen(rd());
+
+int main()
+{
+	int num[20];
+
+	std::uniform_int_distribution<int> dis(0, 1000);
+
+	for (int& i : num)
+	{
+		i = dis(gen);
+	}
+
+	// µ¥ÀÌÅÍ¸¦ ¿À¸§Â÷¼øÀ¸·Î Á¤·Ä
+	std::cout << "Á¤·ÄÇÕ´Ï´Ù" << std::endl;
+	std::sort(std::begin(num), std::end(num));
+
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-04 ¿ÀÈÄ 3:17:56 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//x86 Release ¸ðµå¿¡¼­ ÄÚµù
+//
+// 3¿ù 4ÀÏ ¸ñ¿äÀÏ (1ÁÖ 2ÀÏ)
+//
+// Reference - ÇÑ Áö¿ª¿¡¼­ ´Ù¸¥ Áö¿ªÀÇ °´Ã¼¿¡ accessÇÏ´Âµ¥ »ç¿ë
+//
+// ¸¹Àº ¼öÀÇ µ¥ÀÌÅÍ ´Ù·ç±â - int¿¡¼­ ½ÃÀÛ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include <algorithm>
+#include <random>
+
+// [¹®Á¦] int 10°³¸¦ ÀúÀåÇÒ °ø°£À» ¸¶·ÃÇÑ´Ù
+// int¸¦ ÀÓÀÇÀÇ °ª(random engine°ú ºÐÆ÷)À¸·Î ¸¸µéÀÚ
+// È­¸é¿¡ int °ªÀ» Ãâ·ÂÇÏÀÚ
+// °ªÀ» ³»¸²Â÷¼øÀ¸·Î Á¤·ÄÇÏ¶ó
+// Á¤·Ä °á°ú¸¦ Ãâ·ÂÇÏ¶ó
+
+// default_random_engineÀÇ Å©±â°¡ 5kbÀÌ¹Ç·Î stack¿¡ ³Ö±â¿¡´Â ºÎÀûÀýÇÏ´Ù.
+// µû¶ó¼­ default_random_engineÀ» Àü¿ªº¯¼öÈ­ÇÑ´Ù.
+std::random_device rd;
+std::default_random_engine gen(rd());
+
+int main()
+{
+	int num[20];
+
+	std::uniform_int_distribution<int> dis(0, 1000);
+
+	for (int& i : num)
+	{
+		i = dis(gen);
+	}
+
+	// µ¥ÀÌÅÍ¸¦ ³»¸²Â÷¼øÀ¸·Î Á¤·Ä
+	std::cout << "Á¤·ÄÇÕ´Ï´Ù" << std::endl;
+	//std::sort(ÀÚ·áÀÇ ½ÃÀÛÁ¡(¼ýÀÚ), ÀÚ·áÀÇ Á¾ÂøÁ¡(¼ýÀÚ), Á¤·Ä ¹æ¹ý(ÇÔ¼ö))
+	std::sort(std::begin(num), std::end(num), [](int a, int b)
+		{
+			return a > b;
+		});
+
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-04 ¿ÀÈÄ 3:18:56 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//x86 Release ¸ðµå¿¡¼­ ÄÚµù
+//
+// 3¿ù 4ÀÏ ¸ñ¿äÀÏ (1ÁÖ 2ÀÏ)
+//
+// Reference - ÇÑ Áö¿ª¿¡¼­ ´Ù¸¥ Áö¿ªÀÇ °´Ã¼¿¡ accessÇÏ´Âµ¥ »ç¿ë
+//
+// ¸¹Àº ¼öÀÇ µ¥ÀÌÅÍ ´Ù·ç±â - int¿¡¼­ ½ÃÀÛ
+// ´ÙÀ½ ½Ã°£ - sort() ¼³¸í ´Ù½Ã - »ï¼öÀÇ ¿ªÇÒ/ºñ±³È½¼ö µîÀ» »ìÆìº¸ÀÚ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include <algorithm>
+#include <random>
+
+// [¹®Á¦] int 10°³¸¦ ÀúÀåÇÒ °ø°£À» ¸¶·ÃÇÑ´Ù
+// int¸¦ ÀÓÀÇÀÇ °ª(random engine°ú ºÐÆ÷)À¸·Î ¸¸µéÀÚ
+// È­¸é¿¡ int °ªÀ» Ãâ·ÂÇÏÀÚ
+// °ªÀ» ³»¸²Â÷¼øÀ¸·Î Á¤·ÄÇÏ¶ó
+// Á¤·Ä °á°ú¸¦ Ãâ·ÂÇÏ¶ó
+
+// default_random_engineÀÇ Å©±â°¡ 5kbÀÌ¹Ç·Î stack¿¡ ³Ö±â¿¡´Â ºÎÀûÀýÇÏ´Ù.
+// µû¶ó¼­ default_random_engineÀ» Àü¿ªº¯¼öÈ­ÇÑ´Ù.
+std::random_device rd;
+std::default_random_engine gen(rd());
+
+int main()
+{
+	int num[20];
+
+	std::uniform_int_distribution<int> dis(0, 1000);
+
+	for (int& i : num)
+	{
+		i = dis(gen);
+	}
+
+	// µ¥ÀÌÅÍ¸¦ ³»¸²Â÷¼øÀ¸·Î Á¤·Ä
+	std::cout << "Á¤·ÄÇÕ´Ï´Ù" << std::endl;
+	//std::sort(ÀÚ·áÀÇ ½ÃÀÛÁ¡(¼ýÀÚ), ÀÚ·áÀÇ Á¾ÂøÁ¡(¼ýÀÚ), Á¤·Ä ¹æ¹ý(ÇÔ¼ö))
+	std::sort(std::begin(num), std::end(num), [](int a, int b)
+		{
+			return a > b;
+		});
+
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
