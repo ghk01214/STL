@@ -1,0 +1,948 @@
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 1:40:25 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] int 20개를 저장할 공간(20 * sizeof(int))을 마련한다
+// int를 임의의 값(random engine과 분포)으로 만들자
+// 화면에 int 값을 출력하자
+// 값을 내림차순으로 정렬하라
+// 정렬 결과를 출력하라
+
+std::default_random_engine dre;
+
+int main()
+{
+	int num[20];
+
+	std::uniform_int_distribution uid(1, 100);
+
+	for (int& i : num)
+	{
+		i = uid(dre);
+	}
+
+	std::cout << "정렬 전" << std::endl;
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+
+	// 데이터를 오름차순으로 정렬
+	std::cout << "정렬 후" << std::endl;
+	std::sort(std::begin(num), std::end(num));
+
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 1:48:39 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] int 20개를 저장할 공간(20 * sizeof(int))을 마련한다
+// int를 임의의 값(random engine과 분포)으로 만들자
+// 화면에 int 값을 출력하자
+// 값을 내림차순으로 정렬하라
+// 정렬 결과를 출력하라
+
+std::default_random_engine dre;
+
+bool x(int a, int b)
+{
+	return a > b;
+}
+
+int main()
+{
+	int num[20];
+
+	std::uniform_int_distribution uid(1, 100);
+
+	for (int& i : num)
+	{
+		i = uid(dre);
+	}
+
+	std::cout << "정렬 전" << std::endl;
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+
+	// 데이터를 내림차순으로 정렬
+	std::cout << "정렬 후" << std::endl;
+	std::sort(std::begin(num), std::end(num), x);
+
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 1:51:14 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+std::default_random_engine dre;
+int callTime{ 0 };
+
+bool x(int a, int b)
+{
+	++callTime;
+	return a > b;
+}
+
+int main()
+{
+	int num[20];
+
+	std::uniform_int_distribution uid(1, 100);
+
+	for (int& i : num)
+	{
+		i = uid(dre);
+	}
+
+	std::cout << "정렬 전" << std::endl;
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+
+	// 데이터를 내림차순으로 정렬
+	std::cout << "정렬 후" << std::endl;
+
+	// [문제] sort는 x를 몇 번 호출하는가?
+	std::sort(std::begin(num), std::end(num), x);
+
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+	std::cout << "x 호출 횟수 : " << callTime << std::endl;
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 1:52:51 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+std::default_random_engine dre;
+int callTime{ 0 };
+
+bool x(int a, int b)
+{
+	++callTime;
+	std::cout << a << "--" << b << std::endl;
+	return a > b;
+}
+
+int main()
+{
+	int num[20];
+
+	std::uniform_int_distribution uid(1, 100);
+
+	for (int& i : num)
+	{
+		i = uid(dre);
+	}
+
+	std::cout << "정렬 전" << std::endl;
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+
+	// 데이터를 내림차순으로 정렬
+	std::cout << "정렬 후" << std::endl;
+
+	// [문제] sort는 x를 몇 번 호출하는가?
+	std::sort(std::begin(num), std::end(num), x);
+
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+	std::cout << "x 호출 횟수 : " << callTime << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 1:53:56 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+std::default_random_engine dre;
+int callTime{ 0 };
+
+bool x(int a, int b)
+{
+	++callTime;
+	
+	return a > b;
+}
+
+int main()
+{
+	int num[1000];
+
+	std::uniform_int_distribution uid(1, 100);
+
+	for (int& i : num)
+	{
+		i = uid(dre);
+	}
+
+	std::cout << "정렬 전" << std::endl;
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+
+	// 데이터를 내림차순으로 정렬
+	std::cout << "정렬 후" << std::endl;
+
+	// [문제] sort는 x를 몇 번 호출하는가?
+	std::sort(std::begin(num), std::end(num), x);
+
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+	std::cout << "x 호출 횟수 : " << callTime << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 2:02:59 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+std::default_random_engine dre;
+
+int main()
+{
+	int num[1000];
+
+	std::uniform_int_distribution uid(1, 100);
+
+	for (int& i : num)
+	{
+		i = uid(dre);
+	}
+
+	std::cout << "정렬 전" << std::endl;
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+
+	// 데이터를 내림차순으로 정렬
+	std::cout << "정렬 후" << std::endl;
+
+	// [문제] sort는 x를 몇 번 호출하는가?
+	int cnt{};
+	std::sort(std::begin(num), std::end(num), [&cnt](int a, int b)
+		{
+			++cnt;
+			return a > b;
+		});
+
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+	std::cout << "x 호출 횟수 : " << cnt << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 2:11:49 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] int 1,000,000개를 저장할 공간을 마련하라
+// 임의의 값(random engine과 분포)으로 채워라
+// 값을 오름차순으로 정렬하라
+// 처음과 마지막 원소만 출력하라
+
+std::default_random_engine dre;
+
+int main()
+{
+	int num[1000]{};
+
+	std::uniform_int_distribution uid;
+
+	for (int& i : num)
+	{
+		i = uid(dre);
+	}
+
+	std::sort(std::begin(num), std::end(num));
+
+	std::cout << "처음 원소의 값 : " << *std::begin(num) << std::endl;
+	std::cout << "마지막 원소의 값 : " << *(std::end(num) - 1) << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 2:13:20 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] int 1,000,000개를 저장할 공간을 마련하라
+// 임의의 값(random engine과 분포)으로 채워라
+// 값을 오름차순으로 정렬하라
+// 처음과 마지막 원소만 출력하라
+
+std::default_random_engine dre;
+
+int main()
+{
+	int num[100000]{};
+
+	std::uniform_int_distribution uid;
+
+	for (int& i : num)
+	{
+		i = uid(dre);
+	}
+
+	std::sort(std::begin(num), std::end(num));
+
+	std::cout << "처음 원소의 값 : " << *std::begin(num) << std::endl;
+	std::cout << "마지막 원소의 값 : " << *(std::end(num) - 1) << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 2:19:00 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] int 1,000,000개를 저장할 공간을 마련하라
+// 임의의 값(random engine과 분포)으로 채워라
+// 값을 오름차순으로 정렬하라
+// 처음과 마지막 원소만 출력하라
+
+std::default_random_engine dre;
+
+int main()
+{
+	// 스택의 크기를 10MB로 확장
+	int num[1000000]{};
+
+	std::uniform_int_distribution uid;
+
+	for (int& i : num)
+	{
+		i = uid(dre);
+	}
+
+	std::sort(std::begin(num), std::end(num));
+
+	std::cout << "처음 원소의 값 : " << *std::begin(num) << std::endl;
+	std::cout << "마지막 원소의 값 : " << *(std::end(num) - 1) << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 2:31:35 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] int 1,000,000개를 저장할 공간을 마련하라
+// 임의의 값(random engine과 분포)으로 채워라
+// 값을 오름차순으로 정렬하라
+// 처음과 마지막 원소만 출력하라
+
+std::default_random_engine dre;
+
+// 스택의 크기를 10MB로 확장
+int num[1000000]{};
+
+int main()
+{
+	std::uniform_int_distribution uid;
+
+	for (int& i : num)
+	{
+		i = uid(dre);
+	}
+
+	std::sort(std::begin(num), std::end(num));
+
+	std::cout << "처음 원소의 값 : " << *std::begin(num) << std::endl;
+	std::cout << "마지막 원소의 값 : " << *(std::end(num) - 1) << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 2:32:19 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] int 1,000,000개를 저장할 공간을 마련하라
+// 임의의 값(random engine과 분포)으로 채워라
+// 값을 오름차순으로 정렬하라
+// 처음과 마지막 원소만 출력하라
+
+std::default_random_engine dre;
+
+int num[10000000]{};
+
+int main()
+{
+	std::uniform_int_distribution uid;
+
+	for (int& i : num)
+	{
+		i = uid(dre);
+	}
+
+	std::sort(std::begin(num), std::end(num));
+
+	std::cout << "처음 원소의 값 : " << *std::begin(num) << std::endl;
+	std::cout << "마지막 원소의 값 : " << *(std::end(num) - 1) << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 2:32:45 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] int 1,000,000개를 저장할 공간을 마련하라
+// 임의의 값(random engine과 분포)으로 채워라
+// 값을 오름차순으로 정렬하라
+// 처음과 마지막 원소만 출력하라
+
+std::default_random_engine dre;
+
+int num[100000000]{};
+
+int main()
+{
+	std::uniform_int_distribution uid;
+
+	for (int& i : num)
+	{
+		i = uid(dre);
+	}
+
+	std::sort(std::begin(num), std::end(num));
+
+	std::cout << "처음 원소의 값 : " << *std::begin(num) << std::endl;
+	std::cout << "마지막 원소의 값 : " << *(std::end(num) - 1) << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 2:45:52 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] int 100개를 전역변수 공간에 저장하였다
+// 임의의 값(random engine과 분포)으로 채웠다
+// 값을 오름차순으로 정렬하였다
+// 정렬된 값을 파일 "오름차순으로 정렬한 int 100개.txt"에 저장하라
+// (확인) 파일을 열어 결과를 확인할 것
+
+std::default_random_engine dre;
+int num[100]{};		// DATA segment에 100개 저장
+
+int main()
+{
+	std::uniform_int_distribution uid;
+
+	for (int& i : num)
+	{
+		i = uid(dre);
+	}
+
+	std::sort(std::begin(num), std::end(num));
+
+	// 파일에 저장
+	std::ofstream out("오름차순으로 정렬한 int 100개.txt", std::ios::app);
+
+	int cnt{};
+
+	for (int i : num)
+	{
+		++cnt;
+		out << i << "\t";
+
+		if (cnt % 10 == 0)
+		{
+			out << std::endl;
+		}
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 2:51:24 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] int 100개를 전역변수 공간에 저장하였다
+// 임의의 값(random engine과 분포)으로 채웠다
+// 값을 오름차순으로 정렬하였다
+// 정렬된 값을 파일 "오름차순으로 정렬한 int 100개.txt"에 저장하라
+// (확인) 파일을 열어 결과를 확인할 것
+
+std::default_random_engine dre;
+int num[100]{};		// DATA segment에 100개 저장
+
+int main()
+{
+	std::uniform_int_distribution uid;
+
+	for (int& i : num)
+	{
+		i = uid(dre);
+	}
+
+	std::sort(std::begin(num), std::end(num));
+
+	// 파일에 저장
+	std::ofstream out("오름차순으로 정렬한 int 100개.txt"s);
+
+	int cnt{};
+
+	for (int i : num)
+	{
+		++cnt;
+		out << i << "\t";
+
+		if (cnt % 10 == 0)
+		{
+			out << std::endl;
+		}
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 3:03:29 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] 파일 "오름차순으로 정렬한 int 100개.txt"가 있다
+// 파일을 읽어 화면에 출력하라
+
+int main()
+{
+	int num[100]{};
+
+	std::string_view sv = "오름차순으로 정렬한 int 100개.txt"sv;
+	std::ifstream in(sv.data());
+
+	if (!in)
+	{
+		std::cout << sv << " 파일을 열 수 없습니다" << std::endl;
+
+		exit(0);
+	}
+
+	for (int& i : num)
+	{
+		in >> i;
+	}
+
+	for (int i : num)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 3:17:06 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+#include <numeric>
+
+// [문제] int 100개를 400 바이트 공간에 기록하자
+// int num[100개 값을 1부터 100으로 채우고
+// 파일 "int 100개.txt"에 기록하라
+// 파일 크기는 400 바이트가 되어야 한다
+
+int main()
+{
+	int num[100]{};
+	
+	//숫자를 1부터 차례대로 채운다
+	std::iota(std::begin(num), std::end(num), 1);
+
+	std::ofstream out("int 100개.txt");
+
+	out.write((char*)num, 100 * sizeof(int));
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-09 오후 3:18:03 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 9일 화요일 (2주 1일)
+// 
+// 많은 수의 데이터 다루기 - int에서 시작
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+#include <numeric>
+
+// [문제] int 100개를 400 바이트 공간에 기록하자
+// int num[100개 값을 1부터 100으로 채우고
+// 파일 "int 100개.txt"에 기록하라
+// 파일 크기는 400 바이트가 되어야 한다
+
+int main()
+{
+	int num[100]{};
+	
+	//숫자를 1부터 차례대로 채운다
+	std::iota(std::begin(num), std::end(num), 1);
+
+	std::ofstream out("int 100개.txt", std::ios::binary);
+
+	out.write((char*)num, 100 * sizeof(int));
+
+	Save("main.cpp");
+}
+

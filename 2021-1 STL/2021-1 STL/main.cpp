@@ -1,53 +1,38 @@
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-//x86 Release 모드에서 코딩
-//
-// 3월 9일 월요일 (2주 1일)
-//
-// Reference - 한 지역에서 다른 지역의 객체에 access하는데 사용
-//
+// 3월 9일 화요일 (2주 1일)
+// 
 // 많은 수의 데이터 다루기 - int에서 시작
-// 다음 시간 - sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
+// 많은 수의 자료를 저장하는 방식을 알아본다
+// 
+// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
+// 객체를 많이 만들어 반복
+// 
+// 알고리즘 시간재기
+// 스마트 포인터
+// 
+// 앞으로 사용할 class 만들어 두기
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 #include "pch.h"
 #include "save.h"
+#include <numeric>
 
-// [문제] int 10개를 저장할 공간을 마련한다
-// int를 임의의 값(random engine과 분포)으로 만들자
-// 화면에 int 값을 출력하자
-// 값을 내림차순으로 정렬하라
-// 정렬 결과를 출력하라
-
-// default_random_engine의 크기가 5kb이므로 stack에 넣기에는 부적절하다.
-// 따라서 default_random_engine을 전역변수화한다.
-std::random_device rd;
-std::default_random_engine gen(rd());
+// [문제] int 100개를 400 바이트 공간에 기록하자
+// int num[100개 값을 1부터 100으로 채우고
+// 파일 "int 100개.txt"에 기록하라
+// 파일 크기는 400 바이트가 되어야 한다
 
 int main()
 {
-	int num[20];
+	int num[100]{};
+	
+	//숫자를 1부터 차례대로 채운다
+	std::iota(std::begin(num), std::end(num), 1);
 
-	std::uniform_int_distribution<int> dis(0, 1000);
+	std::ofstream out("int 100개.txt", std::ios::binary);
 
-	for (int& i : num)
-	{
-		i = dis(gen);
-	}
-
-	// 데이터를 내림차순으로 정렬
-	std::cout << "정렬합니다" << std::endl;
-	//std::sort(자료의 시작점(숫자), 자료의 종착점(숫자), 정렬 방법(함수))
-	std::sort(std::begin(num), std::end(num), [](int a, int b)
-		{
-			return a > b;
-		});
-
-	for (int i : num)
-	{
-		std::cout << i << " ";
-	}
-
-	std::cout << std::endl;
+	out.write((char*)num, 100 * sizeof(int));
 
 	Save("main.cpp");
 }
