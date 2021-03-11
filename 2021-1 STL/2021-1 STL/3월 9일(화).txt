@@ -833,6 +833,8 @@ int main()
 // [문제] 파일 "오름차순으로 정렬한 int 100개.txt"가 있다
 // 파일을 읽어 화면에 출력하라
 
+using namespace std::literals::string_view_literals;
+
 int main()
 {
 	int num[100]{};
