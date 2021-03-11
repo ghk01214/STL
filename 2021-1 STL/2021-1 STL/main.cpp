@@ -1,5 +1,5 @@
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// 3월 9일 화요일 (2주 1일)
+// 3월 11일 목요일 (2주 2일)
 // 
 // 많은 수의 데이터 다루기 - int에서 시작
 // 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
@@ -16,23 +16,22 @@
 
 #include "pch.h"
 #include "save.h"
-#include <numeric>
+#include <thread>
+#include <chrono>
 
-// [문제] int 100개를 400 바이트 공간에 기록하자
-// int num[100개 값을 1부터 100으로 채우고
-// 파일 "int 100개.txt"에 기록하라
-// 파일 크기는 400 바이트가 되어야 한다
+// [문제] 
 
 int main()
 {
-	int num[100]{};
-	
-	//숫자를 1부터 차례대로 채운다
-	std::iota(std::begin(num), std::end(num), 1);
+	using namespace std::chrono_literals;
 
-	std::ofstream out("int 100개.txt", std::ios::binary);
+	// 스톱워치 시작
+	//std::chrono::steady_clock::timepoint begin = std::chrono::steady_clock::now();
+	auto begin = std::chrono::steady_clock::now();
+	std::this_thread::sleep_for(333ms);
 
-	out.write((char*)num, 100 * sizeof(int));
+	// 스톱워치 끝
 
-	Save("main.cpp");
+	std::cout << "경과 시간(밀리초) : " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - begin).count() << std::endl;
+	//Save("main.cpp");
 }
