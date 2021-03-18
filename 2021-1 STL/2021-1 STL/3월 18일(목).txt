@@ -1,0 +1,514 @@
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-18 오후 1:37:06 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 18일 목요일 (3주 2일)
+//
+// 호출 가능한 타입 - callable type
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+void jump(void)
+{
+	std::cout << "점프" << std::endl;
+}
+
+int main()
+{
+	auto f = jump;
+
+	std::cout << typeid(f).name() << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-18 오후 1:39:55 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 18일 목요일 (3주 2일)
+//
+// 호출 가능한 타입 - callable type
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+void jump(void)
+{
+	std::cout << "점프" << std::endl;
+}
+
+int main()
+{
+	// void (_cdecl*)(void)
+	// void를 return하는 void 타입의 함수 포인터
+	// f의 크기는 포인터이므로 4바이트
+	void (*f)(void) = jump;
+
+	std::cout << typeid(f).name() << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-18 오후 1:47:19 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 18일 목요일 (3주 2일)
+//
+// 호출 가능한 타입 - callable type
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+void jump(void)
+{
+	std::cout << "점프" << std::endl;
+}
+
+int main()
+{
+	void (*f)(void);
+
+	std::cout << "함수 포인터 크기 : " << sizeof(f) << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-18 오후 1:49:11 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 18일 목요일 (3주 2일)
+//
+// 호출 가능한 타입 - callable type
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+void jump(void)
+{
+	std::cout << "점프" << std::endl;
+}
+
+void slide(void)
+{
+	std::cout << "슬라이드" << std::endl;
+}
+
+int main()
+{
+	void (*f)(void);
+
+	f = jump;
+	f();
+
+	f = slide;
+	f();
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-18 오후 1:50:06 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 18일 목요일 (3주 2일)
+//
+// 호출 가능한 타입 - callable type
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+void jump(void)
+{
+	std::cout << "점프" << std::endl;
+}
+
+void slide(void)
+{
+	std::cout << "슬라이드" << std::endl;
+}
+
+int main()
+{
+	void (*f)(void);
+
+	f = jump;
+	f();
+	std::cout << "f의 주소 : " << f << std::endl;
+	
+	f = slide;
+	f();
+	std::cout << "f의 주소 : " << f << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-18 오후 1:53:30 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 18일 목요일 (3주 2일)
+//
+// 호출 가능한 타입 - callable type
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+void jump(void)
+{
+	std::cout << "점프" << std::endl;
+}
+
+void slide(void)
+{
+	std::cout << "슬라이드" << std::endl;
+}
+
+int main()
+{
+	void (*f)(void);
+
+	// f()는 code segment에 만들어 지므로 main 함수와 주소가 유사하다
+	f = jump;
+	f();
+	std::cout << "f의 주소 : " << f << std::endl;
+	
+	f = slide;
+	f();
+	std::cout << "f의 주소 : " << f << std::endl;
+
+	std::cout << "main의 주소 : " << main << std::endl;
+
+	// 변수 f는 스택에 만들어 지므로 stack 변수와 주소가 유사하다
+	std::cout << "변수 f의 주소 : " << &f << std::endl;
+
+	int stack;
+
+	std::cout << "스택의 주소 : " << stack << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-18 오후 1:59:18 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 18일 목요일 (3주 2일)
+//
+// 호출 가능한 타입 - callable type
+// ㄴSTL에서는 이것을 알고리즘 함수의 동작을 변형하는 용도로 사용
+// 
+// std::sort(std::begin, std::end, 정렬 순서) - 정렬 순서가 호출 가능 타입
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// 호출가능한 타입의 종류
+// 1. 일반 함수
+void f(int)
+{
+	std::cout << "일반 함수" << std::endl;
+}
+
+// 2. 함수 객체
+class Test
+{
+public:
+	// operator() = 함수 호출 연산자
+	void operator()(int)
+	{
+		std::cout << "()연산자를 오버로딩한 클래스 호출" << std::endl;
+	}
+};
+
+int main()
+{
+	f(1);
+
+	Test t;
+	t(2);
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-18 오후 2:05:33 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 18일 목요일 (3주 2일)
+//
+// 호출 가능한 타입 - callable type
+// ㄴSTL에서는 이것을 알고리즘 함수의 동작을 변형하는 용도로 사용
+// 
+// std::sort(std::begin, std::end, 정렬 순서) - 정렬 순서가 호출 가능 타입
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// 호출가능한 타입의 종류
+// 1. 일반 함수
+void f(int)
+{
+	std::cout << "일반 함수" << std::endl;
+}
+
+// 2. 함수 객체
+class Test
+{
+public:
+	// operator() = 함수 호출 연산자
+	void operator()(int)
+	{
+		std::cout << "()연산자를 오버로딩한 클래스 호출" << std::endl;
+	}
+};
+
+// 3. Lambda([])
+// 호출할 일이 없으므로 함수의 이름이 없다
+// 함수의 본체이지만 타입은 아니다
+// void (*lambda)(int)로 변수 선언을 하여 살린다
+auto lambda = [](int)
+{
+	std::cout << "Lambda([])를 호출" << std::endl;
+};
+
+int main()
+{
+	f(1);
+
+	Test t;
+	t(2);
+
+	lambda(3);
+	std::cout << typeid(lambda).name() << std::endl;
+	// Q: lambda의 타입?
+	// A: 클래스
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-18 오후 2:33:29 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 18일 목요일 (3주 2일)
+//
+// 호출 가능한 타입 - callable type
+// ㄴSTL에서는 이것을 알고리즘 함수의 동작을 변형하는 용도로 사용
+// 
+// std::sort(std::begin, std::end, 정렬 순서) - 정렬 순서가 호출 가능 타입
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// 호출가능한 타입의 종류
+// 1. 일반 함수
+void f(int)
+{
+	std::cout << "일반 함수" << std::endl;
+}
+
+// 2. 함수 객체
+class Test
+{
+public:
+	// operator() = 함수 호출 연산자
+	void operator()(int)
+	{
+		std::cout << "()연산자를 오버로딩한 클래스 호출" << std::endl;
+	}
+	void mf(int)
+	{
+		std::cout << "Test의 멤버를 호출" << std::endl;
+	}
+};
+
+// 3. Lambda([])
+// 호출할 일이 없으므로 함수의 이름이 없다
+// 함수의 본체이지만 타입은 아니다
+// void (*lambda)(int)로 변수 선언을 하여 살린다
+
+
+// [문제] callable type에 각 함수를 저장했다가 호출해보라
+
+int main()
+{
+	void (*ct)(int) = f;
+	ct(1);
+
+	Test t;
+	//ct2 = ;
+	//ct2(2);
+
+	ct = [](int)
+	{
+		std::cout << "Lambda([])를 호출" << std::endl;
+	};
+
+	ct(3);
+	
+	void (Test::*pmf)(int) = &Test::mf;
+	(t.*pmf)(4);
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-18 오후 2:42:53 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 18일 목요일 (3주 2일)
+//
+// 호출 가능한 타입 - callable type
+// ㄴSTL에서는 이것을 알고리즘 함수의 동작을 변형하는 용도로 사용
+// 
+// std::sort(std::begin, std::end, 정렬 순서) - 정렬 순서가 호출 가능 타입
+// 
+// 호출할 수 있는 타입이 무한하고 서로 다른데 통일할 수 있으면 좋겠다?
+// ㄴ function 타입이 만들어진 이유
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+#include <functional>
+
+// 호출가능한 타입의 종류
+// 1. 일반 함수
+void f(int)
+{
+	std::cout << "일반 함수" << std::endl;
+}
+
+// 2. 함수 객체
+class Test
+{
+public:
+	// operator() = 함수 호출 연산자
+	void operator()(int)
+	{
+		std::cout << "()연산자를 오버로딩한 클래스 호출" << std::endl;
+	}
+};
+
+// 3. Lambda([])
+// 호출할 일이 없으므로 함수의 이름이 없다
+// 함수의 본체이지만 타입은 아니다
+// void (*lambda)(int)로 변수 선언을 하여 살린다
+
+
+// [문제] callable type에 각 함수를 저장했다가 호출해보라
+
+int main()
+{
+	// 호출 가능 타입을 통일
+	std::function<void(int)> ct;
+
+	ct = f;
+	ct(1);
+
+	Test t;
+	ct = t;
+	ct(2);
+
+	ct = [](int)
+	{
+		std::cout << "Lambda([])를 호출" << std::endl;
+	};
+	ct(3);
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-18 오후 3:14:53 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 18일 목요일 (3주 2일)
+//
+// 
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+#include <random>
+
+// [문제] int num을 인자로 받아 메모리를 num 바이트 할당받아
+// 임의의 알파벳 소문자로 채우는 클래스 String을 구현하라
+//
+// 다음 main()이 의도대로 실행되게 하자
+
+std::random_device rd;
+std::default_random_engine dre(rd());
+std::uniform_int_distribution<> uid('a', 'z');
+
+class String
+{
+private:
+	int cnt;
+	char* alphabet;
+
+	friend std::ostream& operator<<(std::ostream& os, const String s);
+public:
+	String(int num) : cnt{ num }, alphabet{ new char[num] }
+	{
+		//std::unique_ptr<char[]> alphabet{ new char[num] };
+
+		for (int i = 0; i < num; ++i)
+		{
+			alphabet[i] = uid(dre);
+		}
+	}
+	//~String() { delete[] alphabet; }
+};
+
+std::ostream& operator<<(std::ostream& os, const String s)
+{
+	for (int i = 0; i < s.cnt; ++i)
+		os << i + 1 << ". " << s.alphabet[i] << std::endl;
+
+	return os;
+}
+
+int main()
+{
+	String s{ 30 };
+
+	// 화면에 임의의 소문자 30글자가 출력되어야 한다
+	std::cout << s << std::endl;
+
+	Save("main.txt");
+}

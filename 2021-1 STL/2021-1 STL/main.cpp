@@ -1,64 +1,69 @@
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 3월 18일 목요일 (3주 2일)
 //
-// 호출 가능한 타입 - callable type
+// 
 // 
 // 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 #include "pch.h"
 #include "save.h"
-#include <thread>
+#include <random>
 
-// 쿠키런
-// 왼쪽 버튼: 점프, 오른쪽 버튼: 슬라이드
-// 
-// 설정에 가서 버튼을 변경
-// 프로그램 구현은 어떻게 되었나?
+// [문제] int num을 인자로 받아 메모리를 num 바이트 할당받아
+// 임의의 알파벳 소문자로 채우는 클래스 String을 구현하라
+//
+// 다음 main()이 의도대로 실행되게 하자
 
-void jump()
+std::random_device rd;
+std::default_random_engine dre(rd());
+std::uniform_int_distribution<> uid('a', 'z');
+
+class String
 {
-	std::cout << "점프" << std::endl;
-}
+private:
+	int cnt;
+	char* alphabet;
 
-void slide()
+	friend std::ostream& operator<<(std::ostream& os, const String s);
+public:
+	String(int num) : cnt{ num }, alphabet{ new char[num] }
+	{
+		//std::unique_ptr<char[]> alphabet{ new char[num] };
+
+		for (int i = 0; i < num; ++i)
+		{
+			alphabet[i] = uid(dre);
+		}
+	}
+	~String() { delete[] alphabet; }
+
+	size_t size()
+	{
+
+	}
+};
+
+std::ostream& operator<<(std::ostream& os, const String s)
 {
-	std::cout << "슬라이드" << std::endl;
-}
+	for (int i = 0; i < s.cnt; ++i)
+		os << i + 1 << ". " << s.alphabet[i] << std::endl;
 
-void (*left_function)(void) = jump;
-void (*right_function)(void) = slide;
-
-void left()
-{
-	left_function();
-}
-
-void right()
-{
-	right_function();
+	return os;
 }
 
 int main()
 {
-	Save("main.cpp");
+	String s[10]{ 20, 21, 3, 14, 12, 7, 5, 8, 32, 2 };
 
-	using namespace std::literals::chrono_literals;
-
-	// 10번에 1번은 기능을 변경
-
-	int cnt{};
-
-	while (true)
-	{
-		left();
-		std::this_thread::sleep_for(500ms);
-
-		++cnt;
-
-		if (cnt % 10 == 0)
+	// 길이 오름차순으로 정렬하라
+	std::sort(std::begin(s), std::end(s), [](const String& a, const String& b)
 		{
-			left_function = slide;
-		}
-	}
+			return a.size() < b.size();
+		});
+	
+	for (String& s : s)
+		std::cout << s << std::endl;
+
+	//Save("main.txt");
 }
