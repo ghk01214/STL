@@ -1,37 +1,64 @@
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// 3월 11일 목요일 (2주 2일)
+// 3월 18일 목요일 (3주 2일)
+//
+// 호출 가능한 타입 - callable type
 // 
-// 많은 수의 데이터 다루기 - int에서 시작
-// 갯수를 늘리며 자료가 저장되는 방식과 공간을 이해한다.
-// 많은 수의 자료를 저장하는 방식을 알아본다
-// 
-// sort() 설명 다시 - 삼수의 역할/비교횟수 등을 살펴보자
-// 객체를 많이 만들어 반복
-// 
-// 알고리즘 시간재기
-// 스마트 포인터
-// 
-// 앞으로 사용할 class 만들어 두기
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 #include "pch.h"
 #include "save.h"
 #include <thread>
-#include <chrono>
 
-// [문제] 
+// 쿠키런
+// 왼쪽 버튼: 점프, 오른쪽 버튼: 슬라이드
+// 
+// 설정에 가서 버튼을 변경
+// 프로그램 구현은 어떻게 되었나?
+
+void jump()
+{
+	std::cout << "점프" << std::endl;
+}
+
+void slide()
+{
+	std::cout << "슬라이드" << std::endl;
+}
+
+void (*left_function)(void) = jump;
+void (*right_function)(void) = slide;
+
+void left()
+{
+	left_function();
+}
+
+void right()
+{
+	right_function();
+}
 
 int main()
 {
-	using namespace std::chrono_literals;
+	Save("main.cpp");
 
-	// 스톱워치 시작
-	//std::chrono::steady_clock::timepoint begin = std::chrono::steady_clock::now();
-	auto begin = std::chrono::steady_clock::now();
-	std::this_thread::sleep_for(333ms);
+	using namespace std::literals::chrono_literals;
 
-	// 스톱워치 끝
+	// 10번에 1번은 기능을 변경
 
-	std::cout << "경과 시간(밀리초) : " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - begin).count() << std::endl;
-	//Save("main.cpp");
+	int cnt{};
+
+	while (true)
+	{
+		left();
+		std::this_thread::sleep_for(500ms);
+
+		++cnt;
+
+		if (cnt % 10 == 0)
+		{
+			left_function = slide;
+		}
+	}
 }

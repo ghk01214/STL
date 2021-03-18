@@ -1,0 +1,703 @@
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-16 오후 1:50:46 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 16일 화요일 (3주 1일)
+// 
+// 다음 시간
+// 시간재는 코드 복습
+// Dog 만들고 저장하고 읽어 정렬하기 시작할 것
+// callable type
+// 
+// 앞으로 사용할 관찰용 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] Dog 객체를 만들어 파일에 저장하고 다시 읽어 정렬해 본다
+// std::string name;(Dog1 ~ Dog20000)
+// int id;(uid(dre))
+
+std::uniform_int_distribution<> uid;
+std::default_random_engine dre;
+
+using namespace std::literals::string_literals;
+
+class Dog
+{
+private:
+	std::string name;
+	int id;
+	static int cnt;
+	friend std::ostream& operator<<(std::ostream& os, const Dog& dog);
+public:
+	Dog() : id{ uid(dre) }
+	{
+		name = "Dog"s;
+		name += std::to_string(cnt);
+
+		++cnt;
+	}
+	~Dog {}
+};
+
+int Dog::cnt = { 1 };
+
+std::ostream& operator<<(std::ostream& os, const Dog& dog)
+{
+	os << "이름: " << dog.name << ", 아이디: " << dog.id;
+
+	return os;
+}
+
+int main()
+{
+	Dog dogs[10];
+
+	for (Dog& dog : dogs)
+	{
+		std::cout << dog << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-16 오후 1:52:13 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 16일 화요일 (3주 1일)
+// 
+// 다음 시간
+// 시간재는 코드 복습
+// Dog 만들고 저장하고 읽어 정렬하기 시작할 것
+// callable type
+// 
+// 앞으로 사용할 관찰용 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] Dog 객체를 만들어 파일에 저장하고 다시 읽어 정렬해 본다
+// std::string name;(Dog1 ~ Dog20000)
+// int id;(uid(dre))
+
+std::uniform_int_distribution<> uid;
+std::default_random_engine dre;
+
+using namespace std::literals::string_literals;
+
+class Dog
+{
+private:
+	std::string name;
+	int id;
+	static int cnt;
+	friend std::ostream& operator<<(std::ostream& os, const Dog& dog);
+public:
+	Dog() : id{ uid(dre) }
+	{
+		name = "Dog"s;
+		name += std::to_string(cnt);
+
+		++cnt;
+	}
+	~Dog() {}
+};
+
+int Dog::cnt = { 1 };
+
+std::ostream& operator<<(std::ostream& os, const Dog& dog)
+{
+	os << "이름: " << dog.name << ", 아이디: " << dog.id;
+
+	return os;
+}
+
+int main()
+{
+	std::cout << "Dog 한 객체가 차지하는 메모리 : " << sizeof(Dog) << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-16 오후 2:14:13 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 16일 화요일 (3주 1일)
+// 
+// 다음 시간
+// 시간재는 코드 복습
+// Dog 만들고 저장하고 읽어 정렬하기 시작할 것
+// callable type
+// 
+// 앞으로 사용할 관찰용 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] Dog 객체를 만들어 파일에 저장하고 다시 읽어 정렬해 본다
+// Dog 10000 객체를 만들어 "Dog 만객체"에 저장하라
+// 파일 크기를 확인할 것 - sizeof(Dog) * 10000
+
+std::uniform_int_distribution<> uid;
+std::default_random_engine dre;
+
+using namespace std::literals::string_literals;
+
+class Dog
+{
+private:
+	std::string name;
+	int id;
+	static int cnt;
+	friend std::ostream& operator<<(std::ostream& os, const Dog& dog);
+public:
+	Dog() : id{ uid(dre) }
+	{
+		name = "Dog"s;
+		name += std::to_string(cnt);
+
+		++cnt;
+	}
+	~Dog() {}
+};
+
+int Dog::cnt = { 1 };
+
+std::ostream& operator<<(std::ostream& os, const Dog& dog)
+{
+	os << "이름: " << dog.name << ", 아이디: " << dog.id;
+
+	return os;
+}
+
+Dog dogs[10000];
+
+int main()
+{
+	std::ofstream out("Dog 만객체", std::ios::binary);
+
+	out.write((char*)&dogs[0], sizeof(Dog) * 10000);
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-16 오후 2:36:34 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 16일 화요일 (3주 1일)
+// 
+// 다음 시간
+// 시간재는 코드 복습
+// Dog 만들고 저장하고 읽어 정렬하기 시작할 것
+// callable type
+// 
+// 앞으로 사용할 관찰용 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+#include <memory>
+
+// [문제] "Dog 만객체"에 바이너리 모드로 저장되어 있는 Dog 10000 객체를 읽어라
+// id 오름차순으로 정렬해서 출력하라
+
+std::uniform_int_distribution<> uid;
+std::default_random_engine dre;
+
+using namespace std::literals::string_literals;
+
+class Dog
+{
+private:
+	std::string name;
+	int id;
+	static int cnt;
+	friend std::ostream& operator<<(std::ostream& os, const Dog& dog);
+public:
+	Dog() : id{ uid(dre) }
+	{
+		name = "Dog"s;
+		name += std::to_string(cnt);
+
+		++cnt;
+	}
+	~Dog() {}
+};
+
+int Dog::cnt = { 1 };
+
+std::ostream& operator<<(std::ostream& os, const Dog& dog)
+{
+	os << "이름: " << dog.name << ", 아이디: " << dog.id;
+
+	return os;
+}
+
+int main()
+{
+	std::ifstream in{ "Dog 만객체" };
+	
+	std::unique_ptr<Dog[]> dogs{ new Dog[10000] };
+
+	in.read((char*)dogs.get(), sizeof(Dog) * 10000);
+	
+	for (int i = 0; i < 10000; ++i)
+	{
+		std::cout << dogs[i] << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-16 오후 2:49:19 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 16일 화요일 (3주 1일)
+// 
+// 다음 시간
+// 시간재는 코드 복습
+// Dog 만들고 저장하고 읽어 정렬하기 시작할 것
+// callable type
+// 
+// 앞으로 사용할 관찰용 class 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+#include <memory>
+
+// [문제] "Dog 만객체"에 바이너리 모드로 저장되어 있는 Dog 10000 객체를 읽어라
+// id 오름차순으로 정렬해서 출력하라
+
+std::uniform_int_distribution<> uid;
+std::default_random_engine dre;
+
+using namespace std::literals::string_literals;
+
+class Dog
+{
+private:
+	std::string name;
+	int id;
+	static int cnt;
+	friend std::ostream& operator<<(std::ostream& os, const Dog& dog);
+public:
+	Dog() : id{ uid(dre) }
+	{
+		name = "Dog"s;
+		name += std::to_string(cnt);
+
+		++cnt;
+	}
+	~Dog() {}
+public:
+	int GetID() const { return id; }
+};
+
+int Dog::cnt = { 1 };
+
+std::ostream& operator<<(std::ostream& os, const Dog& dog)
+{
+	os << "이름: " << dog.name << ",\t 아이디: " << dog.id;
+
+	return os;
+}
+
+int main()
+{
+	std::ifstream in{ "Dog 만객체" };
+	
+	std::unique_ptr<Dog[]> dogs{ new Dog[10000] };
+
+	in.read((char*)dogs.get(), sizeof(Dog) * 10000);
+
+	// id 오름차순으로 정렬
+	std::sort(&dogs[0], &dogs[10000], [](const Dog& a, const Dog& b)
+		{
+			return a.GetID() < b.GetID();
+		}
+	);
+	
+	for (int i = 0; i < 10000; ++i)
+	{
+		std::cout << dogs[i] << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-16 오후 2:52:04 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 16일 화요일 (3주 1일)
+//
+// 호출 가능한 타입 - callable type
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] 
+
+int main()
+{
+	auto x = []()
+	{
+		std::cout << "안녕" << std::endl;
+	};
+
+	x();
+
+	// x의 타입을 묻는다
+	std::cout << typeid(x).name() << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-16 오후 2:54:28 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 16일 화요일 (3주 1일)
+//
+// 호출 가능한 타입 - callable type
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] 
+
+int main()
+{
+	auto x = []()
+	{
+		std::cout << "안녕" << std::endl;
+	};
+
+	auto y = []()
+	{
+		std::cout << "안녕" << std::endl;
+	};
+
+	// x와 y는 서로 다른 타입이다
+	std::cout << typeid(x).name() << std::endl;
+	std::cout << typeid(y).name() << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-16 오후 3:00:37 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 16일 화요일 (3주 1일)
+//
+// 호출 가능한 타입 - callable type
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] 
+
+void f(int)
+{
+	std::cout << "함수" << std::endl;
+}
+
+int main()
+{
+	// f를 다른 변수에 저장 가능?
+	auto a = f;
+
+	std::cout << typeid(a).name() << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-16 오후 3:03:39 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 16일 화요일 (3주 1일)
+//
+// 호출 가능한 타입 - callable type
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] 
+
+void f(int)
+{
+	std::cout << "함수" << std::endl;
+}
+
+int main()
+{
+	// f를 다른 변수에 저장 가능?
+	void(*a)(int) = f;
+
+	a(123);
+
+	std::cout << typeid(a).name() << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-16 오후 3:07:49 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 16일 화요일 (3주 1일)
+//
+// 호출 가능한 타입 - callable type
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] 
+
+void f(int)
+{
+	std::cout << "함수" << std::endl;
+}
+
+class Test
+{
+public:
+	void operator()(int)
+	{
+		std::cout << "클래스가 구현한 연산자()" << std::endl;
+	}
+};
+
+int main()
+{
+	Test t;
+
+	t(123);
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-16 오후 3:08:59 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 16일 화요일 (3주 1일)
+//
+// 호출 가능한 타입 - callable type
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] 
+
+void f(int)
+{
+	std::cout << "함수" << std::endl;
+}
+
+class Test
+{
+public:
+	void operator()(int)
+	{
+		std::cout << "클래스가 구현한 연산자()" << std::endl;
+	}
+
+	void (*m)(int) = f;
+};
+
+int main()
+{
+	Test t;
+
+	t(123);
+	t.m(123);
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-16 오후 3:10:30 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 16일 화요일 (3주 1일)
+//
+// 호출 가능한 타입 - callable type
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+
+// [문제] 
+
+void f(int)
+{
+	std::cout << "함수" << std::endl;
+}
+
+class Test
+{
+public:
+	void operator()(int)
+	{
+		std::cout << "클래스가 구현한 연산자()" << std::endl;
+	}
+
+	void (*m)(int) = f;
+};
+
+auto x = [](int)->void
+{
+	std::cout << "람다" << std::endl;
+};
+
+int main()
+{
+	x(123);
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-16 오후 3:14:34 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 16일 화요일 (3주 1일)
+//
+// 호출 가능한 타입 - callable type
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+#include <thread>
+
+// 쿠키런
+// 왼쪽 버튼: 점프, 오른쪽 버튼: 슬라이드
+// 
+// 설정에 가서 버튼을 변경
+// 프로그램 구현은 어떻게 되었나?
+
+void left()
+{
+	std::cout << "점프" << std::endl;
+}
+
+void right()
+{
+	std::cout << "슬라이드" << std::endl;
+}
+
+int main()
+{
+	Save("main.cpp");
+
+	using namespace std::literals::chrono_literals;
+
+	while (true)
+	{
+		left();
+		std::this_thread::sleep_for(500ms);
+	}
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-03-16 오후 3:19:27 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 3월 16일 화요일 (3주 1일)
+//
+// 호출 가능한 타입 - callable type
+// 
+// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include "pch.h"
+#include "save.h"
+#include <thread>
+
+// 쿠키런
+// 왼쪽 버튼: 점프, 오른쪽 버튼: 슬라이드
+// 
+// 설정에 가서 버튼을 변경
+// 프로그램 구현은 어떻게 되었나?
+
+void jump()
+{
+	std::cout << "점프" << std::endl;
+}
+
+void slide()
+{
+	std::cout << "슬라이드" << std::endl;
+}
+
+void (*left_function)(void) = jump;
+void (*right_function)(void) = slide;
+
+void left()
+{
+	left_function();
+}
+
+void right()
+{
+	right_function();
+}
+
+int main()
+{
+	Save("main.cpp");
+
+	using namespace std::literals::chrono_literals;
+
+	// 10번에 1번은 기능을 변경
+
+	int cnt{};
+
+	while (true)
+	{
+		left();
+		std::this_thread::sleep_for(500ms);
+
+		++cnt;
+
+		if (cnt % 10 == 0)
+		{
+			left_function = slide;
+		}
+	}
+}
+

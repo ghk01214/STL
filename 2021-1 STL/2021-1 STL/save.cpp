@@ -6,7 +6,7 @@ void Save(std::string_view fileName)
 	// 어떤 파일을 저장하는지 화면에 출력
 	std::cout << "저장: " << fileName << ", 크기: " << std::filesystem::file_size(fileName) << std::endl;
 
-	std::ofstream out("3월 11일(목).txt", std::ios::app);
+	std::ofstream out("3월 18일(목).txt", std::ios::app);
 	std::ifstream in(fileName);
 
 	//파일을 기록한 시간도 표시
@@ -33,3 +33,16 @@ void Save(std::string_view fileName)
 	/*in.close();
 	out.close();*/
 }
+
+/*
+using namespace std::chrono_literals;
+
+	// 스톱워치 시작
+	//std::chrono::steady_clock::timepoint begin = std::chrono::steady_clock::now();
+	auto begin = std::chrono::steady_clock::now();
+	std::this_thread::sleep_for(333ms);
+
+	// 스톱워치 끝
+
+	std::cout << "경과 시간(밀리초) : " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - begin).count() << std::endl;
+	*/
