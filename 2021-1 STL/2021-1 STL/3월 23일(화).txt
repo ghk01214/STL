@@ -1,0 +1,312 @@
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-23 ¿ÀÈÄ 1:40:31 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 23ÀÏ È­¿äÀÏ (4ÁÖ 1ÀÏ)
+//
+// ¾ÕÀ¸·Î »ç¿ëÇÒ °üÂû¿ë class(ÀÚ¿øÀ» È®º¸ÇÏ´Â) ¸¸µé¾î µÎ±â
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include <random>
+
+// Àü¿ª º¯¼ö´Â ¹Ýµå½Ã Å¸ÀÔÀÇ µðÆúÆ® »ý¼ºÀÚ·Î ÃÊ±âÈ­
+// int a[100000000]{};
+int a[100000000];		// ¾î¶² º¯È­°¡ ÀÖ´Â°¡?
+
+int main()
+{
+	std::cout << "½ÇÇà" << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-23 ¿ÀÈÄ 1:41:53 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 23ÀÏ È­¿äÀÏ (4ÁÖ 1ÀÏ)
+//
+// ¾ÕÀ¸·Î »ç¿ëÇÒ °üÂû¿ë class(ÀÚ¿øÀ» È®º¸ÇÏ´Â) ¸¸µé¾î µÎ±â
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include <random>
+
+// Àü¿ª º¯¼ö´Â ¹Ýµå½Ã Å¸ÀÔÀÇ µðÆúÆ® »ý¼ºÀÚ·Î ÃÊ±âÈ­
+// int a[100000000]{};
+int a[100000000]{ 1, 2 };		// ¾î¶² º¯È­°¡ ÀÖ´Â°¡?
+
+int main()
+{
+	std::cout << a[0] << ", " << *(std::end(a) - 1) << std::endl;
+	std::cout << "½ÇÇà" << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-23 ¿ÀÈÄ 2:06:35 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 23ÀÏ È­¿äÀÏ (4ÁÖ 1ÀÏ)
+//
+// ¾ÕÀ¸·Î »ç¿ëÇÒ °üÂû¿ë class(ÀÚ¿øÀ» È®º¸ÇÏ´Â) ¸¸µé¾î µÎ±â
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include <random>
+
+// [¹®Á¦] int numÀ» ÀÎÀÚ·Î ¹Þ¾Æ ¸Þ¸ð¸®¸¦ num ¹ÙÀÌÆ® ÇÒ´ç¹Þ¾Æ
+// ÀÓÀÇÀÇ ¾ËÆÄºª ¼Ò¹®ÀÚ·Î Ã¤¿ì´Â Å¬·¡½º StringÀ» ±¸ÇöÇÏ¶ó
+//
+// ´ÙÀ½ main()ÀÌ ÀÇµµ´ë·Î ½ÇÇàµÇ°Ô ÇÏÀÚ
+
+std::random_device rd;
+std::default_random_engine dre(rd());
+std::uniform_int_distribution<> uid('a', 'z');
+
+class String
+{
+private:
+	int cnt;
+	char* alphabet;
+
+	friend std::ostream& operator<<(std::ostream& os, const String s);
+public:
+	String(int num) : cnt{ num }, alphabet{ new char[num] }
+	{
+		//std::unique_ptr<char[]> alphabet{ new char[num] };
+
+		for (int i = 0; i < num; ++i)
+		{
+			alphabet[i] = uid(dre);
+		}
+	}
+	~String() { delete[] alphabet; }
+public:
+	String(const String& other) : cnt{ other.cnt }, alphabet{ new char[cnt] }
+	{
+		//std::cout << "º¹»ç ";			// swtich·Î Ãâ·Â Á¶Àý
+
+		memcpy(alphabet, other.alphabet, cnt);
+	}
+	String& operator=(const String& other)
+	{
+		//std::cout << "ÇÒ´ç ";
+
+		// ³ª ÀÚ½Å¿¡ ÇÒ´çµÇ´Â °ÍÀ» ¹æÁö
+		if (this != &other)
+		{
+			delete[] alphabet;
+			
+			cnt = other.cnt;
+			alphabet = new char[cnt];
+			memcpy(alphabet, other.alphabet, cnt);
+		}
+
+		return *this;
+	}
+
+	size_t size() const
+	{
+		return cnt;
+	}
+};
+
+std::ostream& operator<<(std::ostream& os, const String s)
+{
+	for (int i = 0; i < s.cnt; ++i)
+		os << s.alphabet[i];
+
+	return os;
+}
+
+int main()
+{
+	String s[10]{ 20, 21, 3, 14, 12, 7, 5, 8, 32, 2 };
+
+	// ±æÀÌ ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÏ¶ó
+	std::sort(std::begin(s), std::end(s), [](const String& a, const String& b)
+		{
+			return a.size() < b.size();
+		});
+	
+	for (String& s : s)
+		std::cout << s << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-23 ¿ÀÈÄ 2:30:09 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 23ÀÏ È­¿äÀÏ (4ÁÖ 1ÀÏ)
+//
+// ¾ÕÀ¸·Î »ç¿ëÇÒ °üÂû¿ë class(ÀÚ¿øÀ» È®º¸ÇÏ´Â) ¸¸µé¾î µÎ±â
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include <random>
+
+// [¹®Á¦] int numÀ» ÀÎÀÚ·Î ¹Þ¾Æ ¸Þ¸ð¸®¸¦ num ¹ÙÀÌÆ® ÇÒ´ç¹Þ¾Æ
+// ÀÓÀÇÀÇ ¾ËÆÄºª ¼Ò¹®ÀÚ·Î Ã¤¿ì´Â Å¬·¡½º StringÀ» ±¸ÇöÇÏ¶ó
+//
+// ´ÙÀ½ main()ÀÌ ÀÇµµ´ë·Î ½ÇÇàµÇ°Ô ÇÏÀÚ
+
+std::random_device rd;
+std::default_random_engine dre(rd());
+std::uniform_int_distribution<> uid('a', 'z');
+
+class String
+{
+private:
+	int cnt;
+	char* alphabet;
+
+	friend std::ostream& operator<<(std::ostream& os, const String s);
+public:
+	String(int num) : cnt{ num }, alphabet{ new char[num] }
+	{
+		for (int i = 0; i < num; ++i)
+		{
+			alphabet[i] = uid(dre);
+		}
+	}
+	~String() { delete[] alphabet; }
+public:
+	String(const String& other) : cnt{ other.cnt }, alphabet{ new char[cnt] }
+	{
+		//std::cout << "º¹»ç ";			// swtich·Î Ãâ·Â Á¶Àý
+
+		memcpy(alphabet, other.alphabet, cnt);
+	}
+	String& operator=(const String& other)
+	{
+		//std::cout << "ÇÒ´ç ";
+
+		// ³ª ÀÚ½Å¿¡ ÇÒ´çµÇ´Â °ÍÀ» ¹æÁö
+		if (this != &other)
+		{
+			delete[] alphabet;
+			
+			cnt = other.cnt;
+			alphabet = new char[cnt];
+			memcpy(alphabet, other.alphabet, cnt);
+		}
+
+		return *this;
+	}
+
+	size_t size() const
+	{
+		return cnt;
+	}
+
+	void AscendingSort() { std::sort(alphabet, alphabet + cnt); }
+};
+
+std::ostream& operator<<(std::ostream& os, const String s)
+{
+	for (int i = 0; i < s.cnt; ++i)
+		os << s.alphabet[i];
+
+	return os;
+}
+
+int main()
+{
+	String s[10]{ 20, 21, 3, 14, 12, 7, 5, 8, 32, 2 };
+
+	// ±æÀÌ ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÏ¶ó
+	std::sort(std::begin(s), std::end(s), [](const String& a, const String& b)
+		{
+			return a.size() < b.size();
+		});
+	
+	// [¹®Á¦] °¢ StringÀ» ¾ËÆÄºª ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÏ¶ó.
+	for (String& s : s)
+	{
+		s.AscendingSort();
+	}
+
+	for (String& s : s)
+	{
+		std::cout << s << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-23 ¿ÀÈÄ 3:06:02 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 23ÀÏ È­¿äÀÏ (4ÁÖ 1ÀÏ)
+//
+// ¾ÕÀ¸·Î »ç¿ëÇÒ °üÂû¿ë class(ÀÚ¿øÀ» È®º¸ÇÏ´Â) ¸¸µé¾î µÎ±â
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+#include <vector>
+#include <string>
+#include <iterator>
+#include <fstream>
+
+// [¹®Á¦] »ç¿ëÀÚ°¡ ÀÔ·ÂÇÏ´Â ´Ü¾î¸¦ ÀúÀåÇÑ ÈÄ
+// ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÏ¿© Ãâ·ÂÇÏ¶ó
+
+int main()
+{
+	//						  { ½ÃÀÛÁ¡,										  Á¾´ÜÁ¡ }
+	std::vector<std::string> v{ std::istream_iterator<std::string>{std::cin}, {} };
+
+	std::sort(v.begin(), v.end());
+
+	//		 (½ÃÀÛÁ¡,	 Á¾´ÜÁ¡,	  È­¸é(È­¸éÀ» µ¹¾Æ´Ù´Ï´Â Æ÷ÀÎÅÍ)		)
+	std::copy(v.begin(), v.end(), std::ostream_iterator<std::string>(std::cout, "\t"));
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-23 ¿ÀÈÄ 3:07:06 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 23ÀÏ È­¿äÀÏ (4ÁÖ 1ÀÏ)
+//
+// ¾ÕÀ¸·Î »ç¿ëÇÒ °üÂû¿ë class(ÀÚ¿øÀ» È®º¸ÇÏ´Â) ¸¸µé¾î µÎ±â
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+#include <vector>
+#include <string>
+#include <iterator>
+#include <fstream>
+
+// [¹®Á¦] »ç¿ëÀÚ°¡ ÀÔ·ÂÇÏ´Â ´Ü¾î¸¦ ÀúÀåÇÑ ÈÄ
+// ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÏ¿© Ãâ·ÂÇÏ¶ó
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	//						  { ½ÃÀÛÁ¡,										  Á¾´ÜÁ¡ }
+	std::vector<std::string> v{ std::istream_iterator<std::string>{in}, {} };
+
+	std::sort(v.begin(), v.end());
+
+	//		 (½ÃÀÛÁ¡,	 Á¾´ÜÁ¡,	  È­¸é(È­¸éÀ» µ¹¾Æ´Ù´Ï´Â Æ÷ÀÎÅÍ)		)
+	std::copy(v.begin(), v.end(), std::ostream_iterator<std::string>(std::cout, "\t"));
+
+	Save("main.cpp");
+}
+

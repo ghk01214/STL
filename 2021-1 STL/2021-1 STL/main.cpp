@@ -1,69 +1,30 @@
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// 3월 18일 목요일 (3주 2일)
+// 3월 25일 목요일 (4주 2일)
 //
-// 
-// 
 // 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 #include "pch.h"
 #include "save.h"
-#include <random>
+#include "String.h"
+#include <vector>
+#include <string>
+#include <iterator>
+#include <fstream>
 
-// [문제] int num을 인자로 받아 메모리를 num 바이트 할당받아
-// 임의의 알파벳 소문자로 채우는 클래스 String을 구현하라
-//
-// 다음 main()이 의도대로 실행되게 하자
-
-std::random_device rd;
-std::default_random_engine dre(rd());
-std::uniform_int_distribution<> uid('a', 'z');
-
-class String
-{
-private:
-	int cnt;
-	char* alphabet;
-
-	friend std::ostream& operator<<(std::ostream& os, const String s);
-public:
-	String(int num) : cnt{ num }, alphabet{ new char[num] }
-	{
-		//std::unique_ptr<char[]> alphabet{ new char[num] };
-
-		for (int i = 0; i < num; ++i)
-		{
-			alphabet[i] = uid(dre);
-		}
-	}
-	~String() { delete[] alphabet; }
-
-	size_t size()
-	{
-
-	}
-};
-
-std::ostream& operator<<(std::ostream& os, const String s)
-{
-	for (int i = 0; i < s.cnt; ++i)
-		os << i + 1 << ". " << s.alphabet[i] << std::endl;
-
-	return os;
-}
+// [문제] 사용자가 입력하는 단어를 저장한 후
+// 오름차순으로 정렬하여 출력하라
 
 int main()
 {
-	String s[10]{ 20, 21, 3, 14, 12, 7, 5, 8, 32, 2 };
+	std::ifstream in{ "main.cpp" };
+	//						  { 시작점,										  종단점 }
+	std::vector<std::string> v{ std::istream_iterator<std::string>{in}, {} };
 
-	// 길이 오름차순으로 정렬하라
-	std::sort(std::begin(s), std::end(s), [](const String& a, const String& b)
-		{
-			return a.size() < b.size();
-		});
-	
-	for (String& s : s)
-		std::cout << s << std::endl;
+	std::sort(v.begin(), v.end());
 
-	//Save("main.txt");
+	//		 (시작점,	 종단점,	  화면(화면을 돌아다니는 포인터)		)
+	std::copy(v.begin(), v.end(), std::ostream_iterator<std::string>(std::cout, "\t"));
+
+	Save("main.cpp");
 }
