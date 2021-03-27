@@ -1,0 +1,433 @@
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-25 ¿ÀÈÄ 2:03:44 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 25ÀÏ ¸ñ¿äÀÏ (4ÁÖ 2ÀÏ)
+// 
+// Containers: objects that store other objects
+// ÀÚ·á±¸Á¶: ´Ù¸¥ °´Ã¼¸¦ ÀúÀåÇÏ´Â °´Ã¼
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] 
+
+int main()
+{
+	std::vector<int> v{ 1, 2, 3 };
+
+	for (std::vector<int>::iterator i = v.begin(); i != v.end(); ++i)
+	{
+		std::cout << *i << std::endl;
+	}
+
+	std::cout << sizeof(v) << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-25 ¿ÀÈÄ 2:06:35 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 25ÀÏ ¸ñ¿äÀÏ (4ÁÖ 2ÀÏ)
+// 
+// Containers: objects that store other objects
+// ÀÚ·á±¸Á¶: ´Ù¸¥ °´Ã¼¸¦ ÀúÀåÇÏ´Â °´Ã¼
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] 
+
+int main()
+{
+	std::vector<std::vector<int>> v{ { 1, 2, 3 }, {4, 5, 6, 7, 8}, {100, 200, 300} };
+
+	for (auto i = v.begin(); i != v.end(); ++i)
+	{
+		auto t = *i;
+
+		for (auto j = t.begin(); j != t.end(); ++j)
+		{
+			std::cout << *j << " ";
+		}
+
+		std::cout << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-25 ¿ÀÈÄ 2:20:36 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 25ÀÏ ¸ñ¿äÀÏ (4ÁÖ 2ÀÏ)
+// 
+// Containers: objects that store other objects
+// ÀÚ·á±¸Á¶: ´Ù¸¥ °´Ã¼¸¦ ÀúÀåÇÏ´Â °´Ã¼
+// 
+// Sequence Containers
+// - array
+// - vector
+// - deque
+// - forward_list
+// - list
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <array>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [½Ç½À] araryÀÇ Æ¯¼ºÀ» »ìÆìº»´Ù
+
+int main()
+{
+	std::array<int, 10> a{ 1, 2, 3, 4, 5 };
+
+	std::cout << a[0] << std::endl;
+	std::cout << a[10] << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-25 ¿ÀÈÄ 2:36:27 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 25ÀÏ ¸ñ¿äÀÏ (4ÁÖ 2ÀÏ)
+// 
+// Containers: objects that store other objects
+// ÀÚ·á±¸Á¶: ´Ù¸¥ °´Ã¼¸¦ ÀúÀåÇÏ´Â °´Ã¼
+// 
+// Sequence Containers
+// - array
+// - vector
+// - deque
+// - forward_list
+// - list
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <array>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [½Ç½À] araryÀÇ Æ¯¼ºÀ» »ìÆìº»´Ù
+
+int main()
+{
+	std::array<int, 10> a{ 1, 2, 3, 4, 5 };
+
+	try
+	{
+		std::cout << a.at(10) << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-25 ¿ÀÈÄ 2:42:21 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 25ÀÏ ¸ñ¿äÀÏ (4ÁÖ 2ÀÏ)
+// 
+// Containers: objects that store other objects
+// ÀÚ·á±¸Á¶: ´Ù¸¥ °´Ã¼¸¦ ÀúÀåÇÏ´Â °´Ã¼
+// 
+// Sequence Containers
+// - array
+// - vector
+// - deque
+// - forward_list
+// - list
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <array>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [½Ç½À] araryÀÇ Æ¯¼ºÀ» »ìÆìº»´Ù
+
+std::array<int, 10> a;
+std::array<int, 100> b;
+
+int main()
+{
+
+
+	std::cout << sizeof(a) << ", " << sizeof(b) << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-25 ¿ÀÈÄ 3:08:20 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 25ÀÏ ¸ñ¿äÀÏ (4ÁÖ 2ÀÏ)
+// 
+// Containers: objects that store other objects
+// ÀÚ·á±¸Á¶: ´Ù¸¥ °´Ã¼¸¦ ÀúÀåÇÏ´Â °´Ã¼
+// 
+// Sequence Containers
+// - array
+// - vector
+// - deque
+// - forward_list
+// - list
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [½Ç½À] mainÀÌ ½ÇÇàµÉ ¼ö ÀÖ°Ô Array¸¦ ÇÁ·Î±×·¥ÇÏ¶ó
+
+template<typename T, int N>
+class Array
+{
+private:
+	T data[N]{ 0 };
+public:
+	Array() {}
+public:
+	size_t size() const { return N; }
+
+	T* begin() { return data; }
+	T* end() { return data + N; }
+public:
+	T operator[](int idx) const { return data[idx]; }
+	T& operator[](int idx) { return data[idx]; }
+};
+
+int main()
+{
+	Array<int, 3> a;
+
+	for (int i = 0; i < a.size(); ++i)
+	{
+		a[i] = i * i;
+	}
+
+	for (int i = 0; i < a.size(); ++i)
+	{
+		std::cout << a[i] << std::endl;
+	}
+
+	std::cout << "\n¹Ýº¹ÀÚ·Î Ãâ·Â" << std::endl;
+	
+	for (auto i = a.begin(); i != a.end(); ++i)
+	{
+		std::cout << *i << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-25 ¿ÀÈÄ 3:10:42 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 25ÀÏ ¸ñ¿äÀÏ (4ÁÖ 2ÀÏ)
+// 
+// Containers: objects that store other objects
+// ÀÚ·á±¸Á¶: ´Ù¸¥ °´Ã¼¸¦ ÀúÀåÇÏ´Â °´Ã¼
+// 
+// Sequence Containers
+// - array
+// - vector
+// - deque
+// - forward_list
+// - list
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [½Ç½À] mainÀÌ ½ÇÇàµÉ ¼ö ÀÖ°Ô Array¸¦ ÇÁ·Î±×·¥ÇÏ¶ó
+
+template<typename T, int N>
+class Array
+{
+private:
+	T data[N]{ 0 };
+public:
+	Array() {}
+public:
+	size_t size() const { return N; }
+
+	T* begin() { return data; }
+	T* end() { return data + N; }
+public:
+	T operator[](int idx) const { return data[idx]; }
+	T& operator[](int idx) { return data[idx]; }
+};
+
+int main()
+{
+	Array<String, 10> a;
+
+	for (int i = 0; i < a.size(); ++i)
+	{
+		a[i] = i * i;
+	}
+
+	for (int i = 0; i < a.size(); ++i)
+	{
+		std::cout << a[i] << std::endl;
+	}
+
+	std::cout << "\n¹Ýº¹ÀÚ·Î Ãâ·Â" << std::endl;
+	
+	for (auto i = a.begin(); i != a.end(); ++i)
+	{
+		std::cout << *i << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-25 ¿ÀÈÄ 3:18:39 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 25ÀÏ ¸ñ¿äÀÏ (4ÁÖ 2ÀÏ)
+// 
+// Containers: objects that store other objects
+// ÀÚ·á±¸Á¶: ´Ù¸¥ °´Ã¼¸¦ ÀúÀåÇÏ´Â °´Ã¼
+// 
+// Sequence Containers
+// - array
+// - vector
+// - deque
+// - forward_list
+// - list
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [½Ç½À] mainÀÌ ½ÇÇàµÉ ¼ö ÀÖ°Ô Array¸¦ ÇÁ·Î±×·¥ÇÏ¶ó
+
+template<typename T, int N>
+class Array
+{
+private:
+	T data[N]{ 0 };
+public:
+	Array() {}
+public:
+	size_t size() const { return N; }
+
+	T* begin() { return data; }
+	T* end() { return data + N; }
+public:
+	T operator[](int idx) const { return data[idx]; }
+	T& operator[](int idx) { return data[idx]; }
+};
+
+int main()
+{
+	Array<String, 10> a;
+
+	for (int i = 0; i < a.size(); ++i)
+	{
+		a[i] = i * i;
+	}
+
+	for (int i = 0; i < a.size(); ++i)
+	{
+		std::cout << a[i] << std::endl;
+	}
+
+	std::cout << "\n¹Ýº¹ÀÚ·Î Ãâ·Â" << std::endl;
+	
+	for (auto i = a.begin(); i != a.end(); ++i)
+	{
+		std::cout << *i << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-25 ¿ÀÈÄ 3:19:05 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+#pragma once
+#include "pch.h"
+#include <string_view>
+#include <filesystem>
+#include <fstream>
+#include <ctime>
+
+void Save(std::string_view fileName);
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-25 ¿ÀÈÄ 3:19:05 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+#include "save.h"
+
+// google coding convention
+void Save(std::string_view fileName)
+{
+	// ¾î¶² ÆÄÀÏÀ» ÀúÀåÇÏ´ÂÁö È­¸é¿¡ Ãâ·Â
+	std::cout << "ÀúÀå: " << fileName << ", Å©±â: " << std::filesystem::file_size(fileName) << std::endl;
+
+	std::ofstream out("3¿ù 25ÀÏ(¸ñ).txt", std::ios::app);
+	std::ifstream in(fileName);
+
+	//ÆÄÀÏÀ» ±â·ÏÇÑ ½Ã°£µµ Ç¥½Ã
+	time_t t = std::time(nullptr);
+
+	//½Ã°£ ±â·Ï Áö¿ª º¯°æ
+	out.imbue(std::locale("korean"));
+
+	out << "¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬" << std::endl;
+	out << "ÀúÀå½Ã°£: " << std::put_time(localtime(&t), "%c %A") << std::endl;
+	out << "¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬" << std::endl;
+
+	//ÆÄÀÏÀÇ ³¡À» ¾Ë·ÁÁÖ±â À§ÇØ¼­ char ÇüÀÌ ¾Æ´Ï¶ó int ÇüÀ¸·Î ¹Þ¾Æ¿Â´Ù
+	int c;
+
+	while ((c = in.get()) != EOF)
+	{
+		out.put(c);
+	}
+
+	out << std::endl << std::endl;
+
+	//RAII
+	/*in.close();
+	out.close();*/
+}
+
+/*
+using namespace std::chrono_literals;
+
+	// ½ºÅé¿öÄ¡ ½ÃÀÛ
+	//std::chrono::steady_clock::timepoint begin = std::chrono::steady_clock::now();
+	auto begin = std::chrono::steady_clock::now();
+	std::this_thread::sleep_for(333ms);
+
+	// ½ºÅé¿öÄ¡ ³¡
+
+	std::cout << "°æ°ú ½Ã°£(¹Ð¸®ÃÊ) : " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - begin).count() << std::endl;
+	*/
+

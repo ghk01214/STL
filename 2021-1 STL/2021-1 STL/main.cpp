@@ -1,30 +1,62 @@
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 3월 25일 목요일 (4주 2일)
-//
-// 앞으로 사용할 관찰용 class(자원을 확보하는) 만들어 두기
+// 
+// Containers: objects that store other objects
+// 자료구조: 다른 객체를 저장하는 객체
+// 
+// Sequence Containers
+// - array
+// - vector
+// - deque
+// - forward_list
+// - list
+// 
+// 관찰 class에 이동기능 코딩 - sort 함수로 확인
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 #include "pch.h"
 #include "save.h"
 #include "String.h"
-#include <vector>
-#include <string>
-#include <iterator>
-#include <fstream>
 
-// [문제] 사용자가 입력하는 단어를 저장한 후
-// 오름차순으로 정렬하여 출력하라
+// [실습] main이 실행될 수 있게 Array를 프로그램하라
+
+template<typename T, int N>
+class Array
+{
+private:
+	T data[N]{ 0 };
+public:
+	Array() {}
+public:
+	size_t size() const { return N; }
+
+	T* begin() { return data; }
+	T* end() { return data + N; }
+public:
+	T operator[](int idx) const { return data[idx]; }
+	T& operator[](int idx) { return data[idx]; }
+};
 
 int main()
 {
-	std::ifstream in{ "main.cpp" };
-	//						  { 시작점,										  종단점 }
-	std::vector<std::string> v{ std::istream_iterator<std::string>{in}, {} };
+	Array<String, 10> a;
 
-	std::sort(v.begin(), v.end());
+	for (int i = 0; i < a.size(); ++i)
+	{
+		a[i] = i * i;
+	}
 
-	//		 (시작점,	 종단점,	  화면(화면을 돌아다니는 포인터)		)
-	std::copy(v.begin(), v.end(), std::ostream_iterator<std::string>(std::cout, "\t"));
+	for (int i = 0; i < a.size(); ++i)
+	{
+		std::cout << a[i] << std::endl;
+	}
+
+	std::cout << "\n반복자로 출력" << std::endl;
+	
+	for (auto i = a.begin(); i != a.end(); ++i)
+	{
+		std::cout << *i << std::endl;
+	}
 
 	Save("main.cpp");
 }

@@ -7,6 +7,10 @@ std::uniform_int_distribution<int> uid2{ 1, 200 };
 
 String::String() : cnt{ uid2(dre) }, alphabet{ new char[cnt] }
 {
+#ifdef °üÂû
+	std::cout << "String() - ctor" << std::endl;
+#endif
+
 	for (int i = 0; i < cnt; ++i)
 	{
 		alphabet[i] = uid(dre);
@@ -15,6 +19,10 @@ String::String() : cnt{ uid2(dre) }, alphabet{ new char[cnt] }
 
 String::String(int num) : cnt{ num }, alphabet{ new char[num] }
 {
+#ifdef °üÂû
+	std::cout << "String(int)" << std::endl;
+#endif
+
 	for (int i = 0; i < num; ++i)
 	{
 		alphabet[i] = uid(dre);
@@ -24,6 +32,15 @@ String::String(int num) : cnt{ num }, alphabet{ new char[num] }
 String::String(const String& other) : cnt{ other.cnt }, alphabet{ new char[cnt] }
 {
 	memcpy(alphabet, other.alphabet, cnt);
+}
+
+String::~String()
+{
+#ifdef °üÂû
+	std::cout << "~String() - p:" << (void*)alphabet << std::endl;
+#endif
+
+	delete[] alphabet;
 }
 
 std::ostream& operator<<(std::ostream& os, const String s)
