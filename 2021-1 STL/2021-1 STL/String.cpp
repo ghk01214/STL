@@ -2,68 +2,115 @@
 
 std::random_device rd;
 std::default_random_engine dre(rd());
-std::uniform_int_distribution<int> uid{ 'a', 'z' };
-std::uniform_int_distribution<int> uid2{ 1, 200 };
+std::uniform_int_distribution<int> uidAlpha{ 'a', 'z' };
 
-String::String() : cnt{ uid2(dre) }, alphabet{ new char[cnt] }
+String::String() : num{}, p{}
 {
 #ifdef 관찰
-	std::cout << "String() - ctor" << std::endl;
+	std::cout << "생성자() (this: " << this << ") - 갯수: " << num << ", 위치: " << (void*)p << std::endl;
 #endif
-
-	for (int i = 0; i < cnt; ++i)
-	{
-		alphabet[i] = uid(dre);
-	}
 }
 
-String::String(int num) : cnt{ num }, alphabet{ new char[num] }
+String::String(size_t n) : num{ n }, p{ new char[num] }
 {
 #ifdef 관찰
-	std::cout << "String(int)" << std::endl;
+	std::cout << "생성자(int) (this: " << this << ") - 갯수: "<< num << ", 위치: " << (void*)p << std::endl;
 #endif
 
 	for (int i = 0; i < num; ++i)
-	{
-		alphabet[i] = uid(dre);
-	}
+		p[i] = uidAlpha(dre);
 }
 
-String::String(const String& other) : cnt{ other.cnt }, alphabet{ new char[cnt] }
+String::String(const char* str) : num{ strlen(str) }, p{ new char[num] }
 {
-	memcpy(alphabet, other.alphabet, cnt);
+	memcpy(p, str, num);
+
+#ifdef 관찰
+	std::cout << "생성자(const char*) (this: " << this << ") - 갯수: " << num << ", 위치: " << (void*)p << std::endl;
+#endif
 }
 
 String::~String()
 {
 #ifdef 관찰
-	std::cout << "~String() - p:" << (void*)alphabet << std::endl;
+	std::cout << "소멸자 (this: " << this << ") - 갯수: " << num << ", 위치: " << (void*)p << std::endl;
 #endif
 
-	delete[] alphabet;
+	delete[] p;
 }
 
-std::ostream& operator<<(std::ostream& os, const String s)
+// 복사생성자
+String::String(const String& other) : num{ other.num }, p{ new char[num] }
 {
-	for (int i = 0; i < s.cnt; ++i)
-		os << s.alphabet[i];
+	memcpy(p, other.p, num);
 
-	return os;
+#ifdef 관찰
+	std::cout << "복사생성자 (this: " << this << ") - 갯수: " << num << ", 위치: " << (void*)p << std::endl;
+#endif
 }
 
+// 복사할당연산자
 String& String::operator=(const String& other)
 {
-	//std::cout << "할당 ";
-
-	// 나 자신에 할당되는 것을 방지
 	if (this != &other)
 	{
-		delete[] alphabet;
+		delete[] p;
 
-		cnt = other.cnt;
-		alphabet = new char[cnt];
-		memcpy(alphabet, other.alphabet, cnt);
+		num = other.num;
+		p = new char[num];
+
+		memcpy(p, other.p, num);
 	}
 
+#ifdef 관찰
+	std::cout << "복사할당연산자 (this: " << this << ") - 갯수: " << num << ", 위치: " << (void*)p << std::endl;
+#endif
+
 	return *this;
+}
+
+// 이동생성자
+String::String(String&& other) : num{ other.num }
+{
+	p = other.p;
+	other.p = nullptr;
+	other.num = 0;
+
+#ifdef 관찰
+	std::cout << "이동생성자 (this: " << this << ") - 갯수: " << num << ", 위치: " << (void*)p << std::endl;
+#endif
+}
+
+// 이동할당연산자
+String& String::operator=(String&& other)
+{
+	if (this != &other)
+	{
+		delete[] p;
+
+		num = other.num;
+		p = other.p;
+
+		other.num = 0;
+		other.p = nullptr;
+	}
+
+#ifdef 관찰
+	std::cout << "이동할당연산자 (this: " << this << ") - 갯수: " << num << ", 위치: " << (void*)p << std::endl;
+#endif
+
+	return *this;
+}
+
+std::string String::GetString() const
+{
+	return std::string_view(p, p + num);
+}
+
+std::ostream& operator<<(std::ostream& os, const String& s)
+{
+	for (int i = 0; i < s.num; ++i)
+		os << s.p[i];
+
+	return os;
 }

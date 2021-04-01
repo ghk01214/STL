@@ -1,0 +1,213 @@
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-30 ¿ÀÈÄ 1:53:53 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 30ÀÏ È­¿äÀÏ (5ÁÖ 1ÀÏ)
+// 
+// String.h¸¦ ´Ù¿î¹Þ¾Æ °øÅëµÈ 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] StringÀÌ const char*¸¦ ÀÎÀÚ·Î ¹Þµµ·Ï ÇÏÀÚ
+
+int main()
+{
+	String s{ "½ºÆ®¸µÀ» ¸¸µé¾î º»´Ù" };
+
+	std::cout << s << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-30 ¿ÀÈÄ 1:57:08 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 30ÀÏ È­¿äÀÏ (5ÁÖ 1ÀÏ)
+// 
+// String.h¸¦ ´Ù¿î¹Þ¾Æ °øÅëµÈ 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <array>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] STL Ç¥ÁØ ÄÁÅ×ÀÌ³Ê¿¡ StringÀ» ¿ø¼Ò(element)·Î ³Ö¾îº»´Ù
+
+int main()
+{
+	std::array<String, 3> words{ "¾È³ç", "³¾ ¸ð·¹", "4¿ùÀÌ¾ß" };
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-30 ¿ÀÈÄ 1:59:19 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 30ÀÏ È­¿äÀÏ (5ÁÖ 1ÀÏ)
+// 
+// String.h¸¦ ´Ù¿î¹Þ¾Æ °øÅëµÈ 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <array>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] STL Ç¥ÁØ ÄÁÅ×ÀÌ³Ê¿¡ StringÀ» ¿ø¼Ò(element)·Î ³Ö¾îº»´Ù
+
+int main()
+{
+	std::array<String, 3> words;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-30 ¿ÀÈÄ 2:07:47 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 30ÀÏ È­¿äÀÏ (5ÁÖ 1ÀÏ)
+// 
+// String.h¸¦ ´Ù¿î¹Þ¾Æ °øÅëµÈ 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <array>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] STL Ç¥ÁØ ÄÁÅ×ÀÌ³Ê¿¡ StringÀ» ¿ø¼Ò(element)·Î ³Ö¾îº»´Ù
+
+int main()
+{
+	std::array<String, 3> words{ "´ÙÀ½ ÁÖ", "°úÁ¦¸¦", "ÁØºñÇÏ°Ú½À´Ï´Ù" };
+	int n{ 123 };
+
+	std::cout << "array<String, 3>ÀÌ »ý¼ºµÈ À§Ä¡ : " << &words << std::endl;
+	std::cout << "¿©±â¿Í À¯»çÇÑ À§Ä¡¿©¾ß : " << &n << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-30 ¿ÀÈÄ 2:47:06 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 30ÀÏ È­¿äÀÏ (5ÁÖ 1ÀÏ)
+// 
+// String.h¸¦ ´Ù¿î¹Þ¾Æ °øÅëµÈ 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <array>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] STL Ç¥ÁØ ÄÁÅ×ÀÌ³Ê¿¡ StringÀ» ¿ø¼Ò(element)·Î ³Ö¾îº»´Ù
+// »çÀü¼ø¼­(lexicographical)»ó ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÑ´Ù
+
+int main()
+{
+	std::array<String, 3> words{ "´ÙÀ½ ÁÖ", "°úÁ¦¸¦", "ÁØºñÇÏ°Ú½À´Ï´Ù" };
+
+	std::sort(words.begin(), words.end(), [](const String& a, const String& b)
+		{
+			return a.GetString() < b.GetString();
+		}
+	);
+
+	for (const String& s : words)
+	{
+		std::cout << s << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-30 ¿ÀÈÄ 3:10:04 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 30ÀÏ È­¿äÀÏ (5ÁÖ 1ÀÏ)
+// 
+// String.h¸¦ ´Ù¿î¹Þ¾Æ °øÅëµÈ 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <array>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [Áú¹®] [](¹è¿­)°ú std::array Áß ¹«¾ùÀ» »ç¿ëÇÏ¸é ÁÁÀº°¡?
+
+int main()
+{
+	// ¸Þ¸ð¸® »ó Â÷ÀÌÁ¡Àº ¾ø´Ù = ½Ã°£Àû Â÷ÀÌÁ¡µµ ¾ø´Ù
+	int a[10]{};
+	std::array<int, 10> aa{};
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-30 ¿ÀÈÄ 3:17:10 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 30ÀÏ È­¿äÀÏ (5ÁÖ 1ÀÏ)
+// 
+// vector = sequence containers that encapsulates dynamic size arrays
+// º¤ÅÍ = µ¿Àû Å©±âÀÇ ¹è¿­À» Æ÷ÀåÇÑ sequence containers
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [Áú¹®] vector¶õ? - µ¿Àû(ÄÄÆÄÀÏ½Ã¿¡´Â Å©±â¸¦ ¾Ë ¼ö ¾ø´Â) ¹è¿­
+
+int main()
+{
+	std::vector<int> v{ 1, 2, 3 };
+
+	std::cout << "¿ø¼Ò °³¼ö : " << v.size() << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-03-30 ¿ÀÈÄ 3:17:50 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 3¿ù 30ÀÏ È­¿äÀÏ (5ÁÖ 1ÀÏ)
+// 
+// vector = sequence containers that encapsulates dynamic size arrays
+// º¤ÅÍ = µ¿Àû Å©±âÀÇ ¹è¿­À» Æ÷ÀåÇÑ sequence containers
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [Áú¹®] vector¶õ? - µ¿Àû(ÄÄÆÄÀÏ½Ã¿¡´Â Å©±â¸¦ ¾Ë ¼ö ¾ø´Â) ¹è¿­
+
+int main()
+{
+	std::vector<int> v{ 1, 2, 3 };
+
+	std::cout << "¿ø¼Ò °³¼ö : " << v.size() << std::endl;
+
+	v.push_back(4);
+
+	std::cout << "¿ø¼Ò °³¼ö : " << v.size() << std::endl;
+
+	Save("main.cpp");
+}
+
