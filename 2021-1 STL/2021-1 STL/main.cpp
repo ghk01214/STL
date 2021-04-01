@@ -10,17 +10,27 @@
 #include "save.h"
 #include "String.h"
 
-// [질문] vector란? - 동적(컴파일시에는 크기를 알 수 없는) 배열
+// [문제] "main.cpp"를 읽어 vector에 저장한 후
+// 거꾸로 화면에 출력하라.
 
 int main()
 {
-	std::vector<int> v{ 1, 2, 3 };
+	std::vector<char> v;
+	char c{};
 
-	std::cout << "원소 개수 : " << v.size() << std::endl;
+	std::ifstream in("main.cpp");
 
-	v.push_back(4);
+	while ((c = in.get()) != EOF)
+	{
+		v.push_back(c);
+	}
 
-	std::cout << "원소 개수 : " << v.size() << std::endl;
+	for (auto i{ v.rbegin() }; i != v.rend(); ++i)
+	{
+		std::cout << *i;
+	}
+
+	//std::copy(v.rbegin(), v.rend(), std::ostream_iterator<char>(std::cout));
 
 	Save("main.cpp");
 }

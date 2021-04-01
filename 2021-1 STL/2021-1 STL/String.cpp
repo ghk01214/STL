@@ -104,7 +104,7 @@ String& String::operator=(String&& other)
 
 std::string String::GetString() const
 {
-	return std::string_view(p, p + num);
+	return std::string(p, p + num);
 }
 
 std::ostream& operator<<(std::ostream& os, const String& s)
