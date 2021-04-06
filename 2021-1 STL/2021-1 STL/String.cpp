@@ -70,7 +70,7 @@ String& String::operator=(const String& other)
 }
 
 // 이동생성자
-String::String(String&& other) : num{ other.num }
+String::String(String&& other) noexcept : num{ other.num }
 {
 	p = other.p;
 	other.p = nullptr;
@@ -82,7 +82,7 @@ String::String(String&& other) : num{ other.num }
 }
 
 // 이동할당연산자
-String& String::operator=(String&& other)
+String& String::operator=(String&& other) noexcept
 {
 	if (this != &other)
 	{

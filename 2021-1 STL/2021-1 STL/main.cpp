@@ -1,36 +1,34 @@
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// 4월 1일 목요일 (5주 2일)
+// 4월 8일 목요일 (6주 2일)
 // 
-// vector = sequence containers that encapsulates dynamic size arrays
-// 벡터 = 동적 크기의 배열을 포장한 sequence containers
+// vector<int>에서 짝수만 삭제한다
+// vector<int> 중간에 원소를 추가해 본다
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
+#include <algorithm>
 #include <vector>
 #include "pch.h"
 #include "save.h"
 #include "String.h"
 
-// [문제] "main.cpp"를 읽어 vector에 저장한 후
-// 거꾸로 화면에 출력하라.
-
 int main()
 {
-	std::vector<char> v;
-	char c{};
+	std::vector<String> v{ 20, 10, 30 };
 
-	std::ifstream in("main.cpp");
+	// v를 길이 오름차순으로 정렬하시오
 
-	while ((c = in.get()) != EOF)
-	{
-		v.push_back(c);
-	}
+	std::cout << std::endl;
+	std::cout << "===============정렬 전===============" << std::endl;
+	std::cout << std::endl;
 
-	for (auto i{ v.rbegin() }; i != v.rend(); ++i)
-	{
-		std::cout << *i;
-	}
+	std::sort(v.begin(), v.end(), [](const String& a, const String& b)
+		{
+			return a.size() < b.size();
+		});
 
-	//std::copy(v.rbegin(), v.rend(), std::ostream_iterator<char>(std::cout));
+	std::cout << std::endl;
+	std::cout << "===============정렬 후===============" << std::endl;
+	std::cout << std::endl;
 
-	Save("main.cpp");
+	//Save("main.cpp");
 }
