@@ -27,8 +27,8 @@ public:
 	String(const String& other);					// 복사생성자
 	String& operator=(const String& other);			// 복사할당연산자
 	
-	String(String&& other);							// 이동생성자
-	String& operator=(String&& other);				// 이동할당연산자
+	String(String&& other) noexcept;							// 이동생성자
+	String& operator=(String&& other)noexcept;				// 이동할당연산자
 public:
 	size_t size() const { return num; }
 
