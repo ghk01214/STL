@@ -1,0 +1,370 @@
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-08 ¿ÀÈÄ 1:45:15 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 8ÀÏ ¸ñ¿äÀÏ (6ÁÖ 2ÀÏ)
+// 
+// vector<int>¿¡¼­ Â¦¼ö¸¸ »èÁ¦ÇÑ´Ù
+// vector<int> Áß°£¿¡ ¿ø¼Ò¸¦ Ãß°¡ÇØ º»´Ù
+// 
+// Áß°£°í»ç - 4¿ù 22ÀÏ ¸ñ¿äÀÏ (8ÁÖ 2ÀÏ)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"
+#include "save.h"
+
+// [¹®Á¦] v¿¡ 3À» ³¢¿ö ³Ö¾îº»´Ù
+
+int main()
+{
+	std::vector<int> v{ 1, 2, 4, 5 };
+	auto p = v.begin();
+	std::advance(p, 2);
+
+	v.insert(p, 3);
+
+	for (auto& i : v)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-08 ¿ÀÈÄ 1:46:06 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 8ÀÏ ¸ñ¿äÀÏ (6ÁÖ 2ÀÏ)
+// 
+// vector<int>¿¡¼­ Â¦¼ö¸¸ »èÁ¦ÇÑ´Ù
+// vector<int> Áß°£¿¡ ¿ø¼Ò¸¦ Ãß°¡ÇØ º»´Ù
+// 
+// Áß°£°í»ç - 4¿ù 22ÀÏ ¸ñ¿äÀÏ (8ÁÖ 2ÀÏ)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"
+#include "save.h"
+
+// [¹®Á¦] v¿¡ 3À» ³¢¿ö ³Ö¾îº»´Ù
+
+int main()
+{
+	std::vector<int> v{ 1, 2, 4, 5 };
+	auto p = v.begin();
+	std::advance(p, 2);
+
+	v.insert(p, { 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3 });
+
+	for (auto& i : v)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-08 ¿ÀÈÄ 1:46:19 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 8ÀÏ ¸ñ¿äÀÏ (6ÁÖ 2ÀÏ)
+// 
+// vector<int>¿¡¼­ Â¦¼ö¸¸ »èÁ¦ÇÑ´Ù
+// vector<int> Áß°£¿¡ ¿ø¼Ò¸¦ Ãß°¡ÇØ º»´Ù
+// 
+// Áß°£°í»ç - 4¿ù 22ÀÏ ¸ñ¿äÀÏ (8ÁÖ 2ÀÏ)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"
+#include "save.h"
+
+// [¹®Á¦] v¿¡ 3À» ³¢¿ö ³Ö¾îº»´Ù
+
+int main()
+{
+	std::vector<int> v{ 1, 2, 4, 5 };
+	auto p = v.begin();
+	std::advance(p, 2);
+
+	v.insert(p, 100, 3333);
+
+	for (auto& i : v)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-08 ¿ÀÈÄ 1:47:43 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 8ÀÏ ¸ñ¿äÀÏ (6ÁÖ 2ÀÏ)
+// 
+// vector<int>¿¡¼­ Â¦¼ö¸¸ »èÁ¦ÇÑ´Ù
+// vector<int> Áß°£¿¡ ¿ø¼Ò¸¦ Ãß°¡ÇØ º»´Ù
+// 
+// Áß°£°í»ç - 4¿ù 22ÀÏ ¸ñ¿äÀÏ (8ÁÖ 2ÀÏ)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"
+#include "save.h"
+
+// [¹®Á¦] v¿¡ 3À» ³¢¿ö ³Ö¾îº»´Ù
+
+int main()
+{
+	std::vector<int> v{ 1, 2, 4, 5 };
+	auto p = v.begin();
+	std::advance(p, 2);
+
+	v.insert(p, v.begin(), v.end());
+
+	for (auto& i : v)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-08 ¿ÀÈÄ 2:14:10 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 8ÀÏ ¸ñ¿äÀÏ (6ÁÖ 2ÀÏ)
+// 
+// vector<int>¿¡¼­ Â¦¼ö¸¸ »èÁ¦ÇÑ´Ù
+// vector<int> Áß°£¿¡ ¿ø¼Ò¸¦ Ãß°¡ÇØ º»´Ù
+//  ¤¤ ÀÚ·á±¸Á¶¿¡ ¹«°üÇÑ ÄÚµùÀ» ÇÏ¸é ÀÚ·á±¸Á¶°¡ ¹Ù²î´õ¶óµµ ÄÚµå´Â º¯°æÇÒ ÇÊ¿ä°¡ ¾ø´Ù
+//  ¤¤ ÀÌ·± ÀÏÀÌ ÀÚÁÖ ÇÊ¿äÇÏ´Ù¸é ÀÚ·á±¸Á¶¸¦ ¹Ù²ã¾ß ÇÑ´Ù.
+// 
+// Áß°£°í»ç - 4¿ù 22ÀÏ ¸ñ¿äÀÏ (8ÁÖ 2ÀÏ)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"
+#include "save.h"
+
+// [¹®Á¦] v¿¡ 3À» ³¢¿ö ³Ö¾îº»´Ù
+
+int main()
+{
+	std::vector<int> v{ 1, 2, 4, 5 };
+	auto p = v.begin();
+	std::advance(p, 2);
+
+	v.insert(p, 3);
+
+	for (auto i = v.cbegin(); i != v.cend(); ++i)
+	{
+		std::cout << *i << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-08 ¿ÀÈÄ 2:36:02 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 8ÀÏ ¸ñ¿äÀÏ (6ÁÖ 2ÀÏ)
+// 
+// vector<int>¿¡¼­ Â¦¼ö¸¸ »èÁ¦ÇÑ´Ù
+// 
+// Áß°£°í»ç - 4¿ù 22ÀÏ ¸ñ¿äÀÏ (8ÁÖ 2ÀÏ)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"
+#include "save.h"
+
+// [¹®Á¦] v¿¡¼­ È¦¼ö¸¦ Á¦°ÅÇÏ¶ó
+
+int main()
+{
+	std::vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+	v.erase(std::remove_if(v.begin(), v.end(), [](int a)
+		{
+			return a & 1;
+		}), v.end());
+
+	for (int& i : v)
+	{
+		std::cout << i << " "l;
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-08 ¿ÀÈÄ 3:07:50 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 8ÀÏ ¸ñ¿äÀÏ (6ÁÖ 2ÀÏ)
+// 
+// vector<int>¿¡¼­ Â¦¼ö¸¸ »èÁ¦ÇÑ´Ù
+// ¤¤ remove°¡ Áö¿ì´Â°Ç ÁøÂ¥°¡ ¾Æ´Ï´Ù.
+// ¤¤ ½ÇÁ¦ Áö¿ì´Â °Ç ÀÚ·á±¸Á¶°¡ ÇØ¾ß ÇÑ´Ù.
+// 
+// Áß°£°í»ç - 4¿ù 22ÀÏ ¸ñ¿äÀÏ (8ÁÖ 2ÀÏ)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"
+#include "save.h"
+
+// [¹®Á¦] v¿¡¼­ È¦¼ö¸¦ Á¦°ÅÇÏ¶ó
+
+int main()
+{
+	std::vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+	v.erase(std::remove_if(v.begin(), v.end(), [](int a)
+		{
+			return a & 1;
+		}), v.end());
+
+	// ÁÙ¾îµç ¸¸Å­ÀÇ °ø°£À» »õ·Î ÇÒ´ç¹Þ¾Æ º¹»çÇÏ´Â ÇÔ¼öÀÌ´Ù.
+	v.shrink_to_fit();
+
+	for (int& i : v)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-08 ¿ÀÈÄ 3:12:05 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 8ÀÏ ¸ñ¿äÀÏ (6ÁÖ 2ÀÏ)
+// 
+// vector<int>¿¡¼­ Â¦¼ö¸¸ »èÁ¦ÇÑ´Ù
+// ¤¤ remove°¡ Áö¿ì´Â°Ç ÁøÂ¥°¡ ¾Æ´Ï´Ù.
+// ¤¤ ½ÇÁ¦ Áö¿ì´Â °Ç ÀÚ·á±¸Á¶°¡ ÇØ¾ß ÇÑ´Ù.
+// 
+// Áß°£°í»ç - 4¿ù 22ÀÏ ¸ñ¿äÀÏ (8ÁÖ 2ÀÏ)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <deque>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] v¿¡¼­ È¦¼ö¸¦ Á¦°ÅÇÏ¶ó
+
+int main()
+{
+	std::deque<String> d;
+
+	d.push_back("back");
+	d.push_front("front");
+
+	for (auto& s : d)
+	{
+		std::cout << s << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-08 ¿ÀÈÄ 3:12:47 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 8ÀÏ ¸ñ¿äÀÏ (6ÁÖ 2ÀÏ)
+// 
+// vector<int>¿¡¼­ Â¦¼ö¸¸ »èÁ¦ÇÑ´Ù
+// ¤¤ remove°¡ Áö¿ì´Â°Ç ÁøÂ¥°¡ ¾Æ´Ï´Ù.
+// ¤¤ ½ÇÁ¦ Áö¿ì´Â °Ç ÀÚ·á±¸Á¶°¡ ÇØ¾ß ÇÑ´Ù.
+// 
+// Áß°£°í»ç - 4¿ù 22ÀÏ ¸ñ¿äÀÏ (8ÁÖ 2ÀÏ)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <deque>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] v¿¡¼­ È¦¼ö¸¦ Á¦°ÅÇÏ¶ó
+
+int main()
+{
+	std::deque<String> d;
+
+	d.emplace(d.end(), "back");
+	d.emplace(d.begin(), "front");
+
+	for (const String& s : d)
+	{
+		std::cout << s << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-08 ¿ÀÈÄ 3:20:26 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 8ÀÏ ¸ñ¿äÀÏ (6ÁÖ 2ÀÏ)
+// 
+// vector<int>¿¡¼­ Â¦¼ö¸¸ »èÁ¦ÇÑ´Ù
+// ¤¤ remove°¡ Áö¿ì´Â°Ç ÁøÂ¥°¡ ¾Æ´Ï´Ù.
+// ¤¤ ½ÇÁ¦ Áö¿ì´Â °Ç ÀÚ·á±¸Á¶°¡ ÇØ¾ß ÇÑ´Ù.
+// 
+// Áß°£°í»ç - 4¿ù 22ÀÏ ¸ñ¿äÀÏ (8ÁÖ 2ÀÏ)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <deque>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] v¿¡¼­ È¦¼ö¸¦ Á¦°ÅÇÏ¶ó
+
+int main()
+{
+	std::deque<String> d;
+
+	d.emplace(d.end(), "back");
+	d.emplace(d.end(), "front");
+
+	for (const String& s : d)
+	{
+		std::cout << s << std::endl;
+	}
+
+	d.emplace(d.end(), "middle");
+
+	for (const String& s : d)
+	{
+		std::cout << s << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
