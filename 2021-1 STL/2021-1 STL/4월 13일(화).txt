@@ -1,0 +1,792 @@
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 1:37:03 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// deque
+// 
+// STL contiguous container
+// ㄴ (array, vector, deque) + ([], string)
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <deque>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// vector, deque와 같은 contiguous한 자료구조를 쓰는 이유는
+// 자료구조에 상수시간으로 접근하기 위해서이다.
+
+int main()
+{
+	std::deque<int> d{ 1, 2, 3, 4, 5 };
+
+	for (int i{ 0 }; i < d.size(); ++i)
+	{
+		std::cout << d[i] << std::endl; // == std::cout << *(&d[0] + i) << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 1:39:08 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// deque
+// 
+// STL contiguous container
+// ㄴ (array, vector, deque) + ([], string)
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <deque>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// vector, deque와 같은 contiguous한 자료구조를 쓰는 이유는
+// 자료구조에 상수시간으로 접근하기 위해서이다.
+
+int main()
+{
+	std::deque<int> d{ 1, 2, 3, 4, 5 };
+
+	try
+	{
+		std::cout << d.at(5) << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 1:41:44 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// deque
+// 
+// STL contiguous container
+// ㄴ (array, vector, deque) + ([], string)
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <deque>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// vector, deque와 같은 contiguous한 자료구조를 쓰는 이유는
+// 자료구조에 상수시간으로 접근하기 위해서이다.
+
+class Test
+{
+public:
+	void show()	const { std::cout << this << std::endl; }
+private:
+	char c[1024];
+};
+
+int main()
+{
+	Test a;
+	a.show();	//1KB 매모리를 사용하는 a의 번지수 출력
+
+	std::deque<Test> d;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 1:42:45 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// deque
+// 
+// STL contiguous container
+// ㄴ (array, vector, deque) + ([], string)
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include <deque>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// vector, deque와 같은 contiguous한 자료구조를 쓰는 이유는
+// 자료구조에 상수시간으로 접근하기 위해서이다.
+
+class Test
+{
+public:
+	void show()	const { std::cout << this << std::endl; }
+private:
+	char c[1024];
+};
+
+int main()
+{
+	std::vector<Test> v(10);
+
+	// 메모리 주소가 400씩 차이가 나는데 이는 16진수로 1KB만큼의 거리에 해당한다.
+	for (int i{ 0 }; i < v.size(); ++i)
+	{
+		v[i].show();
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 1:48:41 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// deque
+// 
+// STL contiguous container
+// ㄴ (array, vector, deque) + ([], string)
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include <deque>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// deque은 list를 묶음으로 관리하는 것과 유사하다.
+
+class Test
+{
+public:
+	void show()	const { std::cout << this << std::endl; }
+private:
+	char c[1024];
+};
+
+int main()
+{
+	std::deque<Test> d(20);
+
+	d.push_front({});
+
+
+	// deque은 메모리가 연속된 것처럼 보이지만 실제로는 메모리가 분산된 자료구조이다.
+	// 이는 vector를 사용할 때보다 access 시간이 길어지게 된다.
+	for (int i{ 0 }; i < d.size(); ++i)
+	{
+		d[i].show();
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 2:07:12 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// deque - 벡터와 유사한데 뭐가 다르지?
+// ㄴ 실제 메모리가 연속되어 있지 않다. 그런 척 할 뿐이다.(access 시간이 vector보다 느리다.)
+// 
+// STL contiguous container
+// ㄴ (array, vector, deque) + ([], string)
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include <deque>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [실험] vector에 int를 하나씩 push_back하면 몇 개까지 저장할 수 있나 출력하라.
+
+int main()
+{
+	std::vector<int> v; // 최대 - 136216567
+
+	try
+	{
+		while (true)
+		{
+			v.push_back(1);
+			//std::cout << v.size() << "\r";
+		}
+	}
+	catch (...)
+	{
+		std::cout << "현재 원소 수 : " << v.size() << ", 현재 할당된 메모리 크기 : " << v.capacity() << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 2:08:18 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// deque - 벡터와 유사한데 뭐가 다르지?
+// ㄴ 실제 메모리가 연속되어 있지 않다. 그런 척 할 뿐이다.(access 시간이 vector보다 느리다.)
+// 
+// STL contiguous container
+// ㄴ (array, vector, deque) + ([], string)
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include <deque>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [실험] vector에 int를 하나씩 push_back하면 몇 개까지 저장할 수 있나 출력하라.
+
+int main()
+{
+	//std::vector<int> v; // 최대 - 136216567
+	std::deque<int> d;
+
+	try
+	{
+		while (true)
+		{
+			d.push_back(1);
+			//std::cout << v.size() << "\r";
+		}
+	}
+	catch (...)
+	{
+		std::cout << "현재 원소 수 : " << d.size() << ", 최대 할당 가능한 메모리 크기 : " << d.max_size() << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 2:11:45 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// deque - 벡터와 유사한데 뭐가 다르지?
+// ㄴ 실제 메모리가 연속되어 있지 않다. 그런 척 할 뿐이다.(access 시간이 vector보다 느리다.)
+// ㄴ 원소를 벡터보다 더 많이 담을 수 있다.
+// 
+// STL contiguous container
+// ㄴ (array, vector, deque) + ([], string)
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include <deque>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [실험] vector에 int를 하나씩 push_back하면 몇 개까지 저장할 수 있나 출력하라.
+
+int main()
+{
+	//std::vector<int> v; // 최대 - 136216567
+	std::deque<int> d;	  // 최대 - 268435452
+
+	try
+	{
+		while (true)
+		{
+			d.push_back(1);
+			//std::cout << v.size() << "\r";
+		}
+	}
+	catch (...)
+	{
+		std::cout << "현재 원소 수 : " << d.size() << ", 최대 할당 가능한 메모리 크기 : " << d.max_size() << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 2:21:04 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// deque - 벡터와 유사한데 뭐가 다르지?
+// ㄴ 실제 메모리가 연속되어 있지 않다. 그런 척 할 뿐이다.(access 시간이 vector보다 느리다.)
+// ㄴ 원소를 벡터보다 더 많이 담을 수 있다.
+// 
+// STL contiguous container
+// ㄴ (array, vector, deque) + ([], string)
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] 글자 수가 홀수 개수이면 제거하라.
+
+int main()
+{
+	std::vector<String> v{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+	v.erase(std::remove_if(v.begin(), v.end(), [](const String& a)
+		{
+			return a.size() & 1;
+		}), v.end());
+
+	for (int i{ 0 }; i < v.size(); ++i)
+	{
+		std::cout << v[i] << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 2:36:15 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// deque - 벡터와 유사한데 뭐가 다르지?
+// ㄴ 실제 메모리가 연속되어 있지 않다. 그런 척 할 뿐이다.(access 시간이 vector보다 느리다.)
+// ㄴ 원소를 벡터보다 더 많이 담을 수 있다.
+// 
+// STL contiguous container
+// ㄴ (array, vector, deque) + ([], string)
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] 글자 수가 홀수 개수이면 제거하라.
+
+int main()
+{
+	std::vector<String> v{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+	v.erase(std::remove_if(v.begin(), v.end(), [](const String& a)
+		{
+			return a.size() & 1;
+		}), v.end());
+
+	for (int i{ 0 }; i < v.size(); ++i)
+	{
+		std::cout << v[i] << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 2:36:37 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// deque - 벡터와 유사한데 뭐가 다르지?
+// ㄴ 실제 메모리가 연속되어 있지 않다. 그런 척 할 뿐이다.(access 시간이 vector보다 느리다.)
+// ㄴ 원소를 벡터보다 더 많이 담을 수 있다.
+// 
+// STL contiguous container
+// ㄴ (array, vector, deque) + ([], string)
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] 글자 수가 홀수 개수이면 제거하라.
+
+int main()
+{
+	std::vector<String> v{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+	// STL의 원칙을 깨버리는 함수라 권장되지는 않음
+	// 알고리즘 함수는 container를 모르는 것이 STL의 원칙인데
+	// 이 함수는 container를 특정짓는다.
+	std::erase_if(v, [](const String& a)
+		{
+			return a.size() & 1;
+		});
+
+	for (int i{ 0 }; i < v.size(); ++i)
+	{
+		std::cout << v[i] << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 2:44:07 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// deque - 벡터와 유사한데 뭐가 다르지?
+// ㄴ 실제 메모리가 연속되어 있지 않다. 그런 척 할 뿐이다.(access 시간이 vector보다 느리다.)
+// ㄴ 원소를 벡터보다 더 많이 담을 수 있다.
+// 
+// STL contiguous container
+// ㄴ (array, vector, deque) + ([], string)
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] a를 인자로 받아 내용을 화면에 출력하는 함수 print를 작성하라.
+
+void print(int* a, int b)
+{
+	for (int i{ 0 }; i < b; ++i)
+	{
+		std::cout << a[i] << " ";
+	}
+
+	std::cout << std::endl;
+}
+
+int main()
+{
+	int a[10]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	
+	// 메모리의 개수와 같은 여분의 정보 필요
+	// 여분의 정보 없이 container만 받아들이도록 해보자.
+	print(a, 10);
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 2:48:00 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// deque - 벡터와 유사한데 뭐가 다르지?
+// ㄴ 실제 메모리가 연속되어 있지 않다. 그런 척 할 뿐이다.(access 시간이 vector보다 느리다.)
+// ㄴ 원소를 벡터보다 더 많이 담을 수 있다.
+// 
+// STL contiguous container
+// ㄴ (array, vector, deque) + ([], string)
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include <span>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] a를 인자로 받아 내용을 화면에 출력하는 함수 print를 작성하라.
+
+template<typename T, int N>
+void print(std::span<T, N> a)
+{
+	for (int i{ 0 }; i < N; ++i)
+	{
+		std::cout << a[i] << " ";
+	}
+
+	std::cout << std::endl;
+}
+
+int main()
+{
+	int a[10]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+	print(std::span<int, 10>{a});
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 2:50:41 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// deque - 벡터와 유사한데 뭐가 다르지?
+// ㄴ 실제 메모리가 연속되어 있지 않다. 그런 척 할 뿐이다.(access 시간이 vector보다 느리다.)
+// ㄴ 원소를 벡터보다 더 많이 담을 수 있다.
+// 
+// STL contiguous container
+// ㄴ (array, vector, deque) + ([], string)
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include <span>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] a를 인자로 받아 내용을 화면에 출력하는 함수 print를 작성하라.
+
+template<typename T>
+void print(std::span<T> a)
+{
+	for (int i{ 0 }; i < a.size(); ++i)
+	{
+		std::cout << a[i] << " ";
+	}
+
+	std::cout << std::endl;
+}
+
+int main()
+{
+	int a[10]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+	std::vector<String> v{ 10, 20, 30 };
+
+	print(std::span<int>{a});
+	print(std::span<String>{v});
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 2:57:37 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// deque - 벡터와 유사한데 뭐가 다르지?
+// ㄴ 실제 메모리가 연속되어 있지 않다. 그런 척 할 뿐이다.(access 시간이 vector보다 느리다.)
+// ㄴ 원소를 벡터보다 더 많이 담을 수 있다.
+// 
+// STL contiguous container
+// ㄴ (array, vector, deque) + ([], string)
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <string>
+#include <vector>
+#include <span>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] a를 인자로 받아 내용을 화면에 출력하는 함수 print를 작성하라.
+
+template<typename T>
+void print(std::span<T> a)
+{
+	for (int i{ 0 }; i < a.size(); ++i)
+	{
+		std::cout << a[i] << " ";
+	}
+
+	std::cout << std::endl;
+}
+
+int main()
+{
+	std::string s{ "aglgnlksnfdglknlfgnlk" };
+
+	// std::string char형의 모임인 클래스이므로 <>안에는 자료형인 char가 들어간다.
+	print(std::span<char>{s});
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 3:01:19 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// deque - 벡터와 유사한데 뭐가 다르지?
+// ㄴ 실제 메모리가 연속되어 있지 않다. 그런 척 할 뿐이다.(access 시간이 vector보다 느리다.)
+// ㄴ 원소를 벡터보다 더 많이 담을 수 있다.
+// 
+// STL contiguous container
+// ㄴ (array, vector, deque) + ([], string)
+// 
+// C++ 20 메모리가 엲속된 컨테이너를 나타내는 span template class가 추가되었다.
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <string>
+#include <vector>
+#include <span>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] a를 인자로 받아 내용을 화면에 출력하는 함수 print를 작성하라.
+
+template<typename T>
+void print(std::span<T> a)
+{
+	for (int i{ 0 }; i < a.size(); ++i)
+	{
+		std::cout << a[i] << " ";
+	}
+
+	std::cout << std::endl;
+}
+
+int main()
+{
+	std::string s{ "aglgnlksnfdglknlfgnlkgbnkdjbgijbrigfbakdjbgk\
+dggbkajbgdkbagjkfdbkgbajkdbgkjbgkjbskjgbks\
+gjkdabgkjdbgkabkdgbjbdakgbdgbkajdgkdjbgkjdbgk" };
+
+	// std::string char형의 모임인 클래스이므로 <>안에는 자료형인 char가 들어간다.
+	print(std::span<char>{s});
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 3:16:06 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// 1. sequence container
+//	원소를 삭제.추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// 전체를 반복자로 순회하며 출력하자
+
+int main()
+{
+	std::list<String> c{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+	for (auto i{ c.cbegin() }; i != c.cend(); ++i)
+	{
+		std::cout << *i << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 3:16:41 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// 1. sequence container
+//	원소를 삭제.추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// 전체를 반복자로 순회하며 출력하자
+
+int main()
+{
+	std::list<String> c{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+	for (const String& s : c)
+	{
+		std::cout << s << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-13 오후 3:19:49 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 13일 화요일 (7주 1일)
+// 
+// 1. sequence container
+//	원소를 삭제.추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// 전체를 반복자로 순회하며 출력하자
+
+int main()
+{
+	std::list<String> c{ 1, 3, 5, 7, 9, 2, 4, 6, 8, 10 };
+
+	c.sort([](const String& a, const String& b)
+		{
+			return a.size() < b.size();
+		});
+
+	for (const String& s : c)
+	{
+		std::cout << s << std::endl;
+	}
+
+	Save("main.cpp");
+}
+

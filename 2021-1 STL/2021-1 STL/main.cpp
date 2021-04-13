@@ -1,35 +1,31 @@
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// 4월 8일 목요일 (6주 2일)
+// 4월 15일 화요일 (7주 2일)
 // 
-// vector<int>에서 짝수만 삭제한다
-// ㄴ remove가 지우는건 진짜가 아니다.
-// ㄴ 실제 지우는 건 자료구조가 해야 한다.
+// 1. sequence container
+//	원소를 삭제.추가하는 동작이 O(1)
+//    - list
+//    - forward_list
 // 
 // 중간고사 - 4월 22일 목요일 (8주 2일)
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-#include <deque>
+#include <list>
 #include "pch.h"
 #include "save.h"
 #include "String.h"
 
-// [문제] v에서 홀수를 제거하라
+// 전체를 반복자로 순회하며 출력하자
 
 int main()
 {
-	std::deque<String> d;
+	std::list<String> c{ 1, 3, 5, 7, 9, 2, 4, 6, 8, 10 };
 
-	d.emplace(d.end(), "back");
-	d.emplace(d.end(), "front");
+	c.sort([](const String& a, const String& b)
+		{
+			return a.size() < b.size();
+		});
 
-	for (const String& s : d)
-	{
-		std::cout << s << std::endl;
-	}
-
-	d.emplace(d.end(), "middle");
-
-	for (const String& s : d)
+	for (const String& s : c)
 	{
 		std::cout << s << std::endl;
 	}

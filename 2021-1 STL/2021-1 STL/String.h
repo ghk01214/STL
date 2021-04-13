@@ -9,7 +9,7 @@
 #include <string>
 #include "pch.h"
 
-#define 관찰			// 이 주석을 풀면 special member의 동작을 알 수 있다.
+//#define 관찰			// 이 주석을 풀면 special member의 동작을 알 수 있다.
 
 class String
 {
