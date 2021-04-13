@@ -4,15 +4,6 @@
 class Player
 {
 public:
-	//Player();
-	//~Player();
-public:
-	//Player(const Player& other);						// 복사생성자
-	//Player& operator=(const Player& other);				// 복사할당연산자
-
-	//Player(Player&& other) noexcept;					// 이동생성자
-	//Player& operator=(Player&& other) noexcept;			// 이동할당연산자
-public:
 	std::string ReturnName() const { return sName; }
 	int ReturnScore() const { return iScore; }
 	int ReturnId() const { return iId; }
