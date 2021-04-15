@@ -1,8 +1,8 @@
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// 4월 15일 화요일 (7주 2일)
+// 4월 15일 목요일 (7주 2일)
 // 
 // 1. sequence container
-//	원소를 삭제.추가하는 동작이 O(1)
+//	원소를 삭제/추가하는 동작이 O(1)
 //    - list
 //    - forward_list
 // 
@@ -10,25 +10,27 @@
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 #include <list>
+#include <iterator>
 #include "pch.h"
 #include "save.h"
 #include "String.h"
 
-// 전체를 반복자로 순회하며 출력하자
+// [도전 문제] "main.cpp" 파일에 있는 단어를 뒤집어 출력하라.
+// ex) gnisu scapseman ;dts
 
 int main()
 {
-	std::list<String> c{ 1, 3, 5, 7, 9, 2, 4, 6, 8, 10 };
+	std::list<int> l1{ 3, 7, 5, 1, 9, 7, 7, 7, 7, 7, 7 };
+	
+	// unique 함수는 연속된 인근의 원소들만 지운다.
+	l1.unique();
 
-	c.sort([](const String& a, const String& b)
-		{
-			return a.size() < b.size();
-		});
-
-	for (const String& s : c)
+	for (int a : l1)
 	{
-		std::cout << s << std::endl;
+		std::cout << a << " ";
 	}
 
-	//Save("main.cpp");
+	std::cout << std::endl;
+
+	Save("main.cpp");
 }

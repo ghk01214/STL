@@ -1,0 +1,745 @@
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 1:38:57 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제.추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <deque>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// 전체를 반복자로 순회하며 출력하자
+
+int main()
+{
+	std::deque<int> d{ 1, 5, 3, 9, 7 };
+
+	// sort 알고리즘은 random iterator로만 접근이 가능하다.
+	// 즉, random access가 가능한 자료구조(contiguous한 자료구조)에만 적용 가능하다.
+	// 따라서 list와 같이 contiguous하지 않은 자료구조에는 적용이 불가능하다.
+	// deque는 contiguous한 것처럼 보이지만 실제로는 그렇지 않은 자료구조이다.
+	// 그래서 deque는 std::span으로는 묶을 수 없다.
+	std::sort(d.begin(), d.end());
+
+	for (int& n : d)
+	{
+		std::cout << n << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 1:43:53 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제.추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] "main.cpp" 파일을 list를 사용해 읽어들여라.
+// 출력은 역순으로 하라.
+
+// vector<자료형>은 데이터 1개를 저장하는데에는 sizeof(자료형)의 크기만큼의 메모리가 필요하지만
+// list<자료형>은 데이터 1개를 저장하는데 sizeof(자료형) + 2 * 4(sizeof(포인터))만큼의 메모리가 필요하다.
+
+int main()
+{
+	std::list<char> l;
+
+	std::ifstream in{ "main.cpp" };
+
+	int c;
+
+	while ((c = in.get()) != EOF)
+	{
+		l.push_back(c);
+	}
+
+	for (auto i{ l.rbegin() }; i != l.rend(); ++i)
+	{
+		std::cout << *i;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 1:46:27 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제.추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] "main.cpp" 파일을 list를 사용해 읽어들여라.
+// 출력은 역순으로 하라.
+
+// vector<자료형>은 데이터 1개를 저장하는데에는 sizeof(자료형)의 크기만큼의 메모리가 필요하지만
+// list<자료형>은 데이터 1개를 저장하는데 sizeof(자료형) + 2 * 4(sizeof(포인터))만큼의 메모리가 필요하다.
+
+int main()
+{
+	std::list<char> l;
+
+	std::ifstream in{ "main.cpp" };
+
+	int c;
+
+	while ((c = in.get()) != EOF)
+	{
+		l.push_front(c);
+	}
+
+	for (char& c : l)
+	{
+		std::cout << c;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 2:01:16 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제.추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] "main.cpp" 파일을 list를 사용해 읽어들여라.
+// 출력은 역순으로 하라.
+
+// list의 reverse 함수는 각 노드의 포인터의 방향을 서로 바꾸는 함수이지만
+// 알고리즘 헤더의 reverse 함수는 각각의 데이터를 서로 바꾸는 방식이어서 비효율적이다.
+// 알고리즘 헤더에 존재하는 함수가 자료구조 클래스의 멤버함수로 존재하는 것은
+// 자료구조의 특성을 살리기 위해 새로 만든 함수이므로 멤버함수를 써주는 것이 더 좋다.
+
+int main()
+{
+	std::list<char> l;
+
+	std::ifstream in{ "main.cpp" };
+
+	char c;
+
+	while ((c = in.get()) != EOF)
+	{
+		l.push_back(c);
+	}
+
+	l.reverse();
+
+	for (char& c : l)
+	{
+		std::cout << c;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 2:04:54 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제.추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include <initializer_list>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] "main.cpp" 파일을 list를 사용해 읽어들여라.
+// 출력은 역순으로 하라.
+
+int main()
+{
+	auto ii = { 'a', 'b', 'c' };
+	std::list<char> l(ii);
+	// std::list<char> l(ii.begin(), ii.end());
+
+	// std::vector<char> v;
+	// std::list<char> l(v.begin(), v.end());
+
+	// std::list<char> con;
+	// std::list<char> l(move(con));
+
+	std::ifstream in{ "main.cpp" };
+
+	char c;
+
+	while ((c = in.get()) != EOF)
+	{
+		l.push_back(c);
+	}
+
+	l.reverse();
+
+	for (char& c : l)
+	{
+		std::cout << c;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 2:08:54 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제.추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include <iterator>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] "main.cpp" 파일을 list를 사용해 읽어들여라.
+// 출력은 역순으로 하라.
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::list<char> l(std::istream_iterator<char>{in}, {});		// 공백 무시
+
+	l.reverse();
+
+	for (char& c : l)
+	{
+		std::cout << c;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 2:09:08 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제.추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include <iterator>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] "main.cpp" 파일을 list를 사용해 읽어들여라.
+// 출력은 역순으로 하라.
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::list<char> l(std::istreambuf_iterator<char>{in}, {});		// 공백 유지
+
+	l.reverse();
+
+	for (char& c : l)
+	{
+		std::cout << c;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 2:10:31 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제.추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include <iterator>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] "main.cpp" 파일을 list를 사용해 읽어들여라.
+// 출력은 역순으로 하라.
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::list<char> l(std::istreambuf_iterator<char>{in}, {});		// 공백 유지
+
+	for (auto i{ l.crbegin() }; i != l.crend(); ++i)
+	{
+		std::cout << *i;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 2:12:35 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제.추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include <iterator>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] "main.cpp" 파일을 list를 사용해 읽어들여라.
+// 출력은 역순으로 하라.
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::list<char> l(std::istreambuf_iterator<char>{in}, {});		// 공백 유지
+
+	std::copy(l.cbegin(), l.cend(), std::ostream_iterator<char>(std::cout));
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 2:22:05 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제.추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include <iterator>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [문제] "main.cpp" 파일에 소문자는 몇 글자인가 출력하라.
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::list<char> l(std::istreambuf_iterator<char>{in}, {});		// 공백 유지
+
+	int n = std::count_if(l.cbegin(), l.cend(), [](char c)
+		{
+			return islower(c);
+		});
+
+	std::cout << "소문자 개수 : " << n << std::endl;
+	
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 2:48:37 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제.추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include <iterator>
+#include <string>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+using namespace std::literals::string_literals;
+
+// [문제] "main.cpp" 파일에 using이라는 단어가 있는가?
+// 있다면 몇 번째 단어인지 출력하라.
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::list<std::string> l(std::istream_iterator<std::string>{in}, {});		// 공백 유지
+
+	auto p = std::find(l.cbegin(), l.cend(), "using"s);
+
+	if (p != l.cend())
+	{
+		std::cout << std::distance(l.cbegin(), p) << "번 째 단어입니다." << std::endl;
+	}
+	else
+	{
+		std::cout << "찾는 원소가 없습니다." << std::endl;
+	}
+	
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 2:54:10 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제/추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include <iterator>
+#include <string>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+using namespace std::literals::string_literals;
+
+// [문제] "main.cpp" 파일에 using이라는 단어가 있는가?
+// 있다면 몇 번째 단어인지 출력하라.
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::list<std::string> l(std::istream_iterator<std::string>{in}, {});		// 공백 유지
+
+	auto p = std::find(l.cbegin(), l.cend(), "using"s);
+
+	if (p != l.cend())
+	{
+		std::cout << std::distance(l.cbegin(), p) + 1 << "번 째 단어입니다." << std::endl;
+	}
+	else
+	{
+		std::cout << "찾는 원소가 없습니다." << std::endl;
+	}
+	
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 3:06:41 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제/추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include <iterator>
+#include <string>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+using namespace std::literals::string_literals;
+
+// [도전 문제] "main.cpp" 파일에 있는 단어를 뒤집어 출력하라.
+// ex) gnisu scapseman ;dts
+
+void print(const std::list<int>& con)
+{
+	for (int a : con)
+	{
+		std::cout << a << " ";
+	}
+
+	std::cout << std::endl;
+}
+
+int main()
+{
+	std::list<int> l1{ 1, 3, 5, 7, 9 };
+	std::list<int> l2{ 2, 4, 6, 8, 10 };
+
+	// [문제] l1, l2에 있는 내용을 l3에 merge하라.
+	
+	std::list<int> l3;
+
+	// merge 함수는 확보한 노드는 그대로 놔둔 채로 기존의 list는 없애버린다.
+	// 각 노드의 header가 가진 포인터의 위치만 변경하여 노드를 유지하고 list는 없앤다.
+	l3.merge(l1);
+	l3.merge(l2);
+
+	print(l1);
+	print(l2);
+	print(l3);
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 3:10:58 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제/추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include <iterator>
+#include <string>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+using namespace std::literals::string_literals;
+
+// [도전 문제] "main.cpp" 파일에 있는 단어를 뒤집어 출력하라.
+// ex) gnisu scapseman ;dts
+
+void print(const std::list<int>& con)
+{
+	for (int a : con)
+	{
+		std::cout << a << " ";
+	}
+
+	std::cout << std::endl;
+}
+
+int main()
+{
+	std::list<int> l1{ 1, 7, 5, 3, 9 };
+	std::list<int> l2{ 2, 8, 6, 4, 10 };
+
+	// [문제] l1, l2에 있는 내용을 l3에 merge하라.
+	
+	std::list<int> l3;
+
+	// merge 함수는 확보한 노드는 그대로 놔둔 채로 기존의 list는 없애버린다.
+	// 각 노드의 header가 가진 포인터의 위치만 변경하여 노드를 유지하고 list는 없앤다.
+	// 각 원소의 크기를 비교해서 작은 크기순으로 정렬한다.
+	// 1, 2, 7, 5, 3, 8, 6, 4, 9, 10
+	l3.merge(l1);
+	l3.merge(l2);
+
+	print(l1);
+	print(l2);
+	print(l3);
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 3:14:21 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제/추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include <iterator>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [도전 문제] "main.cpp" 파일에 있는 단어를 뒤집어 출력하라.
+// ex) gnisu scapseman ;dts
+
+int main()
+{
+	std::list<int> l1{ 1, 3, 5, 7, 9, 2, 4, 6, 8, 10 };
+
+	l1.sort([](int a, int b)
+		{
+			return a > b;
+		});
+
+	for (int a : l1)
+	{
+		std::cout << a << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 3:15:24 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제/추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include <iterator>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [도전 문제] "main.cpp" 파일에 있는 단어를 뒤집어 출력하라.
+// ex) gnisu scapseman ;dts
+
+int main()
+{
+	std::list<int> l1{ 1, 3, 5, 7, 9, 2, 4, 6, 8, 10 };
+
+	l1.sort(std::greater<int>());
+	//l1.sort([](int a, int b)
+	//	{
+	//		return a > b;
+	//	});
+
+	for (int a : l1)
+	{
+		std::cout << a << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-04-15 오후 3:20:52 목요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 4월 15일 목요일 (7주 2일)
+// 
+// 1. sequence container
+//	원소를 삭제/추가하는 동작이 O(1)
+//    - list
+//    - forward_list
+// 
+// 중간고사 - 4월 22일 목요일 (8주 2일)
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <list>
+#include <iterator>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [도전 문제] "main.cpp" 파일에 있는 단어를 뒤집어 출력하라.
+// ex) gnisu scapseman ;dts
+
+int main()
+{
+	std::list<int> l1{ 3, 7, 5, 1, 9, 7, 7, 7, 7, 7, 7 };
+	
+	// unique 함수는 연속된 인근의 원소들만 지운다.
+	l1.unique();
+
+	for (int a : l1)
+	{
+		std::cout << a << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
