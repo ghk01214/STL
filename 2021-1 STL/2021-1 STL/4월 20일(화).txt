@@ -1,0 +1,265 @@
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-20 ¿ÀÈÄ 1:57:41 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 20ÀÏ È­¿äÀÏ (8ÁÖ 1ÀÏ)
+// 
+// ¹Ýº¹ÀÚ : Ã¥ 31 ~ 41, 123 ~ 136, Design Pattern Áß iterator pattern
+//  ¹Ýº¹ÀÚ´Â Æ÷ÀÎÅÍ¸¦ Ãß»óÈ­ÇÑ °ÍÀÌ´Ù.
+//  ¹Ýº¹ÀÚÃ³·³ Çàµ¿ÇÏ´Â °ÍÀº ¹Ýº¹ÀÚÀÌ´Ù.
+//  ¹Ýº¹ÀÚ´Â container°¡ Á¦°øÇÏ´Â ÀÎÅÍÆäÀÌ½ºÀÌ´Ù.
+// 
+// Áß°£°í»ç - 4¿ù 22ÀÏ ¸ñ¿äÀÏ (8ÁÖ 2ÀÏ)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+int main()
+{
+	String s{ "1234567890" };
+	
+	//for (char c : s)
+	//{
+	//	std::cout << c << " ";
+	//}
+
+	for (auto i = s.begin(); i != s.end(); ++i)
+	{
+		std::cout << *i << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+	Save("String.h");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-20 ¿ÀÈÄ 1:57:41 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//-----------------------------------------------------------------------------
+// String.h - STL ³»ºÎ µ¿ÀÛÀ» °üÂûÇÏ±â À§ÇØ ¸¸µç ÀÚ¿øÀ» È®º¸ÇÏ´Â Å¬·¡½º
+//
+// 2021. 3. 30									Programmed by wulong
+//-----------------------------------------------------------------------------
+#pragma once
+
+#include <random>
+#include <string>
+#include "pch.h"
+
+//#define °üÂû			// ÀÌ ÁÖ¼®À» Ç®¸é special memberÀÇ µ¿ÀÛÀ» ¾Ë ¼ö ÀÖ´Ù.
+
+class String
+{
+public:
+	String();
+	String(size_t n);
+	String(const char* str);
+	~String();
+public:
+	String(const String& other);							// º¹»ç»ý¼ºÀÚ
+	String& operator=(const String& other);					// º¹»çÇÒ´ç¿¬»êÀÚ
+	
+	String(String&& other) noexcept;						// ÀÌµ¿»ý¼ºÀÚ
+	String& operator=(String&& other)noexcept;				// ÀÌµ¿ÇÒ´ç¿¬»êÀÚ
+public:
+	// 2021. 4. 20
+	char* begin() { return p; }
+	char* end() { return p + num; }
+public:
+	size_t size() const { return num; }
+
+	// È®º¸ÇÑ ÀÚ¿øÀ» std::stringÃ³·³ ÀÌ¿ëÇÒ ¼ö ÀÖ°Ô ÇÏÀÚ
+	std::string GetString() const;
+private:
+	size_t num;												// È®º¸ÇÑ ÀÚ¿øÀÇ ¼ö
+	char* p;												// È®º¸ÇÑ ÀÚ¿øÀÇ À§Ä¡
+
+	friend std::ostream& operator<<(std::ostream&, const String&);
+};
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-20 ¿ÀÈÄ 1:59:00 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 20ÀÏ È­¿äÀÏ (8ÁÖ 1ÀÏ)
+// 
+// ¹Ýº¹ÀÚ : Ã¥ 31 ~ 41, 123 ~ 136, Design Pattern Áß iterator pattern
+//  ¹Ýº¹ÀÚ´Â Æ÷ÀÎÅÍ¸¦ Ãß»óÈ­ÇÑ °ÍÀÌ´Ù.
+//  ¹Ýº¹ÀÚÃ³·³ Çàµ¿ÇÏ´Â °ÍÀº ¹Ýº¹ÀÚÀÌ´Ù.
+//  ¹Ýº¹ÀÚ´Â container°¡ Á¦°øÇÏ´Â ÀÎÅÍÆäÀÌ½ºÀÌ´Ù.
+// 
+// Áß°£°í»ç - 4¿ù 22ÀÏ ¸ñ¿äÀÏ (8ÁÖ 2ÀÏ)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+int main()
+{
+	String s{ "1234567890" };
+	
+	std::sort(s.begin(), s.end());
+
+	std::cout << s << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-20 ¿ÀÈÄ 2:01:22 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 20ÀÏ È­¿äÀÏ (8ÁÖ 1ÀÏ)
+// 
+// ¹Ýº¹ÀÚ : Ã¥ 31 ~ 41, 123 ~ 136, Design Pattern Áß iterator pattern
+//  ¹Ýº¹ÀÚ´Â Æ÷ÀÎÅÍ¸¦ Ãß»óÈ­ÇÑ °ÍÀÌ´Ù.
+//  ¹Ýº¹ÀÚÃ³·³ Çàµ¿ÇÏ´Â °ÍÀº ¹Ýº¹ÀÚÀÌ´Ù.
+//  ¹Ýº¹ÀÚ´Â container°¡ Á¦°øÇÏ´Â ÀÎÅÍÆäÀÌ½ºÀÌ´Ù.
+// 
+// Áß°£°í»ç - 4¿ù 22ÀÏ ¸ñ¿äÀÏ (8ÁÖ 2ÀÏ)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+int main()
+{
+	String s{ "The quick brown fox jumps over the lazy dog" };
+	
+	std::sort(s.begin(), s.end());
+
+	std::cout << s << std::endl;
+
+	for (auto i = s.begin(); i < s.end(); ++i)
+	{
+		std::cout << *i << "-";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-20 ¿ÀÈÄ 2:02:47 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 20ÀÏ È­¿äÀÏ (8ÁÖ 1ÀÏ)
+// 
+// ¹Ýº¹ÀÚ : Ã¥ 31 ~ 41, 123 ~ 136, Design Pattern Áß iterator pattern
+//  ¹Ýº¹ÀÚ´Â Æ÷ÀÎÅÍ¸¦ Ãß»óÈ­ÇÑ °ÍÀÌ´Ù.
+//  ¹Ýº¹ÀÚÃ³·³ Çàµ¿ÇÏ´Â °ÍÀº ¹Ýº¹ÀÚÀÌ´Ù.
+//  ¹Ýº¹ÀÚ´Â container°¡ Á¦°øÇÏ´Â ÀÎÅÍÆäÀÌ½ºÀÌ´Ù.
+// 
+// Áß°£°í»ç - 4¿ù 22ÀÏ ¸ñ¿äÀÏ (8ÁÖ 2ÀÏ)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+int main()
+{
+	String s{ "The quick brown fox jumps over the lazy dog" };
+	
+	// random access °¡´ÉÇÑ container´Â ´Ù °¡´É
+	std::sort(s.begin(), s.end());
+
+	std::unique(s.begin(), s.end());
+
+	for (auto i = s.begin(); i < s.end(); ++i)
+	{
+		std::cout << *i << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-20 ¿ÀÈÄ 2:13:41 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 20ÀÏ È­¿äÀÏ (8ÁÖ 1ÀÏ)
+// 
+// ¹Ýº¹ÀÚ : Ã¥ 31 ~ 41, 123 ~ 136, Design Pattern Áß iterator pattern
+//  ¹Ýº¹ÀÚ´Â Æ÷ÀÎÅÍ¸¦ Ãß»óÈ­ÇÑ °ÍÀÌ´Ù.
+//  ¹Ýº¹ÀÚÃ³·³ Çàµ¿ÇÏ´Â °ÍÀº ¹Ýº¹ÀÚÀÌ´Ù.
+//  ¹Ýº¹ÀÚ´Â container°¡ Á¦°øÇÏ´Â ÀÎÅÍÆäÀÌ½ºÀÌ´Ù.
+// 
+// Áß°£°í»ç - 4¿ù 22ÀÏ ¸ñ¿äÀÏ (8ÁÖ 2ÀÏ)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] ¹Ýº¹ÀÚ¸¦ ÀÎÀÚ·Î ¹ÞÀº ÇÔ¼ö´Â ±×°ÍÀÌ ¹«¾ðÁö¸¦ ¾î¶»°Ô ¾Æ´Â°¡?
+
+template<typename iter>
+void showIteratorCategory(const iter&)
+{
+	std::cout << typeid(std::iterator_traits<iter>::iterator_category).name() << std::endl;
+}
+
+int main()
+{
+	std::vector<int> v;
+	//auto p = std::vector<int>().begin();
+	auto p = v.begin();
+
+	showIteratorCategory(p);
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-20 ¿ÀÈÄ 2:18:52 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 20ÀÏ È­¿äÀÏ (8ÁÖ 1ÀÏ)
+// 
+// ¹Ýº¹ÀÚ : Ã¥ 31 ~ 41, 123 ~ 136, Design Pattern Áß iterator pattern
+//  ¹Ýº¹ÀÚ´Â Æ÷ÀÎÅÍ¸¦ Ãß»óÈ­ÇÑ °ÍÀÌ´Ù.
+//  ¹Ýº¹ÀÚÃ³·³ Çàµ¿ÇÏ´Â °ÍÀº ¹Ýº¹ÀÚÀÌ´Ù.
+//  ¹Ýº¹ÀÚ´Â container°¡ Á¦°øÇÏ´Â ÀÎÅÍÆäÀÌ½ºÀÌ´Ù.
+// 
+// Áß°£°í»ç - 4¿ù 22ÀÏ ¸ñ¿äÀÏ (8ÁÖ 2ÀÏ)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <iterator>
+#include <list>
+#include <forward_list>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] ¹Ýº¹ÀÚ¸¦ ÀÎÀÚ·Î ¹ÞÀº ÇÔ¼ö´Â ±×°ÍÀÌ ¹«¾ðÁö¸¦ ¾î¶»°Ô ¾Æ´Â°¡?
+
+template<typename iter>
+void showIteratorCategory(const iter&)
+{
+	std::cout << typeid(std::iterator_traits<iter>::iterator_category).name() << std::endl;
+}
+
+int main()
+{
+	showIteratorCategory(std::istream_iterator<char>{std::cin});
+	showIteratorCategory(std::ostream_iterator<char>{std::cout});
+	showIteratorCategory(std::forward_list<int>::iterator());
+	showIteratorCategory(std::list<int>::iterator());
+	showIteratorCategory(std::vector<int>::iterator());
+	showIteratorCategory(String().begin());
+
+	Save("main.cpp");
+}
+
