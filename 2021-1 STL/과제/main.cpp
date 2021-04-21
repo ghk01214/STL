@@ -157,17 +157,12 @@ void Question4(std::vector<Player>& v)
 
 void PrintInfo(std::vector<Player>& v, int id)
 {
-	auto i{ v.cbegin() };
-
-	for (; i != v.cend(); ++i)
-	{
-		if (id == (*i).ReturnId())
+	auto dis{ std::find_if(v.cbegin(), v.cend(), [id](const Player& p)
 		{
-			break;
-		}
-	}
+			return p.ReturnId() == id;
+		}) };
 
-	auto pos{ std::distance(v.cbegin(), i) };
+	auto pos{ std::distance(v.cbegin(), dis) };
 
 	if (pos >= v.size() || pos < 0)
 	{
@@ -177,19 +172,19 @@ void PrintInfo(std::vector<Player>& v, int id)
 	{
 		if (pos == 0)
 		{
-			std::cout << v[pos] << std::endl;
-			std::cout << v[pos + 1] << std::endl;
+			std::cout << v.at(pos) << std::endl;
+			std::cout << v.at(pos + 1) << std::endl;
 		}
 		else if (pos == v.size() - 1 )
 		{
-			std::cout << v[pos - 1] << std::endl;
-			std::cout << v[pos] << std::endl;
+			std::cout << v.at(pos - 1) << std::endl;
+			std::cout << v.at(pos) << std::endl;
 		}
 		else
 		{
-			std::cout << v[pos - 1] << std::endl;
-			std::cout << v[pos] << std::endl;
-			std::cout << v[pos + 1] << std::endl;
+			std::cout << v.at(pos - 1) << std::endl;
+			std::cout << v.at(pos) << std::endl;
+			std::cout << v.at(pos + 1) << std::endl;
 		}
 	}
 }
