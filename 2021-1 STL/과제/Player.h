@@ -1,23 +1,29 @@
 #pragma once
-//#define 관찰
+#include <fstream>
 
 class Player
 {
 public:
+	Player() {}
+	~Player() {}
+public:
 	std::string ReturnName() const { return sName; }
 	int ReturnScore() const { return iScore; }
 	int ReturnId() const { return iId; }
-	size_t ReturnSize() const { return tSize; }
-	char* ReturnAddress() const { return cAddress; }
+	size_t ReturnSize() const { return sNum; }
 public:
-	void Write(std::ostream& os);
-private:
-	std::string		sName;				// 이름
-	int				iScore;				// 점수
-	int				iId;				// 아이디
-	size_t			tSize;				// 확보한 메모리 바이트 수
-	char*			cAddress;			// 확보한 메모리의 시작번지
-private:
 	friend std::ostream& operator<<(std::ostream& os, const Player& p);
+private:
+	std::string		sName;					// 이름
+	int				iScore;					// 점수
+	int				iId;					// 아이디
+	size_t			sNum;					// 확보한 메모리 바이트 수
+	char* p;						// 확보한 메모리의 시작번지
 };
 
+std::ostream& operator<<(std::ostream& os, const Player& p)
+{
+	os << "이름 : " << p.sName << "\t, 아이디 : " << p.iId << "\t, 점수 : " << p.iScore << "\t, 자원 수 : " << p.sNum;
+
+	return os;
+}
