@@ -91,12 +91,17 @@ void Question3(std::vector<Player>& v)
 	// 바이트수가 500인 원소의 위치를 구해서 파일로 저장
 	auto start{ v.begin() };
 
-	while (start < v.end())
+	while (true)
 	{
 		start = std::find_if(start, v.end(), [](const Player& p)
 			{
 				return p.ReturnSize() == 500;
 			});
+
+		if (start >= v.end())
+		{
+			break;
+		}
 
 		out.write((char*)&v[std::distance(v.begin(), start)], sizeof(Player));
 		++start;
