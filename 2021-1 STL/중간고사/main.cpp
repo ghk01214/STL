@@ -14,6 +14,7 @@ public:
 public:
 	std::string ReturnName() const { return name; }
 	int ReturnId()const { return id; }
+	size_t ReturnNameSize() const { return name.size(); }
 public:
 	void MakeCapital() { name[0] = std::toupper(name[0]); }
 public:
@@ -103,10 +104,10 @@ void Q3(std::vector<Player>& v)
 		std::cout << "이름이 Stlcontainer인 객체는 " << std::distance(v.cbegin(), pos) + 1 << "번째 객체입니다" << std::endl;
 	}
 
-	//for (auto i{ v.cbegin() }; i != v.cbegin() + 10; ++i)
-	//{
-	//	std::cout << *i << std::endl;
-	//}
+	std::cout << std::endl;
+
+	system("pause");
+	system("cls");
 }
 
 void Q4(std::vector<Player>& v)
@@ -122,7 +123,7 @@ void Q4(std::vector<Player>& v)
 
 		if (id < 1 or 3000 < id)
 		{
-			std::cout << "유효한 id는 [1, 3000] 입니다." << std::endl;
+			std::cout << "유효한 id는 [1, 3000] 입니다." << std::endl << std::endl;
 			continue;
 		}
 
@@ -130,18 +131,35 @@ void Q4(std::vector<Player>& v)
 		auto start{ v.begin() };
 		int playerNum{};
 
-		while (start < v.end())
+		while (true)
 		{
 			start = std::find_if(start, v.end(), [id](const Player& p)
 				{
 					return p.ReturnId() == id;
 				});
 
+			if (start >= v.end())
+			{
+				break;
+			}
+
 			vTemp.emplace_back(v[std::distance(v.begin(), start)]);
 			++playerNum;
 			++start;
 		}
 
-		
+		std::sort(vTemp.begin(), vTemp.end(), [](const Player& a, const Player& b)
+			{
+				return a.ReturnNameSize() < b.ReturnNameSize();
+			});
+
+		std::cout << "id가 " << id << "인 객체의 수 - " << playerNum << std::endl;
+
+		for (const Player& p : vTemp)
+		{
+			std::cout << p << std::endl;
+		}
+
+		std::cout << std::endl;
 	}
 }
