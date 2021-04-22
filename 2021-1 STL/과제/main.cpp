@@ -46,7 +46,7 @@ void Initialize(std::vector<Player>& v)
 		v.emplace_back(*ptr);
 	}
 
-	v.erase(v.end() - 1, v.end());
+	v.pop_back();
 }
 
 void Question1(std::vector<Player>& v)
