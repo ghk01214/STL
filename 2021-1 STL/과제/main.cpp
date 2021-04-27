@@ -36,7 +36,9 @@ void Initialize(std::vector<Player>& v)
 		exit(true);
 	}
 
-	while (in)
+	int c;
+
+	while ((c = in.get()) != EOF)
 	{
 		in.read((char*)ptr.get(), sizeof(Player));
 
@@ -46,7 +48,7 @@ void Initialize(std::vector<Player>& v)
 		v.emplace_back(*ptr);
 	}
 
-	v.pop_back();
+	//v.pop_back();
 }
 
 void Question1(std::vector<Player>& v)

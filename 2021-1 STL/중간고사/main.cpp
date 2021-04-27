@@ -4,21 +4,28 @@
 #include <vector>
 #include <algorithm>
 #include <filesystem>
+#include <iterator>
+#include <string_view>
 
-using namespace std::literals::string_literals;
+using namespace std::literals;
 
 class Player
 {
 public:
-	void InputInfo(std::string& s, int n) { name = s; id = n; }
+	Player() = default;
+	// emplace_back을 사용하기 위해 생성한 생성자
+	Player(std::string s, int n) : name{ s }, id{ n } {}
 public:
-	std::string ReturnName() const { return name; }
+	void InputData(std::string& s, int n) { name = s; id = n; }
+public:
+	std::string_view ReturnName() const { return name; }
 	int ReturnId()const { return id; }
-	size_t ReturnNameSize() const { return name.size(); }
 public:
 	void MakeCapital() { name[0] = std::toupper(name[0]); }
 public:
 	friend std::ostream& operator<<(std::ostream& os, const Player& p);
+	friend std::istream& operator>>(std::istream& is, Player& p);
+	bool operator==(const std::string& s);
 private:
 	std::string name;
 	int id;
@@ -31,6 +38,20 @@ std::ostream& operator<<(std::ostream& os, const Player& p)
 	return os;
 }
 
+std::istream& operator>>(std::istream& is, Player& p)
+{
+	is >> p.name >> p.id;
+
+	return is;
+}
+
+bool Player::operator==(const std::string& s)
+{
+	return false;
+}
+
+// [문제 1] 출력된 파일 크기를 보고 저장된 객체의 수를 알 수 있는지 "예/아니오"로 답하고 그 이유를 설명하시오.
+// 해답 : name의 길이가 가변이므로 정확한 갯수를 알 수가 없다.
 
 void Q2(std::vector<Player>& v, std::ifstream& in);
 void Q3(std::vector<Player>& v);
@@ -63,21 +84,27 @@ int main()
 void Q2(std::vector<Player>& v, std::ifstream& in)
 {
 	std::unique_ptr<Player> player{ new Player };
-	std::string name;
-	int id;
+	v.reserve(12345);
 
-	while (in)
+	while (in >> *player.get())
 	{
-		in >> name;
-		in >> id;
-
-		player.get()->InputInfo(name, id);
-		v.emplace_back(*player);
+		v.push_back(*player);
 	}
 
-	v.pop_back();
+	//std::string s;
+	//int n;
 
-	std::cout << *v.crbegin() << std::endl << std::endl;
+	//while (in >> s >> n)
+	//{
+	//	// emplace를 사용할려면 반드시 클래스 생성자를 생성해줘야 한다.
+	//	//v.emplace_back(*player);
+	//	v.emplace_back(s, n);
+	//}
+
+	//std::vector<Player> vPlayer{ std::istream_iterator<Player>{in}, {} };
+	//v = vPlayer;
+
+	std::cout << "읽은 객체 수 : " << v.size() << std::endl;
 
 	system("pause");
 	system("cls");
@@ -92,8 +119,10 @@ void Q3(std::vector<Player>& v)
 
 	auto pos{ std::find_if(v.cbegin(), v.cend(), [](const Player& p)
 		{
-			return p.ReturnName() == "Stlcontainer"s;
+			return p.ReturnName() == "Stlcontainer"sv;
 		}) };
+
+	//auto pos{ std::find(v.cbegin(), v.cend(), "Stlcontainer"sv) };
 
 	if (pos == v.cend())
 	{
@@ -129,28 +158,40 @@ void Q4(std::vector<Player>& v)
 
 		std::vector<Player> vTemp;
 		auto start{ v.begin() };
-		int playerNum{};
+		//int playerNum{};
 
-		while (true)
-		{
-			start = std::find_if(start, v.end(), [id](const Player& p)
-				{
-					return p.ReturnId() == id;
-				});
+		//while (true)
+		//{
+		//	start = std::find_if(start, v.end(), [id](const Player& p)
+		//		{
+		//			return p.ReturnId() == id;
+		//		});
 
-			if (start >= v.end())
+		//	if (start >= v.end())
+		//	{
+		//		break;
+		//	}
+
+		//	vTemp.push_back(v[std::distance(v.begin(), start)]);
+		//	++playerNum;
+		//	++start;
+		//}
+
+		int playerNum{ std::count_if(v.cbegin(), v.cend(), [id, &vTemp](const Player& p)
 			{
-				break;
-			}
+				if (p.ReturnId() == id)
+				{
+					vTemp.push_back(p);
 
-			vTemp.emplace_back(v[std::distance(v.begin(), start)]);
-			++playerNum;
-			++start;
-		}
+					return true;
+				}
+
+				return false;
+			}) };
 
 		std::sort(vTemp.begin(), vTemp.end(), [](const Player& a, const Player& b)
 			{
-				return a.ReturnNameSize() < b.ReturnNameSize();
+				return a.ReturnName().length() < b.ReturnName().length();
 			});
 
 		std::cout << "id가 " << id << "인 객체의 수 - " << playerNum << std::endl;
