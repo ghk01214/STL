@@ -41,7 +41,7 @@ void Initialize(std::vector<Player>& v)
 		char c[5000];
 		in.read((char*)c, ptr.get()->ReturnSize());
 
-		v.emplace_back(*ptr);
+		v.push_back(*ptr);
 	}
 }
 
@@ -120,32 +120,36 @@ void Question4(std::vector<Player>& v)
 
 			continue;
 		}
+		std::cout << "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Id 오름차순━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl;
 
 		std::sort(v.begin(), v.end(), [](const Player& a, const Player& b)
 			{
 				return a.ReturnId() < b.ReturnId();
 			});
-
-		std::cout << "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Id 오름차순━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl;
 		PrintInfo(v, id);
+
 		std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl << std::endl;
+
+
+		std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 이름 오름차순━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl;
 
 		std::sort(v.begin(), v.end(), [](const Player& a, const Player& b)
 			{
 				return a.ReturnName() < b.ReturnName();
 			});
-
-		std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 이름 오름차순━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl;
 		PrintInfo(v, id);
+
 		std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl << std::endl;
 
+
+		std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 점수 오름차순━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl;
+		
 		std::sort(v.begin(), v.end(), [](const Player& a, const Player& b)
 			{
 				return a.ReturnScore() < b.ReturnScore();
 			});
-
-		std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 점수 오름차순━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl;
 		PrintInfo(v, id);
+
 		std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl << std::endl;
 
 		system("pause");
