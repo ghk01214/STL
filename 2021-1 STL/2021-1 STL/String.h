@@ -13,22 +13,27 @@
 
 // 2021. 4. 20
 // String이 외부에 제공하는 반복자
-class String_iterator
+class String_iterator : public std::iterator<std::random_access_iterator_tag, char>
 {
 public:
+	String_iterator() = default;
 	String_iterator(char* p) : p{ p } {}
 public:
-	//int operator+(const String_iterator& right) const { return right.p + p; }
-	int operator-(const String_iterator& right) const { return right.p - p; }
+	String_iterator operator+(int n) const { return String_iterator{ p + n }; }
+	String_iterator operator-(int n) const { return String_iterator{ p - n }; }
+	int operator-(const String_iterator& right) const { return p - right.p; }
 public:
 	String_iterator& operator++() { ++p; return *this; }
 	String_iterator& operator--() { --p; return *this; }
 public:
-	bool operator==(const String_iterator& right) const { return right.p == p; }
-	bool operator!=(const String_iterator& right) const { return right.p != p; }
+	char& operator*() { return *p; }
+	char& operator*() const{ return *p; }
+public:
+	bool operator==(const String_iterator& right) const { return p == right.p; }
+	bool operator!=(const String_iterator& right) const { return p != right.p; }
 public:
 	bool operator<(const String_iterator& right) { return p < right.p; }
-protected:
+private:
 	char* p{ nullptr };
 };
 
@@ -41,7 +46,7 @@ public:
 public:
 	String_reverse_iterator& operator++() { --p; return *this; }
 public:
-	bool operator!=(const String_reverse_iterator & right) const { return right.p != p; }
+	bool operator!=(const String_reverse_iterator& right) const { return right.p != p; }
 public:
 	char& operator*() { return *(p - 1); }
 private:
@@ -64,7 +69,7 @@ public:
 public:
 	String(const String& other);							// 복사생성자
 	String& operator=(const String& other);					// 복사할당연산자
-	
+
 	String(String&& other) noexcept;						// 이동생성자
 	String& operator=(String&& other)noexcept;				// 이동할당연산자
 public:
@@ -83,7 +88,25 @@ public:
 	size_t size() const { return num; }
 
 	// 확보한 자원을 std::string처럼 이용할 수 있게 하자
-	std::string GetString() const;
+	std::string get() const;
+public:
+	bool operator==(const String& right)
+	{
+		if (num != right.num)
+		{
+			return false;
+		}
+		
+		for (int i{ 0 }; i < num; ++i)
+		{
+			if (p[i] != right.p[i])
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
 private:
 	size_t num;												// 확보한 자원의 수
 	char* p;												// 확보한 자원의 위치

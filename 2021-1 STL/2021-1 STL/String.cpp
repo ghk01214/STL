@@ -102,14 +102,14 @@ String& String::operator=(String&& other) noexcept
 	return *this;
 }
 
-std::string String::GetString() const
+std::string String::get() const
 {
 	return std::string(p, p + num);
 }
 
 std::ostream& operator<<(std::ostream& os, const String& s)
 {
-	for (int i = 0; i < s.num; ++i)
+	for (int i{ 0 }; i < s.num; ++i)
 		os << s.p[i];
 
 	return os;

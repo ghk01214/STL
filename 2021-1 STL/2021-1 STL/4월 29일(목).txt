@@ -1,0 +1,448 @@
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-29 ¿ÀÈÄ 2:27:13 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 29ÀÏ ¸ñ¿äÀÏ (9ÁÖ 2ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <iterator>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] StringÀÌ ¹Ýº¹ÀÚ¸¦ ¸®ÅÏÇÑ´Ù.
+// sort() °¡ ¹®Á¦¾øÀÌ ½ÇÇàµÇµµ·Ï ¹Ýº¹ÀÚ¿¡°Ô ÇÊ¿äÇÑ ÇÔ¼öµéÀ» ¿À¹ö·ÎµùÇÏ¶ó
+
+int main()
+{
+	String s{ "the quick brown fox jumps over the lazy dog" };
+
+	std::sort(s.begin(), s.end());
+
+	std::cout << s << std::endl;
+
+	Save("main.cpp");
+	Save("String.h");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-29 ¿ÀÈÄ 2:27:13 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//-----------------------------------------------------------------------------
+// String.h - STL ³»ºÎ µ¿ÀÛÀ» °üÂûÇÏ±â À§ÇØ ¸¸µç ÀÚ¿øÀ» È®º¸ÇÏ´Â Å¬·¡½º
+//
+// 2021. 3. 30									Programmed by wulong
+//-----------------------------------------------------------------------------
+#pragma once
+
+#include <random>
+#include <string>
+#include "pch.h"
+
+//#define °üÂû			// ÀÌ ÁÖ¼®À» Ç®¸é special memberÀÇ µ¿ÀÛÀ» ¾Ë ¼ö ÀÖ´Ù.
+
+// 2021. 4. 20
+// StringÀÌ ¿ÜºÎ¿¡ Á¦°øÇÏ´Â ¹Ýº¹ÀÚ
+class String_iterator : public std::iterator<std::random_access_iterator_tag, char>
+{
+public:
+	String_iterator() = default;
+	String_iterator(char* p) : p{ p } {}
+public:
+	String_iterator operator+(int n) const { return String_iterator{ p + n }; }
+	String_iterator operator-(int n) const { return String_iterator{ p - n }; }
+	int operator-(const String_iterator& right) const { return p - right.p; }
+public:
+	String_iterator& operator++() { ++p; return *this; }
+	String_iterator& operator--() { --p; return *this; }
+public:
+	char& operator*() { return *p; }
+	char& operator*() const{ return *p; }
+public:
+	bool operator==(const String_iterator& right) const { return p == right.p; }
+	bool operator!=(const String_iterator& right) const { return p != right.p; }
+public:
+	bool operator<(const String_iterator& right) { return p < right.p; }
+private:
+	char* p{ nullptr };
+};
+
+// 2021. 4. 27
+// ¿ª¹æÇâ ¹Ýº¹ÀÚ Ãß°¡
+class String_reverse_iterator
+{
+public:
+	String_reverse_iterator(char* p) : p{ p } {}
+public:
+	String_reverse_iterator& operator++() { --p; return *this; }
+public:
+	bool operator!=(const String_reverse_iterator& right) const { return right.p != p; }
+public:
+	char& operator*() { return *(p - 1); }
+private:
+	char* p{ nullptr };
+};
+
+class String
+{
+private:
+	// 2021. 4. 20
+	using iterator = String_iterator;
+	using value_type = char;
+	// 2021. 4. 27
+	using reverse_iterator = String_reverse_iterator;
+public:
+	String();
+	String(size_t n);
+	String(const char* str);
+	~String();
+public:
+	String(const String& other);							// º¹»ç»ý¼ºÀÚ
+	String& operator=(const String& other);					// º¹»çÇÒ´ç¿¬»êÀÚ
+
+	String(String&& other) noexcept;						// ÀÌµ¿»ý¼ºÀÚ
+	String& operator=(String&& other)noexcept;				// ÀÌµ¿ÇÒ´ç¿¬»êÀÚ
+public:
+	// 2021. 4. 20
+	iterator begin() { return iterator{ p }; }
+	iterator end() { return iterator{ p + num }; }
+public:
+	// 2021 4. 27
+	iterator cbegin() const { return iterator{ p }; }
+	iterator cend() const { return iterator{ p + num }; }
+public:
+	// 2021. 4. 27
+	reverse_iterator rbegin() { return reverse_iterator{ p + num }; }
+	reverse_iterator rend() { return reverse_iterator{ p }; }
+public:
+	size_t size() const { return num; }
+
+	// È®º¸ÇÑ ÀÚ¿øÀ» std::stringÃ³·³ ÀÌ¿ëÇÒ ¼ö ÀÖ°Ô ÇÏÀÚ
+	std::string get() const;
+private:
+	size_t num;												// È®º¸ÇÑ ÀÚ¿øÀÇ ¼ö
+	char* p;												// È®º¸ÇÑ ÀÚ¿øÀÇ À§Ä¡
+private:
+	friend std::ostream& operator<<(std::ostream&, const String&);
+};
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-29 ¿ÀÈÄ 2:42:22 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 29ÀÏ ¸ñ¿äÀÏ (9ÁÖ 2ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <iterator>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] String_iterator°¡ ¾î¶² Á¾·ùÀÇ ¹Ýº¹ÀÚÀÎÁö È®ÀÎÇÏ¶ó
+
+int main()
+{
+	std::cout << typeid(std::iterator_traits<String_iterator>::iterator_category).name() << std::endl;
+
+	Save("main.cpp");
+	//Save("String.h");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-29 ¿ÀÈÄ 2:47:33 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 29ÀÏ ¸ñ¿äÀÏ (9ÁÖ 2ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <algorithm>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] s¿¡ Ã£´Â ¹®ÀÚ°¡ ÀÖ´ÂÁö È®ÀÎÇÏ¶ó.
+// Ã£À¸¸é ¸î ¹øÂ° À§Ä¡¿¡ ÀÖ´ÂÁö ¾øÀ¸¸é ¾ø´Ù°í ¾Ë·ÁÁÖ¶ó.
+
+int main()
+{
+	Save("main.cpp");
+	String s{ "the quick brown fox jumps over the lazy dog" };
+
+
+	std::cout << "±ÛÀÚ¸¦ ÀÔ·ÂÇÏ¸é Å½»ö ½ÃÀÛ" << std::endl;
+	while (true)
+	{
+		char c;
+
+		std::cout << "±ÛÀÚ¸¦ ÀÔ·Â : ";
+		std::cin >> c;
+
+		auto p{ std::find(s.begin(), s.end(), c) };
+
+		if (p != s.end())
+		{
+			std::cout << c << "´Â " << std::distance(s.begin(), p) + 1 << "¹øÂ° ±ÛÀÚÀÔ´Ï´Ù" << std::endl;
+		}
+		else
+		{
+			std::cout << c << "´Â Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù." << std::endl;
+		}
+
+		std::cout << std::endl;
+
+		system("pause");
+		system("cls");
+	}
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-29 ¿ÀÈÄ 3:10:28 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 29ÀÏ ¸ñ¿äÀÏ (9ÁÖ 2ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <algorithm>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] s¿¡ Ã£´Â ¹®ÀÚ°¡ ÀÖ´ÂÁö È®ÀÎÇÏ¶ó.
+// Ã£À¸¸é ¸î ¹øÂ° À§Ä¡¿¡ ÀÖ´ÂÁö ¾øÀ¸¸é ¾ø´Ù°í ¾Ë·ÁÁÖ¶ó.
+
+template<class RandIter, typename T>
+RandIter my_find(RandIter pos, const RandIter end, const T& val)
+{
+	for (; pos != end; ++pos)
+	{
+		if (*pos == val)
+		{
+			return pos;
+		}
+	}
+
+	return end;
+}
+
+int main()
+{
+	Save("main.cpp");
+	String s{ "the quick brown fox jumps over the lazy dog" };
+
+	while (true)
+	{
+		char c;
+
+		std::cout << "±ÛÀÚ¸¦ ÀÔ·ÂÇÏ¸é Å½»ö ½ÃÀÛ" << std::endl;
+		std::cout << "±ÛÀÚ¸¦ ÀÔ·Â : ";
+		std::cin >> c;
+
+		auto p{ my_find(s.begin(), s.end(), c) };
+
+		if (p != s.end())
+		{
+			std::cout << c << "´Â " << std::distance(s.begin(), p) + 1 << "¹øÂ° ±ÛÀÚÀÔ´Ï´Ù" << std::endl;
+		}
+		else
+		{
+			std::cout << c << "´Â Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù." << std::endl;
+		}
+
+		std::cin.ignore();
+		std::cout << std::endl;
+
+		system("pause");
+		system("cls");
+	}
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-29 ¿ÀÈÄ 3:23:49 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 4¿ù 29ÀÏ ¸ñ¿äÀÏ (9ÁÖ 2ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <algorithm>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] ÀÌ ¸ÞÀÎÀÌ ¹®Á¦¾øÀÌ ½ÇÇàµÇµµ·Ï ÇÏ¶ó.
+
+template<class RandIter, typename T>
+RandIter my_find(RandIter begin, const RandIter& end, const T& val)
+{
+	for (; begin != end; ++begin)
+	{
+		if (*begin == val)
+		{
+			break;
+		}
+	}
+
+	return begin;
+}
+
+int main()
+{
+	std::vector<String> v{ "123", "456", "abc" };
+
+	auto p{ std::find(v.begin(), v.end(), String{ "abc" }) };
+
+	std::cout << *p << std::endl;
+	// Ãâ·Â °á°ú : abc
+
+	Save("main.cpp");
+	Save("String.h");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-04-29 ¿ÀÈÄ 3:23:49 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//-----------------------------------------------------------------------------
+// String.h - STL ³»ºÎ µ¿ÀÛÀ» °üÂûÇÏ±â À§ÇØ ¸¸µç ÀÚ¿øÀ» È®º¸ÇÏ´Â Å¬·¡½º
+//
+// 2021. 3. 30									Programmed by wulong
+//-----------------------------------------------------------------------------
+#pragma once
+
+#include <random>
+#include <string>
+#include "pch.h"
+
+//#define °üÂû			// ÀÌ ÁÖ¼®À» Ç®¸é special memberÀÇ µ¿ÀÛÀ» ¾Ë ¼ö ÀÖ´Ù.
+
+// 2021. 4. 20
+// StringÀÌ ¿ÜºÎ¿¡ Á¦°øÇÏ´Â ¹Ýº¹ÀÚ
+class String_iterator : public std::iterator<std::random_access_iterator_tag, char>
+{
+public:
+	String_iterator() = default;
+	String_iterator(char* p) : p{ p } {}
+public:
+	String_iterator operator+(int n) const { return String_iterator{ p + n }; }
+	String_iterator operator-(int n) const { return String_iterator{ p - n }; }
+	int operator-(const String_iterator& right) const { return p - right.p; }
+public:
+	String_iterator& operator++() { ++p; return *this; }
+	String_iterator& operator--() { --p; return *this; }
+public:
+	char& operator*() { return *p; }
+	char& operator*() const{ return *p; }
+public:
+	bool operator==(const String_iterator& right) const { return p == right.p; }
+	bool operator!=(const String_iterator& right) const { return p != right.p; }
+public:
+	bool operator<(const String_iterator& right) { return p < right.p; }
+private:
+	char* p{ nullptr };
+};
+
+// 2021. 4. 27
+// ¿ª¹æÇâ ¹Ýº¹ÀÚ Ãß°¡
+class String_reverse_iterator
+{
+public:
+	String_reverse_iterator(char* p) : p{ p } {}
+public:
+	String_reverse_iterator& operator++() { --p; return *this; }
+public:
+	bool operator!=(const String_reverse_iterator& right) const { return right.p != p; }
+public:
+	char& operator*() { return *(p - 1); }
+private:
+	char* p{ nullptr };
+};
+
+class String
+{
+private:
+	// 2021. 4. 20
+	using iterator = String_iterator;
+	using value_type = char;
+	// 2021. 4. 27
+	using reverse_iterator = String_reverse_iterator;
+public:
+	String();
+	String(size_t n);
+	String(const char* str);
+	~String();
+public:
+	String(const String& other);							// º¹»ç»ý¼ºÀÚ
+	String& operator=(const String& other);					// º¹»çÇÒ´ç¿¬»êÀÚ
+
+	String(String&& other) noexcept;						// ÀÌµ¿»ý¼ºÀÚ
+	String& operator=(String&& other)noexcept;				// ÀÌµ¿ÇÒ´ç¿¬»êÀÚ
+public:
+	// 2021. 4. 20
+	iterator begin() { return iterator{ p }; }
+	iterator end() { return iterator{ p + num }; }
+public:
+	// 2021 4. 27
+	iterator cbegin() const { return iterator{ p }; }
+	iterator cend() const { return iterator{ p + num }; }
+public:
+	// 2021. 4. 27
+	reverse_iterator rbegin() { return reverse_iterator{ p + num }; }
+	reverse_iterator rend() { return reverse_iterator{ p }; }
+public:
+	size_t size() const { return num; }
+
+	// È®º¸ÇÑ ÀÚ¿øÀ» std::stringÃ³·³ ÀÌ¿ëÇÒ ¼ö ÀÖ°Ô ÇÏÀÚ
+	std::string get() const;
+public:
+	bool operator==(const String& right)
+	{
+		if (num != right.num)
+		{
+			return false;
+		}
+		
+		for (int i{ 0 }; i < num; ++i)
+		{
+			if (p[i] != right.p[i])
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+private:
+	size_t num;												// È®º¸ÇÑ ÀÚ¿øÀÇ ¼ö
+	char* p;												// È®º¸ÇÑ ÀÚ¿øÀÇ À§Ä¡
+private:
+	friend std::ostream& operator<<(std::ostream&, const String&);
+};
+
