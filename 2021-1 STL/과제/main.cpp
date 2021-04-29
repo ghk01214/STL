@@ -36,19 +36,13 @@ void Initialize(std::vector<Player>& v)
 		exit(true);
 	}
 
-	int c;
-
-	while ((c = in.get()) != EOF)
+	while (in.read((char*)ptr.get(), sizeof(Player)))
 	{
-		in.read((char*)ptr.get(), sizeof(Player));
-
 		char c[5000];
 		in.read((char*)c, ptr.get()->ReturnSize());
 
 		v.emplace_back(*ptr);
 	}
-
-	//v.pop_back();
 }
 
 void Question1(std::vector<Player>& v)
@@ -66,13 +60,11 @@ void Question2(std::vector<Player>& v)
 
 	long long llSum{};
 
-	// 전체 점수 합
-	for (const Player& p : v)
-	{
-		llSum += p.ReturnScore();
-	}
+	std::for_each(v.cbegin(), v.cend(), [&llSum](const Player& p)
+		{
+			llSum += p.ReturnScore();
+		});
 
-	// 전체 점수 평균
 	std::cout << "n모든 Player의 점수 평균값 : " << llSum / v.size() << std::endl << std::endl;
 
 	system("pause");
@@ -90,23 +82,12 @@ void Question3(std::vector<Player>& v)
 		exit(true);
 	}
 
-	// 바이트수가 500인 원소의 위치를 구해서 파일로 저장
-	auto start{ v.begin() };
-
-	while (true)
+	for (auto i{ v.cbegin() }; i != v.cend(); ++i)
 	{
-		start = std::find_if(start, v.end(), [](const Player& p)
-			{
-				return p.ReturnSize() == 500;
-			});
-
-		if (start >= v.end())
+		if ((*i).ReturnSize() == 500)
 		{
-			break;
+			out.write((char*)&v[std::distance(v.cbegin(), i)], sizeof(Player));
 		}
-
-		out.write((char*)&v[std::distance(v.begin(), start)], sizeof(Player));
-		++start;
 	}
 
 	std::cout << "복사 성공" << std::endl << std::endl;
@@ -117,10 +98,10 @@ void Question3(std::vector<Player>& v)
 
 void Question4(std::vector<Player>& v)
 {
-	int id{ -1 };
-
 	while (true)
 	{
+		int id{};
+
 		std::cout << "\n4. 아이디 값을 입력하면 다음과 같은 사항을 한 번에 화면 출력하라." << std::endl;
 		std::cout << "\nPlayer ID 입력(0 = 종료) : ";
 		std::cin >> id;
@@ -128,6 +109,16 @@ void Question4(std::vector<Player>& v)
 		if (id == 0)
 		{
 			break;
+		}
+		else if (!(1 <= id && id <= 1000000))
+		{
+			std::cout << "입력한 Id가 없습니다." << std::endl;
+			std::cin.ignore();
+
+			system("pause");
+			system("cls");
+
+			continue;
 		}
 
 		std::sort(v.begin(), v.end(), [](const Player& a, const Player& b)
@@ -171,27 +162,20 @@ void PrintInfo(std::vector<Player>& v, int id)
 
 	auto pos{ std::distance(v.cbegin(), dis) };
 
-	if (pos >= v.size() || pos < 0)
+	if (pos == 0)
 	{
-		std::cout << "입력한 Id가 없습니다." << std::endl;
+		std::cout << v.at(pos) << std::endl;
+		std::cout << v.at(pos + 1) << std::endl;
+	}
+	else if (pos == v.size() - 1)
+	{
+		std::cout << v.at(pos - 1) << std::endl;
+		std::cout << v.at(pos) << std::endl;
 	}
 	else
 	{
-		if (pos == 0)
-		{
-			std::cout << v.at(pos) << std::endl;
-			std::cout << v.at(pos + 1) << std::endl;
-		}
-		else if (pos == v.size() - 1 )
-		{
-			std::cout << v.at(pos - 1) << std::endl;
-			std::cout << v.at(pos) << std::endl;
-		}
-		else
-		{
-			std::cout << v.at(pos - 1) << std::endl;
-			std::cout << v.at(pos) << std::endl;
-			std::cout << v.at(pos + 1) << std::endl;
-		}
+		std::cout << v.at(pos - 1) << std::endl;
+		std::cout << v.at(pos) << std::endl;
+		std::cout << v.at(pos + 1) << std::endl;
 	}
 }

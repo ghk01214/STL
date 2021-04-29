@@ -5,6 +5,7 @@ class Player
 {
 public:
 	Player() {}
+	Player(std::string name, int score, int id, size_t num) : sName{ name }, iScore{ score }, iId{ id }, sNum{ num } {}
 	~Player() {}
 public:
 	std::string ReturnName() const { return sName; }
