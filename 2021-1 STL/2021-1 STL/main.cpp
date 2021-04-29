@@ -38,6 +38,6 @@ int main()
 	std::cout << *p << std::endl;
 	// 출력 결과 : abc
 
-	Save("main.cpp");
-	Save("String.h");
+	//Save("main.cpp");
+	//Save("String.h");
 }
