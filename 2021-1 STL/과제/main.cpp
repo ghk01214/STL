@@ -10,7 +10,7 @@ void Question1(std::vector<Player>& v);
 void Question2(std::vector<Player>& v);
 void Question3(std::vector<Player>& v);
 void Question4(std::vector<Player>& v);
-void PrintInfo(std::vector<Player>& v, int id);
+void PrintData(std::vector<Player>& v, int id);
 
 int main()
 {
@@ -58,14 +58,14 @@ void Question2(std::vector<Player>& v)
 {
 	std::cout << "\n2. 모든 Player의 점수 평균값을 계산하여 출력하라." << std::endl;
 
-	long long llSum{};
+	__int64 i64Sum{};
 
-	std::for_each(v.cbegin(), v.cend(), [&llSum](const Player& p)
+	std::for_each(v.cbegin(), v.cend(), [&i64Sum](const Player& p)
 		{
-			llSum += p.ReturnScore();
+			i64Sum += p.ReturnScore();
 		});
 
-	std::cout << "n모든 Player의 점수 평균값 : " << llSum / v.size() << std::endl << std::endl;
+	std::cout << "n모든 Player의 점수 평균값 : " << i64Sum / v.size() << std::endl << std::endl;
 
 	system("pause");
 	system("cls");
@@ -82,15 +82,19 @@ void Question3(std::vector<Player>& v)
 		exit(true);
 	}
 
-	for (auto i{ v.cbegin() }; i != v.cend(); ++i)
-	{
-		if ((*i).ReturnSize() == 500)
+	int cnt{ std::count_if(v.cbegin(), v.cend(), [&out](const Player& p)
 		{
-			out.write((char*)&v[std::distance(v.cbegin(), i)], sizeof(Player));
-		}
-	}
+			if (p.ReturnSize() == 500)
+			{
+				out.write((char*)&p, sizeof(Player));
 
-	std::cout << "복사 성공" << std::endl << std::endl;
+				return true;
+			}
+
+			return false;
+		}) };
+
+	std::cout << cnt << "개 복사 성공" << std::endl << std::endl;
 
 	system("pause");
 	system("cls");
@@ -120,13 +124,14 @@ void Question4(std::vector<Player>& v)
 
 			continue;
 		}
+
 		std::cout << "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Id 오름차순━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl;
 
 		std::sort(v.begin(), v.end(), [](const Player& a, const Player& b)
 			{
 				return a.ReturnId() < b.ReturnId();
 			});
-		PrintInfo(v, id);
+		PrintData(v, id);
 
 		std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl << std::endl;
 
@@ -137,18 +142,18 @@ void Question4(std::vector<Player>& v)
 			{
 				return a.ReturnName() < b.ReturnName();
 			});
-		PrintInfo(v, id);
+		PrintData(v, id);
 
 		std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl << std::endl;
 
 
 		std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 점수 오름차순━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl;
-		
+
 		std::sort(v.begin(), v.end(), [](const Player& a, const Player& b)
 			{
 				return a.ReturnScore() < b.ReturnScore();
 			});
-		PrintInfo(v, id);
+		PrintData(v, id);
 
 		std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl << std::endl;
 
@@ -157,29 +162,27 @@ void Question4(std::vector<Player>& v)
 	}
 }
 
-void PrintInfo(std::vector<Player>& v, int id)
+void PrintData(std::vector<Player>& v, int id)
 {
-	auto dis{ std::find_if(v.cbegin(), v.cend(), [id](const Player& p)
+	auto pos{ std::find_if(v.cbegin(), v.cend(), [id](const Player& p)
 		{
 			return p.ReturnId() == id;
 		}) };
 
-	auto pos{ std::distance(v.cbegin(), dis) };
-
-	if (pos == 0)
+	if (pos == v.cbegin())
 	{
-		std::cout << v.at(pos) << std::endl;
-		std::cout << v.at(pos + 1) << std::endl;
+		std::cout << *pos << std::endl;
+		std::cout << *(pos + 1) << std::endl;
 	}
-	else if (pos == v.size() - 1)
+	else if (pos == v.cend() - 1)
 	{
-		std::cout << v.at(pos - 1) << std::endl;
-		std::cout << v.at(pos) << std::endl;
+		std::cout << *(pos - 1) << std::endl;
+		std::cout << *pos << std::endl;
 	}
 	else
 	{
-		std::cout << v.at(pos - 1) << std::endl;
-		std::cout << v.at(pos) << std::endl;
-		std::cout << v.at(pos + 1) << std::endl;
+		std::cout << *(pos - 1) << std::endl;
+		std::cout << *pos << std::endl;
+		std::cout << *(pos + 1) << std::endl;
 	}
 }
