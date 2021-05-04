@@ -104,19 +104,37 @@ void Question4(std::vector<Player>& v)
 {
 	while (true)
 	{
-		int id{};
+		int id;
+		std::string sId;
 
 		std::cout << "\n4. 아이디 값을 입력하면 다음과 같은 사항을 한 번에 화면 출력하라." << std::endl;
 		std::cout << "\nPlayer ID 입력(0 = 종료) : ";
-		std::cin >> id;
+		std::cin >> sId;
+
+		try
+		{
+			id = std::stoi(sId);
+		}
+		catch (...)
+		{
+			std::cout << "잘못된 입력입니다. 다시 입력해주세요." << std::endl << std::endl;
+			std::cin.ignore();
+
+			system("pause");
+			system("cls");
+
+			continue;
+		}
 
 		if (id == 0)
 		{
+			std::cout << "프로그램을 종료합니다." << std::endl;
+
 			break;
 		}
 		else if (!(1 <= id && id <= 1000000))
 		{
-			std::cout << "입력한 Id가 없습니다." << std::endl;
+			std::cout << "입력한 Id가 없습니다." << std::endl << std::endl;
 			std::cin.ignore();
 
 			system("pause");
@@ -126,36 +144,25 @@ void Question4(std::vector<Player>& v)
 		}
 
 		std::cout << "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Id 오름차순━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl;
-
 		std::sort(v.begin(), v.end(), [](const Player& a, const Player& b)
 			{
 				return a.ReturnId() < b.ReturnId();
 			});
 		PrintData(v, id);
 
-		std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl << std::endl;
-
-
 		std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 이름 오름차순━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl;
-
 		std::sort(v.begin(), v.end(), [](const Player& a, const Player& b)
 			{
 				return a.ReturnName() < b.ReturnName();
 			});
 		PrintData(v, id);
 
-		std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl << std::endl;
-
-
 		std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 점수 오름차순━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl;
-
 		std::sort(v.begin(), v.end(), [](const Player& a, const Player& b)
 			{
 				return a.ReturnScore() < b.ReturnScore();
 			});
 		PrintData(v, id);
-
-		std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl << std::endl;
 
 		system("pause");
 		system("cls");
@@ -185,4 +192,6 @@ void PrintData(std::vector<Player>& v, int id)
 		std::cout << *pos << std::endl;
 		std::cout << *(pos + 1) << std::endl;
 	}
+
+	std::cout << "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" << std::endl << std::endl;
 }
