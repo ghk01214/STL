@@ -107,10 +107,30 @@ std::string String::get() const
 	return std::string(p, p + num);
 }
 
+void String::set(const std::string& s)
+{
+	num = s.length();
+	p = new char[num];
+
+	for (int i{ 0 }; i < num; ++i)
+		p[i] = s[i];
+}
+
+
 std::ostream& operator<<(std::ostream& os, const String& s)
 {
 	for (int i{ 0 }; i < s.num; ++i)
 		os << s.p[i];
 
 	return os;
+}
+
+std::istream& operator>>(std::istream& is, String& s)
+{
+	std::string str;
+	
+	is >> str;
+	s.set(str);
+
+	return is;
 }

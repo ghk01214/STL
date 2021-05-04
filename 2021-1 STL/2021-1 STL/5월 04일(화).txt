@@ -1,0 +1,378 @@
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-04 ¿ÀÈÄ 1:47:04 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 04ÀÏ È­¿äÀÏ (10ÁÖ 1ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <algorithm>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] ¾î¶² iterator°¡ contiguous_iteratorÀÎÁö ÆÇ´ÜÇÏ°í ½Í´Ù.
+
+int main()
+{
+	std::cout << typeid(std::vector<int>::iterator::iterator_concept).name() << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-04 ¿ÀÈÄ 2:01:12 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 04ÀÏ È­¿äÀÏ (10ÁÖ 1ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <deque>
+#include <algorithm>
+#include <concepts>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] ¾î¶² iterator°¡ contiguous_iteratorÀÎÁö ÆÇ´ÜÇÏ°í ½Í´Ù.
+
+template<class Iter>
+void f(Iter iter)
+{
+	if (std::contiguous_iterator<Iter>)
+		std::cout << "¿¬¼Ó ¹Ýº¹ÀÚ" << std::endl;
+	else
+		std::cout << "¿¬¼Ó ¹Ýº¹ÀÚ°¡ ¾Æ´Ï´Ù" << std::endl;
+}
+
+int main()
+{
+	f(std::vector<int>::iterator());
+	f(std::deque<int>::iterator());
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-04 ¿ÀÈÄ 2:01:50 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 04ÀÏ È­¿äÀÏ (10ÁÖ 1ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <deque>
+#include <algorithm>
+#include <concepts>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] ¾î¶² iterator°¡ contiguous_iteratorÀÎÁö ÆÇ´ÜÇÏ°í ½Í´Ù.
+
+template<class Iter>
+void f(Iter iter)
+{
+	if (std::contiguous_iterator<Iter>)
+		std::cout << "¿¬¼Ó ¹Ýº¹ÀÚ" << std::endl;
+	else
+		std::cout << "¿¬¼Ó ¹Ýº¹ÀÚ°¡ ¾Æ´Ï´Ù" << std::endl;
+}
+
+int main()
+{
+	std::cout << std::boolalpha << std::same_as<int, int> << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-04 ¿ÀÈÄ 2:12:15 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 04ÀÏ È­¿äÀÏ (10ÁÖ 1ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <deque>
+#include <algorithm>
+#include <concepts>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] ¾î¶² iterator°¡ contiguous_iteratorÀÎÁö ÆÇ´ÜÇÏ°í ½Í´Ù.
+
+template<class Iter1, class Iter2>
+void f(Iter1 iter1, Iter2 iter2)
+{
+	std::cout << std::boolalpha << std::same_as<Iter1, Iter2> << std::endl;
+}
+
+int main()
+{
+	char* p;
+	int* q;
+
+	f(p, q);
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-04 ¿ÀÈÄ 2:42:18 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 04ÀÏ È­¿äÀÏ (10ÁÖ 1ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <algorithm>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] v¿¡¼­ ±æÀÌ°¡ 4ÀÎ ¿ø¼Ò¸¦ Ã£¾Æ¶ó
+// Ã£À¸¸é ¹ß°ßÇÑ À§Ä¡¸¦ Ãâ·ÂÇÏ¶ó. ¾øÀ¸¸é ¾ø´Ù°í Ãâ·ÂÇÏ¶ó.
+
+template<class Iter, typename Fn>
+Iter my_find_if(Iter begin, Iter end, Fn pred)
+{
+	for (; begin != end; ++begin)
+	{
+		if (pred(*begin))
+			break;
+	}
+
+	return begin;
+}
+
+int main()
+{
+	std::vector<String> v{ "1", "12", "123", "1234", "12345" };
+
+	auto p{ my_find_if(v.begin(), v.end(), [](const String& s)
+		{
+			return s.size() == 4;
+		}) };
+
+	if (p != v.end())
+		std::cout << distance(v.begin(), p) + 1 << "¿¡¼­ Ã£À½" << std::endl;
+	else
+		std::cout << "Á¶°Ç¿¡ ¸Â´Â ¿ø¼Ò´Â ¾ø½À´Ï´Ù" << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-04 ¿ÀÈÄ 2:50:23 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 04ÀÏ È­¿äÀÏ (10ÁÖ 1ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <string>
+#include <algorithm>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] "main.cpp"¿¡¼­ ±æÀÌ°¡ 4 ÀÌÇÏÀÎ ´Ü¾î¸¦ È­¸é¿¡ Ãâ·ÂÇÏ°í °³¼öµµ Ãâ·ÂÇÏ¶ó.
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::vector<std::string> v{ std::istream_iterator<std::string>{in}, {} };
+	
+	int cnt{ std::count_if(v.cbegin(), v.cend(), [](const std::string& s)
+		{
+			if (s.length() <= 4)
+			{
+				std::cout << s << std::endl;
+
+				return true;
+			}
+
+			return false;
+		}) };
+
+	std::cout << "\n±æÀÌ°¡ 4 ÀÌÇÏÀÎ ´Ü¾î´Â ÃÑ " << cnt << "°³ÀÌ´Ù." << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-04 ¿ÀÈÄ 3:02:34 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 04ÀÏ È­¿äÀÏ (10ÁÖ 1ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <string>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] "main.cpp"¿¡¼­ ±æÀÌ°¡ 4 ÀÌÇÏÀÎ ´Ü¾î¸¦ È­¸é¿¡ Ãâ·ÂÇÏ°í °³¼öµµ Ãâ·ÂÇÏ¶ó.
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::vector<String> v{ std::istream_iterator<String>{in}, {} };
+	
+	int cnt{ std::count_if(v.cbegin(), v.cend(), [](const String& s)
+		{
+			if (s.size() <= 4)
+			{
+				std::cout << s << "\t";
+
+				return true;
+			}
+
+			return false;
+		}) };
+
+	std::cout << "\n±æÀÌ°¡ 4 ÀÌÇÏÀÎ ´Ü¾î´Â ÃÑ " << cnt << "°³ÀÌ´Ù." << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-04 ¿ÀÈÄ 3:08:33 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 04ÀÏ È­¿äÀÏ (10ÁÖ 1ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <string>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] "main.cpp"¿¡¼­ ±æÀÌ°¡ 4 ÀÌÇÏÀÎ ´Ü¾î¸¦ È­¸é¿¡ Ãâ·ÂÇÏ°í °³¼öµµ Ãâ·ÂÇÏ¶ó.
+
+template<class Iter, typename Fn>
+size_t my_count_if(Iter begin, Iter end, Fn Pred)
+{
+	size_t cnt{ 0 };
+
+	for (; begin != end; ++begin)
+	{
+		if (Pred(*begin))
+			++cnt;
+	}
+
+	return cnt;
+}
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::vector<String> v{ std::istream_iterator<String>{in}, {} };
+	
+	int cnt = my_count_if(v.cbegin(), v.cend(), [](const String& s)
+		{
+			if (s.size() <= 4)
+			{
+				std::cout << s << "\t";
+
+				return true;
+			}
+
+			return false;
+		});
+
+	std::cout << "\n±æÀÌ°¡ 4 ÀÌÇÏÀÎ ´Ü¾î´Â ÃÑ " << cnt << "°³ÀÌ´Ù." << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-04 ¿ÀÈÄ 3:14:44 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 04ÀÏ È­¿äÀÏ (10ÁÖ 1ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <string>
+#include <list>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] ¹Ýº¹ÀÚ °£ÀÇ °Å¸®¸¦ °è»êÇÏ´Â distance¸¦ ÀÛ¼ºÇÏ¶ó.
+
+template<class Iter>
+ptrdiff_t my_distance(Iter begin, Iter end)
+{
+	ptrdiff_t distance{};
+
+	for (; begin != end; ++begin)
+	{
+		++distance;
+	}
+
+	return distance;
+}
+
+int main()
+{
+	std::vector<int> v{ 1, 2, 3, 4, 5 };
+	std::cout << my_distance(v.cbegin(), v.cend()) << std::endl;
+
+	std::list<int> l{ 1, 2, 3, 4, 5 };
+	std::cout << my_distance(l.cbegin(), l.cend()) << std::endl;
+
+	Save("main.cpp");
+}
+

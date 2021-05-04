@@ -13,7 +13,7 @@
 
 // 2021. 4. 20
 // String이 외부에 제공하는 반복자
-class String_iterator : public std::iterator<std::random_access_iterator_tag, char>
+class String_iterator
 {
 public:
 	String_iterator() = default;
@@ -53,6 +53,17 @@ private:
 	char* p{ nullptr };
 };
 
+template<>
+struct std::iterator_traits<String_iterator>
+{
+	using iterator_concept = std::contiguous_iterator_tag;
+	using iterator_category = std::random_access_iterator_tag;
+	using ptrdiff_type = std::ptrdiff_t;
+	using pointer = char*;
+	using reference = char&;
+	using value_type = char;
+};
+
 class String
 {
 private:
@@ -89,6 +100,7 @@ public:
 
 	// 확보한 자원을 std::string처럼 이용할 수 있게 하자
 	std::string get() const;
+	void set(const std::string& s);
 public:
 	bool operator==(const String& right)
 	{
@@ -111,5 +123,7 @@ private:
 	size_t num;												// 확보한 자원의 수
 	char* p;												// 확보한 자원의 위치
 private:
-	friend std::ostream& operator<<(std::ostream&, const String&);
+	friend std::ostream& operator<<(std::ostream& os, const String& s);
+	// 2021. 5. 4
+	friend std::istream& operator>>(std::istream& is, String& s);
 };

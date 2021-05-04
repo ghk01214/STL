@@ -1,5 +1,5 @@
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// 4월 29일 목요일 (9주 2일)
+// 5월 06일 목요일 (10주2일)
 // 
 // Container - 제네릭 클래스, String([char][char][char]...), begin(), end()
 // Iterator  - String_iterator, String_reverse_iterator
@@ -8,36 +8,39 @@
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 #include <vector>
-#include <algorithm>
+#include <string>
+#include <list>
 #include "pch.h"
 #include "save.h"
 #include "String.h"
 
-// [문제] 이 메인이 문제없이 실행되도록 하라.
+// [문제] 반복자 간의 거리를 계산하는 distance를 작성하라.
 
-template<class RandIter, typename T>
-RandIter my_find(RandIter begin, const RandIter& end, const T& val)
+template<class Iter>
+ptrdiff_t my_distance(Iter begin, Iter end)
 {
+	// random_access_iterator
+	// 작동 안 함
+	if (std::random_access_iterator_tag<Iter>)
+		return end - begin;
+
+	ptrdiff_t distance{};
+
 	for (; begin != end; ++begin)
 	{
-		if (*begin == val)
-		{
-			break;
-		}
+		++distance;
 	}
 
-	return begin;
+	return distance;
 }
 
 int main()
 {
-	std::vector<String> v{ "123", "456", "abc" };
+	std::vector<int> v{ 1, 2, 3, 4, 5 };
+	std::cout << my_distance(v.cbegin(), v.cend()) << std::endl;
 
-	auto p{ std::find(v.begin(), v.end(), String{ "abc" }) };
-
-	std::cout << *p << std::endl;
-	// 출력 결과 : abc
+	std::list<int> l{ 1, 2, 3, 4, 5 };
+	std::cout << my_distance(l.cbegin(), l.cend()) << std::endl;
 
 	//Save("main.cpp");
-	//Save("String.h");
 }
