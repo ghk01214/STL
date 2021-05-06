@@ -1,46 +1,33 @@
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 5월 06일 목요일 (10주2일)
 // 
-// Container - 제네릭 클래스, String([char][char][char]...), begin(), end()
-// Iterator  - String_iterator, String_reverse_iterator
-// Algorithm - 제네릭 함수
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
 // 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-#include <vector>
-#include <string>
-#include <list>
-#include "pch.h"
-#include "save.h"
-#include "String.h"
+#include <set>
+#include <iterator>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
 
-// [문제] 반복자 간의 거리를 계산하는 distance를 작성하라.
-
-template<class Iter>
-ptrdiff_t my_distance(Iter begin, Iter end)
-{
-	// random_access_iterator
-	// 작동 안 함
-	if (std::random_access_iterator_tag<Iter>)
-		return end - begin;
-
-	ptrdiff_t distance{};
-
-	for (; begin != end; ++begin)
-	{
-		++distance;
-	}
-
-	return distance;
-}
+// [문제] "main.cpp"의 단어를 읽어 오름차순으로 정렬한 후 출력하라.
+// set으로 해결하라
 
 int main()
 {
-	std::vector<int> v{ 1, 2, 3, 4, 5 };
-	std::cout << my_distance(v.cbegin(), v.cend()) << std::endl;
+	std::ifstream in{ "main.cpp" };
+	std::multiset<std::string> s;			// multiset = 중복된 key 값을 허용
 
-	std::list<int> l{ 1, 2, 3, 4, 5 };
-	std::cout << my_distance(l.cbegin(), l.cend()) << std::endl;
+	std::copy(std::istream_iterator<std::string>{in}, {}, std::inserter(s, s.cbegin()));
+	std::cout << std::endl;
+
+	for (const std::string& str : s)
+	{
+		std::cout << str << std::endl;
+	}
 
 	//Save("main.cpp");
 }

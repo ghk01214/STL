@@ -1,0 +1,394 @@
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-06 ¿ÀÈÄ 1:37:59 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 06ÀÏ ¸ñ¿äÀÏ (10ÁÖ2ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö / find, count
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <string>
+#include <list>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] ¹Ýº¹ÀÚ °£ÀÇ °Å¸®¸¦ °è»êÇÏ´Â distance¸¦ ÀÛ¼ºÇÏ¶ó.
+
+template<class Iter>
+ptrdiff_t my_distance(Iter begin, Iter end)
+{
+	// random_access_iterator
+	if (std::random_access_iterator<Iter>)
+		return end - begin;
+
+	ptrdiff_t distance{};
+
+	for (; begin != end; ++begin)
+	{
+		++distance;
+	}
+
+	return distance;
+}
+
+int main()
+{
+	std::vector<int> v{ 1, 2, 3, 4, 5 };
+	std::cout << my_distance(v.cbegin(), v.cend()) << std::endl;
+
+	//std::list<int> l{ 1, 2, 3, 4, 5 };
+	//std::cout << my_distance(l.cbegin(), l.cend()) << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-06 ¿ÀÈÄ 1:52:25 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 06ÀÏ ¸ñ¿äÀÏ (10ÁÖ2ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö / find, count
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <string>
+#include <list>
+#include "pch.h"
+#include "save.h"
+#include "String.h"
+
+// [¹®Á¦] ¹Ýº¹ÀÚ °£ÀÇ °Å¸®¸¦ °è»êÇÏ´Â distance¸¦ ÀÛ¼ºÇÏ¶ó.
+
+// ++p;				operator++()
+// p++;				operator++(int)
+
+template<class Iter>
+ptrdiff_t my_distance(Iter begin, Iter end)
+{
+	// random_access_iterator
+	if constexpr (std::random_access_iterator<Iter>)
+		return end - begin;
+	else
+	{
+		ptrdiff_t distance{};
+
+		for (; begin != end; ++begin)
+		{
+			++distance;
+		}
+
+		return distance;
+	}
+}
+
+int main()
+{
+	// ½ÇÇà ½Ã a = 333ÀÌ¶ó°í º¸Àå
+	const int a = 333;
+
+	// ½ÇÇà Á÷Àü¿¡ b = 333ÀÌ¶ó°í º¸Àå
+	constexpr int b = 333;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-06 ¿ÀÈÄ 1:59:27 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 06ÀÏ ¸ñ¿äÀÏ (10ÁÖ2ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö / find, count / distance - concept, constexpr
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <iterator>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] containerÀÇ ¿ø¼Ò¸¦ ´Ù¸¥ container·Î º¹»çÇÑ´Ù.
+// vectorÀÇ ¿ø¼Ò¸¦ È­¸é¿¡ º¹»ç(Ãâ·Â)ÇÑ´Ù.
+
+int main()
+{
+	std::vector<int> v{ 1, 2, 3, 4, 5 };
+
+	std::copy(v.cbegin(), v.cend(), std::ostream_iterator<int>{std::cout, "\n"});
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-06 ¿ÀÈÄ 2:05:31 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 06ÀÏ ¸ñ¿äÀÏ (10ÁÖ2ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö / find, count / distance - concept, constexpr
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <iterator>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] containerÀÇ ¿ø¼Ò¸¦ ´Ù¸¥ container·Î º¹»çÇÑ´Ù.
+// ÀÔ·ÂÇÑ ´Ü¾î¸¦ "´Ü¾îµé.txt"¿¡ ÀúÀåÇÏ¶ó
+
+int main()
+{
+	std::ofstream out{ "´Ü¾îµé.txt" };
+
+	std::copy(std::istream_iterator<std::string>{std::cin}, {}, std::ostream_iterator<std::string>{out, "\n"});
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-06 ¿ÀÈÄ 2:16:12 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 06ÀÏ ¸ñ¿äÀÏ (10ÁÖ2ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö / find, count / distance - concept, constexpr
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <iterator>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] containerÀÇ ¿ø¼Ò¸¦ ´Ù¸¥ container·Î º¹»çÇÑ´Ù.
+// ÀÔ·ÂÇÑ ´Ü¾î¸¦ "´Ü¾îµé.txt"¿¡ ÀúÀåÇÏ¶ó
+
+template<class InIter, class OutIter>
+void my_copy(InIter begin, InIter end, OutIter cont)
+{
+	for (; begin != end; ++begin)
+	{
+		*cont++ = *begin;
+	}
+}
+
+int main()
+{
+	std::vector<int> v1{ 1, 2, 3, 4, 5 };
+	std::vector<int> v2;
+	v2.reserve(v1.size());
+
+	std::copy(v1.begin(), v1.end(), v2.begin());
+
+	for (int n : v2)
+	{
+		std::cout << n << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-06 ¿ÀÈÄ 2:16:23 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 06ÀÏ ¸ñ¿äÀÏ (10ÁÖ2ÀÏ)
+// 
+// Container - Á¦³×¸¯ Å¬·¡½º, String([char][char][char]...), begin(), end()
+// Iterator  - String_iterator, String_reverse_iterator
+// Algorithm - Á¦³×¸¯ ÇÔ¼ö / find, count / distance - concept, constexpr
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <iterator>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] containerÀÇ ¿ø¼Ò¸¦ ´Ù¸¥ container·Î º¹»çÇÑ´Ù.
+// ÀÔ·ÂÇÑ ´Ü¾î¸¦ "´Ü¾îµé.txt"¿¡ ÀúÀåÇÏ¶ó
+
+template<class InIter, class OutIter>
+void my_copy(InIter begin, InIter end, OutIter cont)
+{
+	for (; begin != end; ++begin)
+	{
+		*cont++ = *begin;
+	}
+}
+
+int main()
+{
+	std::vector<int> v1{ 1, 2, 3, 4, 5 };
+	std::vector<int> v2;
+	v2.reserve(v1.size());
+
+	my_copy(v1.begin(), v1.end(), v2.begin());
+
+	for (int n : v2)
+	{
+		std::cout << n << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-06 ¿ÀÈÄ 2:57:13 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 06ÀÏ ¸ñ¿äÀÏ (10ÁÖ2ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <set>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] 
+
+int main()
+{
+	std::set<int> a{ 1, 2,3 };
+	std::set<int> b{ 2, 1, 3 };
+
+	std::cout << std::boolalpha << (a == b) << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-06 ¿ÀÈÄ 3:08:53 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 06ÀÏ ¸ñ¿äÀÏ (10ÁÖ2ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <set>
+#include <iterator>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] Å°º¸µå¿¡¼­ ´Ü¾î¸¦ ÀÐ¾î¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÑ ÈÄ Ãâ·ÂÇÏ¶ó.
+// setÀ¸·Î ÇØ°áÇÏ¶ó
+
+int main()
+{
+	std::set<std::string> s;
+
+	std::copy(std::istream_iterator<std::string>{std::cin}, {}, std::inserter(s, s.cbegin()));
+	std::cout << std::endl;
+
+	for (const std::string& str : s)
+	{
+		std::cout << str << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-06 ¿ÀÈÄ 3:13:46 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 06ÀÏ ¸ñ¿äÀÏ (10ÁÖ2ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <set>
+#include <iterator>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] "main.cpp"ÀÇ ´Ü¾î¸¦ ÀÐ¾î ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÑ ÈÄ Ãâ·ÂÇÏ¶ó.
+// setÀ¸·Î ÇØ°áÇÏ¶ó
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::set<std::string> s;
+
+	std::copy(std::istream_iterator<std::string>{in}, {}, std::inserter(s, s.cbegin()));
+	std::cout << std::endl;
+
+	for (const std::string& str : s)
+	{
+		std::cout << str << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-06 ¿ÀÈÄ 3:14:27 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 06ÀÏ ¸ñ¿äÀÏ (10ÁÖ2ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <set>
+#include <iterator>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] "main.cpp"ÀÇ ´Ü¾î¸¦ ÀÐ¾î ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÑ ÈÄ Ãâ·ÂÇÏ¶ó.
+// setÀ¸·Î ÇØ°áÇÏ¶ó
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::multiset<std::string> s;			// multiset = Áßº¹µÈ key °ªÀ» Çã¿ë
+
+	std::copy(std::istream_iterator<std::string>{in}, {}, std::inserter(s, s.cbegin()));
+	std::cout << std::endl;
+
+	for (const std::string& str : s)
+	{
+		std::cout << str << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
