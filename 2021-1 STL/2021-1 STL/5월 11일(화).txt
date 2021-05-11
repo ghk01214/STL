@@ -1,0 +1,536 @@
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-11 ¿ÀÈÄ 1:51:44 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 11ÀÏ È­¿äÀÏ (11ÁÖ 1ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <set>
+#include <iterator>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] "main.cpp"ÀÇ ´Ü¾î¸¦ ÀÐ¾î ±æÀÌ ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÑ ÈÄ Ãâ·ÂÇÏ¶ó.
+// setÀº Ç×»ó Á¤·ÄÇÏ´Â ÀÚ·á±¸Á¶ÀÌ¹Ç·Î ¿©±â·Î String Å¬·¡½º¸¦ »ç¿ëÇØ¼­
+// "main.cpp"ÀÇ ´Ü¾î¸¦ ÀÐ¾î ÀúÀåÇÏÀÚ.
+// ¹®Á¦Á¡ : setÀº ±âº» Á¤·Ä ¿¬»êÀÚ·Î <À» »ç¿ëÇÑ´Ù.
+// setÀÇ ¿ø¼Ò·Î »ç¿ëÇÏ·Á´Â Å¸ÀÔÀº ¾î¶»°Ô Á¤·ÄÇØ¾ß ÇÏ´ÂÁö set¿¡ ¾Ë·ÁÁà¾ß ÇÑ´Ù.
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::set<String> s{ std::istream_iterator<String>{in}, {} };
+
+	for (const String& s : s)
+	{
+		std::cout << s << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-11 ¿ÀÈÄ 1:51:57 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 11ÀÏ È­¿äÀÏ (11ÁÖ 1ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <set>
+#include <iterator>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] "main.cpp"ÀÇ ´Ü¾î¸¦ ÀÐ¾î ±æÀÌ ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÑ ÈÄ Ãâ·ÂÇÏ¶ó.
+// setÀº Ç×»ó Á¤·ÄÇÏ´Â ÀÚ·á±¸Á¶ÀÌ¹Ç·Î ¿©±â·Î String Å¬·¡½º¸¦ »ç¿ëÇØ¼­
+// "main.cpp"ÀÇ ´Ü¾î¸¦ ÀÐ¾î ÀúÀåÇÏÀÚ.
+// ¹®Á¦Á¡ : setÀº ±âº» Á¤·Ä ¿¬»êÀÚ·Î <À» »ç¿ëÇÑ´Ù.
+// setÀÇ ¿ø¼Ò·Î »ç¿ëÇÏ·Á´Â Å¸ÀÔÀº ¾î¶»°Ô Á¤·ÄÇØ¾ß ÇÏ´ÂÁö set¿¡ ¾Ë·ÁÁà¾ß ÇÑ´Ù.
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::multiset<String> s{ std::istream_iterator<String>{in}, {} };
+
+	for (const String& s : s)
+	{
+		std::cout << s << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-11 ¿ÀÈÄ 1:54:02 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//-----------------------------------------------------------------------------
+// String.h - STL ³»ºÎ µ¿ÀÛÀ» °üÂûÇÏ±â À§ÇØ ¸¸µç ÀÚ¿øÀ» È®º¸ÇÏ´Â Å¬·¡½º
+//
+// 2021. 3. 30									Programmed by wulong
+//-----------------------------------------------------------------------------
+#pragma once
+
+#include <random>
+#include <string>
+#include "pch.h"
+
+//#define °üÂû			// ÀÌ ÁÖ¼®À» Ç®¸é special memberÀÇ µ¿ÀÛÀ» ¾Ë ¼ö ÀÖ´Ù.
+
+// 2021. 4. 20
+// StringÀÌ ¿ÜºÎ¿¡ Á¦°øÇÏ´Â ¹Ýº¹ÀÚ
+class String_iterator
+{
+public:
+	String_iterator() = default;
+	String_iterator(char* p) : p{ p } {}
+public:
+	String_iterator operator+(int n) const { return String_iterator{ p + n }; }
+	String_iterator operator-(int n) const { return String_iterator{ p - n }; }
+	int operator-(const String_iterator& right) const { return p - right.p; }
+public:
+	String_iterator& operator++() { ++p; return *this; }
+	String_iterator& operator--() { --p; return *this; }
+public:
+	char& operator*() { return *p; }
+	char& operator*() const{ return *p; }
+public:
+	bool operator==(const String_iterator& right) const { return p == right.p; }
+	bool operator!=(const String_iterator& right) const { return p != right.p; }
+public:
+	bool operator<(const String_iterator& right) { return p < right.p; }
+private:
+	char* p{ nullptr };
+};
+
+// 2021. 4. 27
+// ¿ª¹æÇâ ¹Ýº¹ÀÚ Ãß°¡
+class String_reverse_iterator
+{
+public:
+	String_reverse_iterator(char* p) : p{ p } {}
+public:
+	String_reverse_iterator& operator++() { --p; return *this; }
+public:
+	bool operator!=(const String_reverse_iterator& right) const { return right.p != p; }
+public:
+	char& operator*() { return *(p - 1); }
+private:
+	char* p{ nullptr };
+};
+
+template<>
+struct std::iterator_traits<String_iterator>
+{
+	using iterator_concept = std::contiguous_iterator_tag;
+	using iterator_category = std::random_access_iterator_tag;
+	using ptrdiff_type = std::ptrdiff_t;
+	using pointer = char*;
+	using reference = char&;
+	using value_type = char;
+};
+
+class String
+{
+private:
+	// 2021. 4. 20
+	using iterator = String_iterator;
+	using value_type = char;
+	// 2021. 4. 27
+	using reverse_iterator = String_reverse_iterator;
+public:
+	String();
+	String(size_t n);
+	String(const char* str);
+	~String();
+public:
+	String(const String& other);							// º¹»ç»ý¼ºÀÚ
+	String& operator=(const String& other);					// º¹»çÇÒ´ç¿¬»êÀÚ
+
+	String(String&& other) noexcept;						// ÀÌµ¿»ý¼ºÀÚ
+	String& operator=(String&& other)noexcept;				// ÀÌµ¿ÇÒ´ç¿¬»êÀÚ
+public:
+	// 2021. 4. 20
+	iterator begin() { return iterator{ p }; }
+	iterator end() { return iterator{ p + num }; }
+public:
+	// 2021 4. 27
+	iterator cbegin() const { return iterator{ p }; }
+	iterator cend() const { return iterator{ p + num }; }
+public:
+	// 2021. 4. 27
+	reverse_iterator rbegin() { return reverse_iterator{ p + num }; }
+	reverse_iterator rend() { return reverse_iterator{ p }; }
+public:
+	size_t size() const { return num; }
+
+	// È®º¸ÇÑ ÀÚ¿øÀ» std::stringÃ³·³ ÀÌ¿ëÇÒ ¼ö ÀÖ°Ô ÇÏÀÚ
+	std::string get() const;
+	void set(const std::string& s);
+public:
+	bool operator==(const String& right);
+	// 2021. 5. 11
+	bool operator<(const String& right) const { return num < right.num; }
+private:
+	size_t num;												// È®º¸ÇÑ ÀÚ¿øÀÇ ¼ö
+	char* p;												// È®º¸ÇÑ ÀÚ¿øÀÇ À§Ä¡
+private:
+	friend std::ostream& operator<<(std::ostream& os, const String& s);
+	// 2021. 5. 4
+	friend std::istream& operator>>(std::istream& is, String& s);
+};
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-11 ¿ÀÈÄ 1:54:12 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//-----------------------------------------------------------------------------
+// String.h - STL ³»ºÎ µ¿ÀÛÀ» °üÂûÇÏ±â À§ÇØ ¸¸µç ÀÚ¿øÀ» È®º¸ÇÏ´Â Å¬·¡½º
+//
+// 2021. 3. 30									Programmed by wulong
+//-----------------------------------------------------------------------------
+#pragma once
+
+#include <random>
+#include <string>
+#include "pch.h"
+
+//#define °üÂû			// ÀÌ ÁÖ¼®À» Ç®¸é special memberÀÇ µ¿ÀÛÀ» ¾Ë ¼ö ÀÖ´Ù.
+
+// 2021. 4. 20
+// StringÀÌ ¿ÜºÎ¿¡ Á¦°øÇÏ´Â ¹Ýº¹ÀÚ
+class String_iterator
+{
+public:
+	String_iterator() = default;
+	String_iterator(char* p) : p{ p } {}
+public:
+	String_iterator operator+(int n) const { return String_iterator{ p + n }; }
+	String_iterator operator-(int n) const { return String_iterator{ p - n }; }
+	int operator-(const String_iterator& right) const { return p - right.p; }
+public:
+	String_iterator& operator++() { ++p; return *this; }
+	String_iterator& operator--() { --p; return *this; }
+public:
+	char& operator*() { return *p; }
+	char& operator*() const{ return *p; }
+public:
+	bool operator==(const String_iterator& right) const { return p == right.p; }
+	bool operator!=(const String_iterator& right) const { return p != right.p; }
+public:
+	bool operator<(const String_iterator& right) { return p < right.p; }
+private:
+	char* p{ nullptr };
+};
+
+// 2021. 4. 27
+// ¿ª¹æÇâ ¹Ýº¹ÀÚ Ãß°¡
+class String_reverse_iterator
+{
+public:
+	String_reverse_iterator(char* p) : p{ p } {}
+public:
+	String_reverse_iterator& operator++() { --p; return *this; }
+public:
+	bool operator!=(const String_reverse_iterator& right) const { return right.p != p; }
+public:
+	char& operator*() { return *(p - 1); }
+private:
+	char* p{ nullptr };
+};
+
+template<>
+struct std::iterator_traits<String_iterator>
+{
+	using iterator_concept = std::contiguous_iterator_tag;
+	using iterator_category = std::random_access_iterator_tag;
+	using ptrdiff_type = std::ptrdiff_t;
+	using pointer = char*;
+	using reference = char&;
+	using value_type = char;
+};
+
+class String
+{
+private:
+	// 2021. 4. 20
+	using iterator = String_iterator;
+	using value_type = char;
+	// 2021. 4. 27
+	using reverse_iterator = String_reverse_iterator;
+public:
+	String();
+	String(size_t n);
+	String(const char* str);
+	~String();
+public:
+	String(const String& other);							// º¹»ç»ý¼ºÀÚ
+	String& operator=(const String& other);					// º¹»çÇÒ´ç¿¬»êÀÚ
+
+	String(String&& other) noexcept;						// ÀÌµ¿»ý¼ºÀÚ
+	String& operator=(String&& other)noexcept;				// ÀÌµ¿ÇÒ´ç¿¬»êÀÚ
+public:
+	// 2021. 4. 20
+	iterator begin() { return iterator{ p }; }
+	iterator end() { return iterator{ p + num }; }
+public:
+	// 2021 4. 27
+	iterator cbegin() const { return iterator{ p }; }
+	iterator cend() const { return iterator{ p + num }; }
+public:
+	// 2021. 4. 27
+	reverse_iterator rbegin() { return reverse_iterator{ p + num }; }
+	reverse_iterator rend() { return reverse_iterator{ p }; }
+public:
+	size_t size() const { return num; }
+
+	// È®º¸ÇÑ ÀÚ¿øÀ» std::stringÃ³·³ ÀÌ¿ëÇÒ ¼ö ÀÖ°Ô ÇÏÀÚ
+	std::string get() const;
+	void set(const std::string& s);
+public:
+	bool operator==(const String& right);
+	// 2021. 5. 11
+bool operator<(const String& right) const { return std::string(p, p + num) < std::string(right.p, right.p + right.num); }
+private:
+	size_t num;												// È®º¸ÇÑ ÀÚ¿øÀÇ ¼ö
+	char* p;												// È®º¸ÇÑ ÀÚ¿øÀÇ À§Ä¡
+private:
+	friend std::ostream& operator<<(std::ostream& os, const String& s);
+	// 2021. 5. 4
+	friend std::istream& operator>>(std::istream& is, String& s);
+};
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-11 ¿ÀÈÄ 1:55:37 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 11ÀÏ È­¿äÀÏ (11ÁÖ 1ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <set>
+#include <iterator>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] "main.cpp"ÀÇ ´Ü¾î¸¦ ÀÐ¾î »çÀü½Ä ¿À¸§Â÷¼øÀ¸·Î Á¤·ÄÇÑ ÈÄ Ãâ·ÂÇÏ¶ó.
+// setÀº Ç×»ó Á¤·ÄÇÏ´Â ÀÚ·á±¸Á¶ÀÌ¹Ç·Î ¿©±â·Î String Å¬·¡½º¸¦ »ç¿ëÇØ¼­
+// "main.cpp"ÀÇ ´Ü¾î¸¦ ÀÐ¾î ÀúÀåÇÏÀÚ.
+// ¹®Á¦Á¡ : setÀº ±âº» Á¤·Ä ¿¬»êÀÚ·Î <À» »ç¿ëÇÑ´Ù.
+// setÀÇ ¿ø¼Ò·Î »ç¿ëÇÏ·Á´Â Å¸ÀÔÀº ¾î¶»°Ô Á¤·ÄÇØ¾ß ÇÏ´ÂÁö set¿¡ ¾Ë·ÁÁà¾ß ÇÑ´Ù.
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::set<String> s{ std::istream_iterator<String>{in}, {} };
+
+	for (const String& s : s)
+	{
+		std::cout << s << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-11 ¿ÀÈÄ 2:15:22 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 11ÀÏ È­¿äÀÏ (11ÁÖ 1ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <set>
+#include <iterator>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] StringÀº ±âº» »çÀü½Ä(lexicographical) ºñ±³¸¦ ÇÑ´Ù.
+// ±æÀÌ ¿À¸§Â÷¼øÀ¸·Î Á¤·Ä ¹æ½ÄÀ» º¯°æÇÒ·ÁÇÑ´Ù.
+
+class LESS
+{
+public:
+	bool operator()(const String& left, const String& right) const
+	{
+		return left.size() < right.size();
+	}
+};
+
+int main()
+{
+	std::set<String, LESS> s{ "abcdef", "xyz", "hijk" };
+
+	for (const String& s : s)
+	{
+		std::cout << s << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-11 ¿ÀÈÄ 2:42:37 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 11ÀÏ È­¿äÀÏ (11ÁÖ 1ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <set>
+#include <iterator>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] StringÀº ±âº» »çÀü½Ä(lexicographical) ºñ±³¸¦ ÇÑ´Ù.
+// ±æÀÌ ¿À¸§Â÷¼øÀ¸·Î Á¤·Ä ¹æ½ÄÀ» º¯°æÇÒ·ÁÇÑ´Ù.
+
+int main()
+{
+	std::set<String> s{ "abcdef", "xyz", "hijk" };
+	s.emplace("12345");
+	auto [p1, b1] = s.insert("xyzaaa");			// structured binding
+	auto [p2, b2] = s.insert("xyz");
+
+	std::cout << *p1 << ", " << std::boolalpha << b1 << std::endl;
+	std::cout << *p2 << ", " << std::boolalpha << b2 << std::endl;
+
+	for (const String& s : s)
+	{
+		std::cout << s << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-11 ¿ÀÈÄ 2:45:38 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 11ÀÏ È­¿äÀÏ (11ÁÖ 1ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
+// 
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <set>
+#include <iterator>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] StringÀº ±âº» »çÀü½Ä(lexicographical) ºñ±³¸¦ ÇÑ´Ù.
+// ±æÀÌ ¿À¸§Â÷¼øÀ¸·Î Á¤·Ä ¹æ½ÄÀ» º¯°æÇÒ·ÁÇÑ´Ù.
+
+int main()
+{
+	std::set<String> s{ "abcdef", "xyz", "hijk" };
+	s.emplace("12345");
+
+	auto [p1, ignore] = s.insert("xyz");			// structured binding
+	auto p2 = s.find("xyz");
+
+	if (p1 == p2)
+		std::cout << "°°Àº ¹Ýº¹ÀÚ" << std::endl;
+
+	for (const String& s : s)
+	{
+		std::cout << s << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-11 ¿ÀÈÄ 3:18:58 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 11ÀÏ È­¿äÀÏ (11ÁÖ 1ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
+// 
+// map : pair<key, value>
+//		¿¬°ü¹è¿­·Î »ç¿ëÇÑ´Ù. (Åë°èÃ³¸®¿¡ À¯¿ë)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <map>			// key/value pairÀÌ°í key = const
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] ±×·ì ÀÌ¸§À» ÀÔ·ÂÇÏ¸é ¸â¹ö¸¦ ¾Ë·ÁÁÖ´Â mapÀ» ¸¸µç´Ù.
+// ±×·ì ÀÌ¸§À» ÀÔ·ÂÇÏ¸é ¸â¹ö¸¦ Ãâ·ÂÇÑ´Ù.
+// (±×·ì ÀÌ¸§ÀÌ ¾øÀ¸¸é ¸â¹ö¸¦ ÀÔ·Â ¹Þ¾Æ µî·ÏÇÒ ¼öµµ ÀÖ´Ù.)
+
+int main()
+{
+	std::map<std::string, std::vector<std::string>> m;
+
+	m.insert(std::pair<std::string, std::vector<std::string>>("aaa", { "1", "2", "3" }));
+	m.insert(std::make_pair(std::string("ÆÞ ½Ã½ºÅÍÁî"), std::vector<std::string>{ "¹èÀÎ¼ø", "¹èÀÎ¼÷" }));
+	m["°ÔÀÓ"] = { "ÄíÅ°·±", "Ã¶±Ç7" };
+	m["ÄÚ¿äÅÂ"] = { "±èÁ¾¹Î", "»ª°¡", "½ÅÁö" };
+
+	std::string groupName;
+
+	while (true)
+	{
+		std::cout << "±×·ì ÀÌ¸§ ÀÔ·Â : ";
+		std::cin >> groupName;
+
+		auto p = m.find(groupName);
+		int end = std::stoi(groupName);
+
+		if (!end)
+			break;
+
+		if (p == m.end())
+		{
+			std::cout << groupName << "Àº ¾ø´Â ±×·ì." << std::endl;
+			
+			continue;
+		}
+
+		std::cout << "±×·ì " << p->first << "ÀÇ ¸â¹ö : ";
+
+		for (const std::string& s : p->second)
+		{
+			std::cout << s << " ";
+		}
+
+		std::cout << std::endl << std::endl;
+	}
+
+	Save("main.cpp");
+}
+

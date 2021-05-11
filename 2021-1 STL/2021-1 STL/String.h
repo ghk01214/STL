@@ -27,7 +27,7 @@ public:
 	String_iterator& operator--() { --p; return *this; }
 public:
 	char& operator*() { return *p; }
-	char& operator*() const{ return *p; }
+	char& operator*() const { return *p; }
 public:
 	bool operator==(const String_iterator& right) const { return p == right.p; }
 	bool operator!=(const String_iterator& right) const { return p != right.p; }
@@ -102,23 +102,9 @@ public:
 	std::string get() const;
 	void set(const std::string& s);
 public:
-	bool operator==(const String& right)
-	{
-		if (num != right.num)
-		{
-			return false;
-		}
-		
-		for (int i{ 0 }; i < num; ++i)
-		{
-			if (p[i] != right.p[i])
-			{
-				return false;
-			}
-		}
-
-		return true;
-	}
+	bool operator==(const String& right);
+	// 2021. 5. 11
+	bool operator<(const String& right) const { return std::string(p, p + num) < std::string(right.p, right.p + right.num); }
 private:
 	size_t num;												// 확보한 자원의 수
 	char* p;												// 확보한 자원의 위치

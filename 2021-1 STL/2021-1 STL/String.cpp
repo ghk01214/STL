@@ -116,6 +116,23 @@ void String::set(const std::string& s)
 		p[i] = s[i];
 }
 
+bool String::operator==(const String& right)
+{
+	if (num != right.num)
+	{
+		return false;
+	}
+
+	for (int i{ 0 }; i < num; ++i)
+	{
+		if (p[i] != right.p[i])
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
 
 std::ostream& operator<<(std::ostream& os, const String& s)
 {
