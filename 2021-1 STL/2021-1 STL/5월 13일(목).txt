@@ -1,0 +1,452 @@
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-13 ¿ÀÈÄ 1:42:28 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 13ÀÏ ¸ñ¿äÀÏ (11ÁÖ 2ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
+// 
+// map : pair<key, value>
+//		¿¬°ü¹è¿­·Î »ç¿ëÇÑ´Ù. (Åë°èÃ³¸®¿¡ À¯¿ë)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <map>			// key/value pairÀÌ°í key = const
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] 
+
+int main()
+{
+	std::map<std::string, int> m;
+
+	m.insert(std::make_pair("¾ÖÇÃ", 1000));
+	
+	std::cout << m["¹Ù³ª³ª"] << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-13 ¿ÀÈÄ 1:43:51 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 13ÀÏ ¸ñ¿äÀÏ (11ÁÖ 2ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
+// 
+// map : pair<key, value>
+//		¿¬°ü¹è¿­·Î »ç¿ëÇÑ´Ù. (Åë°èÃ³¸®¿¡ À¯¿ë)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <map>			// key/value pairÀÌ°í key = const
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] 
+
+int main()
+{
+	std::map<std::string, int> m;
+
+	m.insert(std::make_pair("¾ÖÇÃ", 1000));
+	
+	++m["¹Ù³ª³ª"];
+	
+	std::cout << m["¹Ù³ª³ª"] << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-13 ¿ÀÈÄ 1:50:44 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 13ÀÏ ¸ñ¿äÀÏ (11ÁÖ 2ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
+// 
+// map : pair<key, value>
+//		¿¬°ü¹è¿­·Î »ç¿ëÇÑ´Ù. (Åë°èÃ³¸®¿¡ À¯¿ë)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <map>			// key/value pairÀÌ°í key = const
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] "main.cpp"ÀÇ ´Ü¾î ºóµµ ¼ö¸¦ Ãâ·ÂÇÏ¶ó.
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::string str;
+	std::map<std::string, int> m;
+
+	while (in >> str)
+	{
+		m[str]++;
+	}
+
+	for (auto i = m.begin(); i != m.end(); ++i)
+	{
+		std::cout << i->first << " ¡æ " << i->second << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-13 ¿ÀÈÄ 1:54:14 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 13ÀÏ ¸ñ¿äÀÏ (11ÁÖ 2ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
+// 
+// map : pair<key, value>
+//		¿¬°ü¹è¿­·Î »ç¿ëÇÑ´Ù. (Åë°èÃ³¸®¿¡ À¯¿ë)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <map>			// key/value pairÀÌ°í key = const
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] "main.cpp"ÀÇ ¾ËÆÄºª »ç¿ë È½¼ö¸¦ Ãâ·ÂÇÏ¶ó.
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::string str;
+	char c;
+	std::map<std::string, int> m;
+	std::map<char, int> m2;
+
+	while (in >> c)
+	{
+		if (isalpha(c))
+			m2[c]++;
+	}
+
+	for (auto i = m2.begin(); i != m2.end(); ++i)
+	{
+		std::cout << i->first << " ¡æ " << i->second << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-13 ¿ÀÈÄ 2:13:29 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 13ÀÏ ¸ñ¿äÀÏ (11ÁÖ 2ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map
+// 
+// map : pair<key, value>
+//		¿¬°ü¹è¿­·Î »ç¿ëÇÑ´Ù. (Åë°èÃ³¸®¿¡ À¯¿ë)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <map>			// key/value pairÀÌ°í key = const
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] "main.cpp"ÀÇ ¾ËÆÄºª »ç¿ë È½¼ö¸¦ Ãâ·ÂÇÏ¶ó.
+// »ç¿ë È½¼ö°¡ ¸¹Àº ¼øÀ¸·Î Ãâ·ÂÇÏ¶ó.
+//
+// i ¡æ 36
+// e ¡æ 32
+
+int main()
+{
+	std::ifstream in{ "main.cpp" };
+	std::string str;
+	char c;
+	std::map<std::string, int> m;
+	std::map<char, int> m2;
+
+	while (in >> c)
+	{
+		if (isalpha(c))
+			m2[c]++;
+	}
+
+	for (auto i = m2.begin(); i != m2.end(); ++i)
+	{
+		std::cout << i->first << " ¡æ " << i->second << std::endl;
+	}
+
+	std::cout << std::endl << std::endl;
+	std::cout << "È½¼ö »ç¿ë È½¼ö ³»¸²Â÷¼ø °á°ú" << std::endl;
+
+	std::vector<std::pair<char, int>> v{ m2.begin(), m2.end() };
+
+	std::sort(v.begin(), v.end(), [](const std::pair<char, int>& a, const std::pair<char, int>& b)
+		{
+			return a.second > b.second;
+		});
+
+	for (const auto& [alphabet, num] : v)
+	{
+		std::cout << alphabet << " ¡æ " << num << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-13 ¿ÀÈÄ 2:41:48 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 13ÀÏ ¸ñ¿äÀÏ (11ÁÖ 2ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map - Ã£±â O(1)
+// 
+// map : pair<key, value>
+//		¿¬°ü¹è¿­·Î »ç¿ëÇÑ´Ù. (Åë°èÃ³¸®¿¡ À¯¿ë)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <map>			// key/value pairÀÌ°í key = const
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] ·£´ý¿£ÁøÀ» »ç¿ëÇÑ À¯´ÏÆû ºÐÆ÷¸¦ Ãâ·ÂÇÑ´Ù.
+// vÀÇ °ªÀ» 10 ±¸°£À¸·Î ³ª´©¾î °¢ ¿ø¼ÒÀÇ °¹¼ö¸¦ Ãâ·ÂÇÏ¶ó.
+// v[0~9999] ¡æ 10000
+// v[10000~19999] ¡æ 10000
+
+std::random_device rd;
+std::default_random_engine dre(rd());
+std::uniform_int_distribution<> uid(1, 100000);
+
+int main()
+{
+	std::vector<int> v;
+	v.reserve(100000);
+
+	for (int i{ 0 }; i < 100000; ++i)
+	{
+		v.push_back(uid(dre));
+	}
+
+	std::map<int, int> m;
+
+	for (int i : v)
+	{
+		/*for (int j{ 0 }; j < 10; ++j)
+		{
+			if ((j * 10000 < i) && (((j + 1) * 10000 - 1) > i))
+				m[j * 10000]++;
+		}*/
+
+		m[i / 10000]++;
+	}
+
+	//for (auto i{ m.begin() }; i != m.end(); ++i)
+	//{
+	//	std::cout << i->first * 10000 << " ~ " << (i->first + 1) * 10000 - 1 << " ¡æ " << i->second << std::endl;
+	//}
+
+	for (auto [range, num] : m)
+	{
+		std::cout << range * 10000 << " ~ " << (range + 1) * 10000 - 1 << " ¡æ " << num << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-13 ¿ÀÈÄ 3:03:07 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 13ÀÏ ¸ñ¿äÀÏ (11ÁÖ 2ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map - Ã£±â O(1)
+// 
+// map : pair<key, value>
+//		¿¬°ü¹è¿­·Î »ç¿ëÇÑ´Ù. (Åë°èÃ³¸®¿¡ À¯¿ë)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <unordered_set>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] ¿ø¼Ò¸¦ Ãß°¡ÇÏ¸ç µ¥ÀÌÅÍ¸¦ Ãâ·ÂÇì¼­ ¼ø¼­°¡ ¾ø´Ù´Â ¶æÀ» ¾Ë¾Æº»´Ù.
+
+int main()
+{
+	std::unordered_set<int> us{ 1, 2, 3, 4, 5 };
+
+	for (int i : us)
+	{
+		std::cout << i << " ";
+	}
+
+	std::cout << std::endl;
+
+	for (int i{ 6 };; i += 30)
+	{
+		std::cout << "Å°¸¦ ´©¸£¸é Ãß°¡";
+		char c;
+		std::cin >> c;
+
+		if (c == '0')
+			break;
+
+		us.insert(i);
+
+		for (int n : us)
+		{
+			std::cout << n << " ";
+		}
+		
+		std::cout << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-13 ¿ÀÈÄ 3:05:35 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 13ÀÏ ¸ñ¿äÀÏ (11ÁÖ 2ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map - Ã£±â O(1)
+// 
+// map : pair<key, value>
+//		¿¬°ü¹è¿­·Î »ç¿ëÇÑ´Ù. (Åë°èÃ³¸®¿¡ À¯¿ë)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <unordered_set>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] unordered_setÀÇ ¸Þ¸ð¸®¸¦ È­¸é¿¡ Ãâ·ÂÇÑ´Ù.
+
+int main()
+{
+	std::unordered_set<int> us{ 1, 2, 3 };
+
+	for (int i{ 0 }; i < us.bucket_count(); ++i)
+	{
+		std::cout << "[" << i << "]";
+
+		std::cout << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-13 ¿ÀÈÄ 3:08:57 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 13ÀÏ ¸ñ¿äÀÏ (11ÁÖ 2ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map - Ã£±â O(1)
+// 
+// map : pair<key, value>
+//		¿¬°ü¹è¿­·Î »ç¿ëÇÑ´Ù. (Åë°èÃ³¸®¿¡ À¯¿ë)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <unordered_set>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] unordered_setÀÇ ¸Þ¸ð¸®¸¦ È­¸é¿¡ Ãâ·ÂÇÑ´Ù.
+
+int main()
+{
+	std::unordered_set<int> us{ 1, 2, 3 };
+
+	for (int i{ 0 }; i < us.bucket_count(); ++i)
+	{
+		std::cout << "[" << i << "]";
+
+		// i¹øÂ° ¹öÅ¶ÀÇ ¿ø¼Ò Ãâ·Â
+		for (auto p{ us.begin(i) }; p != us.end(i); ++p)
+		{
+			std::cout << " ¡æ " << *p;
+		}
+
+		std::cout << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-13 ¿ÀÈÄ 3:10:09 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 13ÀÏ ¸ñ¿äÀÏ (11ÁÖ 2ÀÏ)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map - Ã£±â O(1)
+// 
+// map : pair<key, value>
+//		¿¬°ü¹è¿­·Î »ç¿ëÇÑ´Ù. (Åë°èÃ³¸®¿¡ À¯¿ë)
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <unordered_set>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] unordered_setÀÇ ¸Þ¸ð¸®¸¦ È­¸é¿¡ Ãâ·ÂÇÑ´Ù.
+
+int main()
+{
+	std::unordered_multiset<int> us{ 1, 2, 3, 1, 1, 1, 1, 1 };
+
+	for (int i{ 0 }; i < us.bucket_count(); ++i)
+	{
+		std::cout << "[" << i << "]";
+
+		// i¹øÂ° ¹öÅ¶ÀÇ ¿ø¼Ò Ãâ·Â
+		for (auto p{ us.begin(i) }; p != us.end(i); ++p)
+		{
+			std::cout << " ¡æ " << *p;
+		}
+
+		std::cout << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
