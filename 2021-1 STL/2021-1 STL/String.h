@@ -103,8 +103,9 @@ public:
 	void set(const std::string& s);
 public:
 	bool operator==(const String& right);
-	// 2021. 5. 11
-	bool operator<(const String& right) const { return std::string(p, p + num) < std::string(right.p, right.p + right.num); }
+	// 2021. 5. 11 set의 원소로 사용할 수 있도록 기본 정렬 연산자인 <를 정의
+	// 2021. 5. 18 기본 정렬을 길이 오름차순으로 변경
+	bool operator<(const String& right) const { return num < right.num; }
 private:
 	size_t num;												// 확보한 자원의 수
 	char* p;												// 확보한 자원의 위치
@@ -113,3 +114,15 @@ private:
 	// 2021. 5. 4
 	friend std::istream& operator>>(std::istream& is, String& s);
 };
+
+// 2021. 5. 18
+// unordered container의 원소가 되려면 hash 값을 제공해야 한다.
+//template<>
+//struct std::hash<String>
+//{
+//	size_t operator()(const String& s) const
+//	{
+//		// s의 멤버는 int, string(char*)
+//		return std::hash<int>()(s.size());
+//	}
+//};

@@ -1,7 +1,7 @@
 #include "String.h"
 
-std::random_device rd;
-extern std::default_random_engine dre(rd());
+std::random_device rds;
+std::default_random_engine dres(rds());
 std::uniform_int_distribution<int> uidAlpha{ 'a', 'z' };
 
 String::String() : num{}, p{}
@@ -18,7 +18,7 @@ String::String(size_t n) : num{ n }, p{ new char[num] }
 #endif
 
 	for (int i = 0; i < num; ++i)
-		p[i] = uidAlpha(dre);
+		p[i] = uidAlpha(dres);
 }
 
 String::String(const char* str) : num{ strlen(str) }, p{ new char[num] }

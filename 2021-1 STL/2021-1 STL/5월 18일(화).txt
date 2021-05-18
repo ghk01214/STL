@@ -1,0 +1,1084 @@
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-05-18 오후 1:51:05 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 5월 18일 화요일 (12주 1일)
+// 
+// Sequence Container - vector, deque, list...
+// Associative Container - set / map			{ key, value }
+// Unordered Associative Container - unordered_map - 찾기 O(1)
+// 
+// 기말고사 - 6월 10일 목요일
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <unordered_set>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [문제] String을 unordered_set의 원소로 넣어보라
+// String을 hashing 하는 함수를 만들어 제공한다.
+
+template<>
+struct std::hash<String>
+{
+	size_t operator()(const String& s) const
+	{
+		// s의 멤버는 int, string(char*)
+		return std::hash<int>()(s.size());
+	}
+};
+
+int main()
+{
+	//std::unordered_set<String> us{ 1, 2, 3 };
+
+	std::cout << std::hash<int>()(1) << std::endl;
+	std::cout << std::hash<int>()(2) << std::endl;
+	std::cout << std::hash<int>()(3) << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-05-18 오후 2:02:02 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 5월 18일 화요일 (12주 1일)
+// 
+// 대표 container의 찾기 실력 검증
+// 1. vector		- O(n)
+// 2. set			- O(log n)
+// 3. unordered_set	- O(1)
+// 
+// 기말고사 - 6월 10일 목요일
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include <set>
+#include <unordered_set>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [문제] 찾을 대상 전체를 container에 저장한다.
+// 그 중에서 특정 원소를 찾아	본다.
+// 각 container 별로 걸리는 시간을 측정한다.
+// 결과를 고찰한다.
+
+const int num{ 10000 };
+
+int main()
+{
+	// vector에 String을 저장
+	// 길이가 1부터 num까지의 길이를 가지는 String을 저장
+	std::vector<String> v;
+	
+	v.reserve(num);
+
+	for (int i{ 0 }; i < 3; ++i)
+	{
+		v.push_back(i);
+	}
+
+	for (const String& s : v)
+	{
+		std::cout << s << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-05-18 오후 2:06:46 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 5월 18일 화요일 (12주 1일)
+// 
+// 대표 container의 찾기 실력 검증
+// 1. vector		- O(n)
+// 2. set			- O(log n)
+// 3. unordered_set	- O(1)
+// 
+// 기말고사 - 6월 10일 목요일
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include <set>
+#include <unordered_set>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [문제] 찾을 대상 전체를 container에 저장한다.
+// 그 중에서 특정 원소를 찾아	본다.
+// 각 container 별로 걸리는 시간을 측정한다.
+// 결과를 고찰한다.
+
+const int num{ 10000 };
+
+int main()
+{
+	// vector에 String을 저장
+	// 길이가 1부터 num까지의 길이를 가지는 String을 저장
+	std::vector<String> v;
+	
+	v.reserve(num);
+
+	std::cout << "data 생성 시작" << std::endl;
+
+	for (int i{ 0 }; i < num; ++i)
+	{
+		v.emplace_back(i + 1);
+	}
+
+	std::cout << "data 생성 종료" << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-05-18 오후 2:43:50 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 5월 18일 화요일 (12주 1일)
+// 
+// 대표 container의 찾기 실력 검증
+// 1. vector		- O(n)
+// 2. set			- O(log n)
+// 3. unordered_set	- O(1)
+// 
+// 기말고사 - 6월 10일 목요일
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include <set>
+#include <unordered_set>
+#include <array>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [문제] 찾을 대상 전체를 container에 저장한다.
+// 그 중에서 특정 원소를 찾아	본다. (존재하는 객체와 같은 객체를 준비한다)
+// 각 container 별로 걸리는 시간을 측정한다.
+// 결과를 고찰한다.
+
+const int num{ 10000 };		// 생성한 데이터 개수
+const int fnum{ 1000 };		// 탐색할 개수
+
+std::random_device rd;
+std::default_random_engine dre(rd());
+std::uniform_int_distribution<> sel{ 1, 10000 };
+
+int main()
+{
+	// vector에 String을 저장
+	// 길이가 1부터 num까지의 길이를 가지는 String을 저장
+	std::vector<String> v;
+	
+	v.reserve(num);
+	
+	std::cout << "data 생성 시작" << std::endl;
+
+	for (int i{ 0 }; i < num; ++i)
+	{
+		v.emplace_back(i + 1);
+	}
+
+	std::cout << "data 생성 종료" << std::endl;
+
+	// 찾을 객체를 array에 저장한다
+	// fnum / 2 의
+	std::array<String, fnum> arr;
+	
+	for (int i{ 0 }; i < fnum; ++i)
+	{
+		arr[i] = v[sel(dre)];
+	}
+
+	// 10%는 존재하니 않는 자료로 만든다
+	for (int i{ 0 }; i < fnum * 0.1; ++i)
+	{
+		arr[i] = std::move(String(sel(dre)));
+	}
+
+	auto p{ std::find(v.begin(), v.end(), arr[99]) };
+	
+	if (p == v.end())
+		std::cout << "불가능" << std::endl;
+
+	auto q{ std::find(v.begin(), v.end(), arr[101]) };
+
+	if (q != v.end())
+		std::cout << "쌉가능" << std::endl;
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-05-18 오후 2:50:33 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 5월 18일 화요일 (12주 1일)
+// 
+// 대표 container의 찾기 실력 검증
+// 1. vector		- O(n)
+// 2. set			- O(log n)
+// 3. unordered_set	- O(1)
+// 
+// 기말고사 - 6월 10일 목요일
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include <set>
+#include <unordered_set>
+#include <array>
+#include <chrono>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [문제] 찾을 대상 전체를 container에 저장한다.
+// 그 중에서 특정 원소를 찾아	본다. (존재하는 객체와 같은 객체를 준비한다)
+// 각 container 별로 걸리는 시간을 측정한다.
+// 결과를 고찰한다.
+
+const int num{ 10000 };		// 생성한 데이터 개수
+const int fnum{ 1000 };		// 탐색할 개수
+
+std::random_device rd;
+std::default_random_engine dre(rd());
+std::uniform_int_distribution<> sel{ 1, 10000 };
+
+int main()
+{
+	// vector에 String을 저장
+	// 길이가 1부터 num까지의 길이를 가지는 String을 저장
+	std::vector<String> v;
+	
+	v.reserve(num);
+	
+	std::cout << "data 생성 시작" << std::endl;
+
+	for (int i{ 0 }; i < num; ++i)
+	{
+		v.emplace_back(i + 1);
+	}
+
+	std::cout << "data 생성 종료" << std::endl;
+
+	// 찾을 객체를 array에 저장한다
+	// fnum / 2 의
+	std::array<String, fnum> arr;
+	
+	for (int i{ 0 }; i < fnum; ++i)
+	{
+		arr[i] = v[sel(dre)];
+	}
+
+	// 10%는 존재하니 않는 자료로 만든다
+	for (int i{ 0 }; i < fnum * 0.1; ++i)
+	{
+		arr[i] = std::move(String(sel(dre)));
+	}
+
+	{
+		// vector의 찾기 실력을 검증
+
+		int cnt{ 0 };
+
+		// 시간 시작
+		auto start{ std::chrono::high_resolution_clock::now() };
+			
+		for (int i{ 0 }; i < fnum; ++i)
+		{
+			if (std::find(v.begin(), v.end(), arr[i]) != v.end())
+				++cnt;
+		}
+
+		std::cout << "결과시간(밀리초) : " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - start).count() << std::endl;
+
+		std::cout << "찾은 개수 - " << cnt << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-05-18 오후 2:51:18 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 5월 18일 화요일 (12주 1일)
+// 
+// 대표 container의 찾기 실력 검증
+// 1. vector		- O(n)
+// 2. set			- O(log n)
+// 3. unordered_set	- O(1)
+// 
+// 기말고사 - 6월 10일 목요일
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include <set>
+#include <unordered_set>
+#include <array>
+#include <chrono>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [문제] 찾을 대상 전체를 container에 저장한다.
+// 그 중에서 특정 원소를 찾아	본다. (존재하는 객체와 같은 객체를 준비한다)
+// 각 container 별로 걸리는 시간을 측정한다.
+// 결과를 고찰한다.
+
+const int num{ 10000 };		// 생성한 데이터 개수
+const int fnum{ 10000 };		// 탐색할 개수
+
+std::random_device rd;
+std::default_random_engine dre(rd());
+std::uniform_int_distribution<> sel{ 1, 10000 };
+
+int main()
+{
+	// vector에 String을 저장
+	// 길이가 1부터 num까지의 길이를 가지는 String을 저장
+	std::vector<String> v;
+	
+	v.reserve(num);
+	
+	std::cout << "data 생성 시작" << std::endl;
+
+	for (int i{ 0 }; i < num; ++i)
+	{
+		v.emplace_back(i + 1);
+	}
+
+	std::cout << "data 생성 종료" << std::endl;
+
+	// 찾을 객체를 array에 저장한다
+	// fnum / 2 의
+	std::array<String, fnum> arr;
+	
+	for (int i{ 0 }; i < fnum; ++i)
+	{
+		arr[i] = v[sel(dre)];
+	}
+
+	// 10%는 존재하니 않는 자료로 만든다
+	for (int i{ 0 }; i < fnum * 0.1; ++i)
+	{
+		arr[i] = std::move(String(sel(dre)));
+	}
+
+	{
+		// vector의 찾기 실력을 검증
+
+		int cnt{ 0 };
+
+		// 시간 시작
+		auto start{ std::chrono::high_resolution_clock::now() };
+			
+		for (int j{ 0 }; j < 10; ++j)
+		{
+			for (int i{ 0 }; i < fnum; ++i)
+			{
+				if (std::find(v.begin(), v.end(), arr[i]) != v.end())
+					++cnt;
+			}
+		}
+
+		std::cout << "결과시간(밀리초) : " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - start).count() << std::endl;
+
+		std::cout << "찾은 개수 - " << cnt << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-05-18 오후 2:55:49 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 5월 18일 화요일 (12주 1일)
+// 
+// 대표 container의 찾기 실력 검증
+// 1. vector		- O(n)
+// 2. set			- O(log n)
+// 3. unordered_set	- O(1)
+// 
+// 기말고사 - 6월 10일 목요일
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include <set>
+#include <unordered_set>
+#include <array>
+#include <chrono>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [문제] 찾을 대상 전체를 container에 저장한다.
+// 그 중에서 특정 원소를 찾아	본다. (존재하는 객체와 같은 객체를 준비한다)
+// 각 container 별로 걸리는 시간을 측정한다.
+// 결과를 고찰한다.
+
+const int num{ 10000 };		// 생성한 데이터 개수
+const int fnum{ 10000 };		// 탐색할 개수
+
+std::random_device rd;
+std::default_random_engine dre(rd());
+std::uniform_int_distribution<> sel{ 1, 10000 };
+
+void Vector(std::vector<String> v, std::array<String, fnum> arr);
+void Set(std::vector<String> v, std::array<String, fnum> arr);
+void UnorderedSet(std::vector<String> v, std::array<String, fnum> arr);
+
+int main()
+{
+	// vector에 String을 저장
+	// 길이가 1부터 num까지의 길이를 가지는 String을 저장
+	std::vector<String> v;
+	
+	v.reserve(num);
+	
+	std::cout << "data 생성 시작" << std::endl;
+
+	for (int i{ 0 }; i < num; ++i)
+	{
+		v.emplace_back(i + 1);
+	}
+
+	std::cout << "data 생성 종료" << std::endl;
+
+	// 찾을 객체를 array에 저장한다
+	// fnum / 2 의
+	std::array<String, fnum> arr;
+	
+	for (int i{ 0 }; i < fnum; ++i)
+	{
+		arr[i] = v[sel(dre)];
+	}
+
+	// 10%는 존재하니 않는 자료로 만든다
+	for (int i{ 0 }; i < fnum * 0.1; ++i)
+	{
+		arr[i] = std::move(String(sel(dre)));
+	}
+
+	Vector(v, arr);
+	Set(v, arr);
+
+	Save("main.cpp");
+}
+
+void Vector(std::vector<String> v, std::array<String, fnum> arr)
+{
+	// vector의 찾기 실력을 검증
+
+	int cnt{ 0 };
+
+	// 시간 시작
+	auto start{ std::chrono::high_resolution_clock::now() };
+
+	for (int j{ 0 }; j < 10; ++j)
+	{
+		for (int i{ 0 }; i < fnum; ++i)
+		{
+			if (std::find(v.begin(), v.end(), arr[i]) != v.end())
+				++cnt;
+		}
+	}
+
+	std::cout << "결과시간(밀리초) : " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - start).count() << std::endl;
+
+	std::cout << "찾은 개수 - " << cnt << std::endl;
+}
+
+void Set(std::vector<String> v, std::array<String, fnum> arr)
+{
+	// set의 찾기 실력을 검증
+
+	std::set<String> s{ v.begin(), v.end() };
+	int cnt{ 0 };
+
+	// 시간 시작
+	auto start{ std::chrono::high_resolution_clock::now() };
+
+	for (int j{ 0 }; j < 10; ++j)
+	{
+		for (int i{ 0 }; i < fnum; ++i)
+		{
+			if (s.find(arr[i]) != s.end())
+				++cnt;
+		}
+	}
+
+	std::cout << "결과시간(밀리초) : " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - start).count() << std::endl;
+
+	std::cout << "찾은 개수 - " << cnt << std::endl;
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-05-18 오후 2:59:09 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 5월 18일 화요일 (12주 1일)
+// 
+// 대표 container의 찾기 실력 검증
+// 1. vector		- O(n)
+// 2. set			- O(log n)
+// 3. unordered_set	- O(1)
+// 
+// 기말고사 - 6월 10일 목요일
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include <set>
+#include <unordered_set>
+#include <array>
+#include <chrono>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [문제] 찾을 대상 전체를 container에 저장한다.
+// 그 중에서 특정 원소를 찾아	본다. (존재하는 객체와 같은 객체를 준비한다)
+// 각 container 별로 걸리는 시간을 측정한다.
+// 결과를 고찰한다.
+
+const int num{ 10000 };		// 생성한 데이터 개수
+const int fnum{ 10000 };		// 탐색할 개수
+
+std::random_device rd;
+std::default_random_engine dre(rd());
+std::uniform_int_distribution<> sel{ 1, 10000 };
+
+void Vector(std::vector<String> v, std::array<String, fnum> arr);
+void Set(std::vector<String> v, std::array<String, fnum> arr);
+void UnorderedSet(std::vector<String> v, std::array<String, fnum> arr);
+
+int main()
+{
+	// vector에 String을 저장
+	// 길이가 1부터 num까지의 길이를 가지는 String을 저장
+	std::vector<String> v;
+	
+	v.reserve(num);
+	
+	std::cout << "data 생성 시작" << std::endl;
+
+	for (int i{ 0 }; i < num; ++i)
+	{
+		v.emplace_back(i + 1);
+	}
+
+	std::cout << "data 생성 종료" << std::endl;
+
+	// 찾을 객체를 array에 저장한다
+	// fnum / 2 의
+	std::array<String, fnum> arr;
+	
+	for (int i{ 0 }; i < fnum; ++i)
+	{
+		arr[i] = v[sel(dre)];
+	}
+
+	// 10%는 존재하니 않는 자료로 만든다
+	for (int i{ 0 }; i < fnum * 0.1; ++i)
+	{
+		arr[i] = std::move(String(sel(dre)));
+	}
+
+	Vector(v, arr);
+	Set(v, arr);
+
+	Save("main.cpp");
+}
+
+void Vector(std::vector<String> v, std::array<String, fnum> arr)
+{
+	// vector의 찾기 실력을 검증
+
+	int cnt{ 0 };
+
+	std::cout << std::endl;
+
+	// 시간 시작
+	auto start{ std::chrono::high_resolution_clock::now() };
+
+	for (int j{ 0 }; j < 10; ++j)
+	{
+		for (int i{ 0 }; i < fnum; ++i)
+		{
+			if (std::find(v.begin(), v.end(), arr[i]) != v.end())
+				++cnt;
+		}
+	}
+
+	std::cout << "결과시간(밀리초) : " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - start).count() << std::endl;
+
+	std::cout << "찾은 개수 - " << cnt << std::endl;
+}
+
+void Set(std::vector<String> v, std::array<String, fnum> arr)
+{
+	// set의 찾기 실력을 검증
+
+	std::set<String> s{ v.begin(), v.end() };
+	int cnt{ 0 };
+
+	std::cout << std::endl;
+
+	// 시간 시작
+	auto start{ std::chrono::high_resolution_clock::now() };
+
+	for (int j{ 0 }; j < 10; ++j)
+	{
+		for (int i{ 0 }; i < fnum; ++i)
+		{
+			if (s.find(arr[i]) != s.end())
+				++cnt;
+		}
+	}
+
+	std::cout << "결과시간(밀리초) : " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - start).count() << std::endl;
+
+	std::cout << "찾은 개수 - " << cnt << std::endl;
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-05-18 오후 2:59:33 화요일
+━━━━━━━━━━━━━━━━━━━━
+//-----------------------------------------------------------------------------
+// String.h - STL 내부 동작을 관찰하기 위해 만든 자원을 확보하는 클래스
+//
+// 2021. 3. 30									Programmed by wulong
+//-----------------------------------------------------------------------------
+#pragma once
+
+#include <random>
+#include <string>
+#include "pch.h"
+
+//#define 관찰			// 이 주석을 풀면 special member의 동작을 알 수 있다.
+
+// 2021. 4. 20
+// String이 외부에 제공하는 반복자
+class String_iterator
+{
+public:
+	String_iterator() = default;
+	String_iterator(char* p) : p{ p } {}
+public:
+	String_iterator operator+(int n) const { return String_iterator{ p + n }; }
+	String_iterator operator-(int n) const { return String_iterator{ p - n }; }
+	int operator-(const String_iterator& right) const { return p - right.p; }
+public:
+	String_iterator& operator++() { ++p; return *this; }
+	String_iterator& operator--() { --p; return *this; }
+public:
+	char& operator*() { return *p; }
+	char& operator*() const { return *p; }
+public:
+	bool operator==(const String_iterator& right) const { return p == right.p; }
+	bool operator!=(const String_iterator& right) const { return p != right.p; }
+public:
+	bool operator<(const String_iterator& right) { return p < right.p; }
+private:
+	char* p{ nullptr };
+};
+
+// 2021. 4. 27
+// 역방향 반복자 추가
+class String_reverse_iterator
+{
+public:
+	String_reverse_iterator(char* p) : p{ p } {}
+public:
+	String_reverse_iterator& operator++() { --p; return *this; }
+public:
+	bool operator!=(const String_reverse_iterator& right) const { return right.p != p; }
+public:
+	char& operator*() { return *(p - 1); }
+private:
+	char* p{ nullptr };
+};
+
+template<>
+struct std::iterator_traits<String_iterator>
+{
+	using iterator_concept = std::contiguous_iterator_tag;
+	using iterator_category = std::random_access_iterator_tag;
+	using ptrdiff_type = std::ptrdiff_t;
+	using pointer = char*;
+	using reference = char&;
+	using value_type = char;
+};
+
+class String
+{
+private:
+	// 2021. 4. 20
+	using iterator = String_iterator;
+	using value_type = char;
+	// 2021. 4. 27
+	using reverse_iterator = String_reverse_iterator;
+public:
+	String();
+	String(size_t n);
+	String(const char* str);
+	~String();
+public:
+	String(const String& other);							// 복사생성자
+	String& operator=(const String& other);					// 복사할당연산자
+
+	String(String&& other) noexcept;						// 이동생성자
+	String& operator=(String&& other)noexcept;				// 이동할당연산자
+public:
+	// 2021. 4. 20
+	iterator begin() { return iterator{ p }; }
+	iterator end() { return iterator{ p + num }; }
+public:
+	// 2021 4. 27
+	iterator cbegin() const { return iterator{ p }; }
+	iterator cend() const { return iterator{ p + num }; }
+public:
+	// 2021. 4. 27
+	reverse_iterator rbegin() { return reverse_iterator{ p + num }; }
+	reverse_iterator rend() { return reverse_iterator{ p }; }
+public:
+	size_t size() const { return num; }
+
+	// 확보한 자원을 std::string처럼 이용할 수 있게 하자
+	std::string get() const;
+	void set(const std::string& s);
+public:
+	bool operator==(const String& right);
+	// 2021. 5. 11 set의 원소로 사용할 수 있도록 기본 정렬 연산자인 <를 정의
+	// 2021. 5. 18 기본 정렬을 길이 오름차순으로 변경
+	bool operator<(const String& right) const { return num < right.num; }
+private:
+	size_t num;												// 확보한 자원의 수
+	char* p;												// 확보한 자원의 위치
+private:
+	friend std::ostream& operator<<(std::ostream& os, const String& s);
+	// 2021. 5. 4
+	friend std::istream& operator>>(std::istream& is, String& s);
+};
+
+// 2021. 5. 18
+// unordered container의 원소가 되려면 hash 값을 제공해야 한다.
+template<>
+struct std::hash<String>
+{
+	size_t operator()(const String& s) const
+	{
+		// s의 멤버는 int, string(char*)
+		return std::hash<int>()(s.size());
+	}
+};
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-05-18 오후 3:05:49 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 5월 18일 화요일 (12주 1일)
+// 
+// 대표 container의 찾기 실력 검증
+// 1. vector		- O(n)
+// 2. set			- O(log n)
+// 3. unordered_set	- O(1)
+// 
+// 기말고사 - 6월 10일 목요일
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include <set>
+#include <unordered_set>
+#include <array>
+#include <chrono>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [문제] 찾을 대상 전체를 container에 저장한다.
+// 그 중에서 특정 원소를 찾아	본다. (존재하는 객체와 같은 객체를 준비한다)
+// 각 container 별로 걸리는 시간을 측정한다.
+// 결과를 고찰한다.
+
+const int num{ 10000 };		// 생성한 데이터 개수
+const int fnum{ 10000 };		// 탐색할 개수
+
+std::random_device rd;
+std::default_random_engine dre(rd());
+std::uniform_int_distribution<> sel{ 1, 10000 };
+
+void Initialize(std::vector<String>& v, std::array<String, fnum>& arr);
+void Vector(std::vector<String> v, std::array<String, fnum> arr);
+void Set(std::vector<String> v, std::array<String, fnum> arr);
+void UnorderedSet(std::vector<String> v, std::array<String, fnum> arr);
+
+int main()
+{
+	std::vector<String> v;
+	std::array<String, fnum> arr;
+
+	//Initialize(v, arr);
+	//Vector(v, arr);
+	//Set(v, arr);
+
+	// [문제] set에서 같은 원소란 무엇인가?
+	std::cout << "set에서 같다는 것의 의미?" << std::endl;
+
+	std::set<String> s{ 5, 1, 3 };
+
+	for (const String& s : s)
+	{
+		std::cout << s << std::endl;
+	}
+
+	if (s.find(String(3)) == s.end())
+		std::cout << "없음" << std::endl;
+	else
+		std::cout << "있음" << std::endl;
+
+	Save("main.cpp");
+}
+
+void Initialize(std::vector<String>& v, std::array<String, fnum>& arr)
+{
+	// vector에 String을 저장
+	// 길이가 1부터 num까지의 길이를 가지는 String을 저장
+
+	v.reserve(num);
+
+	std::cout << "data 생성 시작" << std::endl;
+
+	for (int i{ 0 }; i < num; ++i)
+	{
+		v.emplace_back(i + 1);
+	}
+
+	std::cout << "data 생성 종료" << std::endl;
+
+	// 찾을 객체를 array에 저장한다
+	for (int i{ 0 }; i < fnum; ++i)
+	{
+		arr[i] = v[sel(dre)];
+	}
+
+	// 10%는 존재하니 않는 자료로 만든다
+	for (int i{ 0 }; i < fnum * 0.1; ++i)
+	{
+		arr[i] = std::move(String(sel(dre)));
+	}
+}
+
+void Vector(std::vector<String> v, std::array<String, fnum> arr)
+{
+	// vector의 찾기 실력을 검증
+
+	int cnt{ 0 };
+
+	std::cout << std::endl;
+
+	// 시간 시작
+	auto start{ std::chrono::high_resolution_clock::now() };
+
+	for (int j{ 0 }; j < 10; ++j)
+	{
+		for (int i{ 0 }; i < fnum; ++i)
+		{
+			if (std::find(v.begin(), v.end(), arr[i]) != v.end())
+				++cnt;
+		}
+	}
+
+	std::cout << "결과시간(밀리초) : " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - start).count() << std::endl;
+
+	std::cout << "찾은 개수 - " << cnt << std::endl;
+}
+
+void Set(std::vector<String> v, std::array<String, fnum> arr)
+{
+	// set의 찾기 실력을 검증
+
+	std::set<String> s{ v.begin(), v.end() };
+	int cnt{ 0 };
+
+	std::cout << std::endl;
+
+	// 시간 시작
+	auto start{ std::chrono::high_resolution_clock::now() };
+
+	for (int j{ 0 }; j < 10; ++j)
+	{
+		for (int i{ 0 }; i < fnum; ++i)
+		{
+			if (s.find(arr[i]) != s.end())
+				++cnt;
+		}
+	}
+
+	std::cout << "결과시간(밀리초) : " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - start).count() << std::endl;
+
+	std::cout << "찾은 개수 - " << cnt << std::endl;
+}
+
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-05-18 오후 3:16:52 화요일
+━━━━━━━━━━━━━━━━━━━━
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// 5월 18일 화요일 (12주 1일)
+// 
+// 대표 container의 찾기 실력 검증
+// 1. vector		- O(n)
+// 2. set			- O(log n)
+// 3. unordered_set	- O(1)
+// 
+// 기말고사 - 6월 10일 목요일
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+#include <vector>
+#include <set>
+#include <unordered_set>
+#include <array>
+#include <chrono>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [문제] 찾을 대상 전체를 container에 저장한다.
+// 그 중에서 특정 원소를 찾아	본다. (존재하는 객체와 같은 객체를 준비한다)
+// 각 container 별로 걸리는 시간을 측정한다.
+// 결과를 고찰한다.
+
+const int num{ 10000 };		// 생성한 데이터 개수
+const int fnum{ 10000 };		// 탐색할 개수
+
+std::random_device rd;
+std::default_random_engine dre(rd());
+std::uniform_int_distribution<> sel{ 1, 10000 };
+
+void Initialize(std::vector<String>& v, std::array<String, fnum>& arr);
+void Vector(std::vector<String> v, std::array<String, fnum> arr);
+void Set(std::vector<String> v, std::array<String, fnum> arr);
+void UnorderedSet(std::vector<String> v, std::array<String, fnum> arr);
+
+int main()
+{
+	std::vector<String> v;
+	std::array<String, fnum> arr;
+
+	//Initialize(v, arr);
+	//Vector(v, arr);
+	//Set(v, arr);
+
+	// [문제] set에서 같은 원소란 무엇인가?
+	std::cout << "set에서 같다는 것의 의미?" << std::endl;
+	std::cout << "동등(ejquivalence)하다는 의미(<)를 사용하기 때문이다." << std::endl;
+	std::cout << "상등(equality)은 ==로 같은것을 판단할 때를 의미한다." << std::endl;
+	// set은 a < b가 false를 return하고 b < a가 false를 return할 때 a == b라고 판단한다.
+
+	std::set<String> s{ 5, 1, 3 };
+
+	for (const String& s : s)
+	{
+		std::cout << s << std::endl;
+	}
+
+	String x{ 3 };
+
+	std::cout << "3글자이지만 내용은 다르다 - " << x << std::endl;
+
+	if (s.find(x) == s.end())
+		std::cout << "없음" << std::endl;
+	else
+		std::cout << "있음" << std::endl;
+
+	Save("main.cpp");
+}
+
+void Initialize(std::vector<String>& v, std::array<String, fnum>& arr)
+{
+	// vector에 String을 저장
+	// 길이가 1부터 num까지의 길이를 가지는 String을 저장
+
+	v.reserve(num);
+
+	std::cout << "data 생성 시작" << std::endl;
+
+	for (int i{ 0 }; i < num; ++i)
+	{
+		v.emplace_back(i + 1);
+	}
+
+	std::cout << "data 생성 종료" << std::endl;
+
+	// 찾을 객체를 array에 저장한다
+	for (int i{ 0 }; i < fnum; ++i)
+	{
+		arr[i] = v[sel(dre)];
+	}
+
+	// 10%는 존재하니 않는 자료로 만든다
+	for (int i{ 0 }; i < fnum * 0.1; ++i)
+	{
+		arr[i] = std::move(String(sel(dre)));
+	}
+}
+
+void Vector(std::vector<String> v, std::array<String, fnum> arr)
+{
+	// vector의 찾기 실력을 검증
+
+	int cnt{ 0 };
+
+	std::cout << std::endl;
+
+	// 시간 시작
+	auto start{ std::chrono::high_resolution_clock::now() };
+
+	for (int j{ 0 }; j < 10; ++j)
+	{
+		for (int i{ 0 }; i < fnum; ++i)
+		{
+			if (std::find(v.begin(), v.end(), arr[i]) != v.end())
+				++cnt;
+		}
+	}
+
+	std::cout << "결과시간(밀리초) : " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - start).count() << std::endl;
+
+	std::cout << "찾은 개수 - " << cnt << std::endl;
+}
+
+void Set(std::vector<String> v, std::array<String, fnum> arr)
+{
+	// set의 찾기 실력을 검증
+
+	std::set<String> s{ v.begin(), v.end() };
+	int cnt{ 0 };
+
+	std::cout << std::endl;
+
+	// 시간 시작
+	auto start{ std::chrono::high_resolution_clock::now() };
+
+	for (int j{ 0 }; j < 10; ++j)
+	{
+		for (int i{ 0 }; i < fnum; ++i)
+		{
+			if (s.find(arr[i]) != s.end())
+				++cnt;
+		}
+	}
+
+	std::cout << "결과시간(밀리초) : " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now() - start).count() << std::endl;
+
+	std::cout << "찾은 개수 - " << cnt << std::endl;
+}
+
