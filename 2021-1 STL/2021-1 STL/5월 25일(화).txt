@@ -1,3 +1,6 @@
+━━━━━━━━━━━━━━━━━━━━
+저장시간: 2021-05-25 오후 3:00:53 화요일
+━━━━━━━━━━━━━━━━━━━━
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // 5월 25일 화요일 (13주 1일)
 // 
@@ -14,23 +17,15 @@
 #include "save.h"		// string_view, filesystem, fstream
 #include "String.h"		// random, string
 
-// [문제] 홀짝으로 분리
+// [문제] 로또 번호 생성기
 
 int main()
 {
-	std::vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-	
-	std::stable_partition(v.begin(), v.end(), [](int n)
-		{
-			return n & 1;
-		});
+	std::vector<int> v(45);
+	std::iota(v.begin(), v.end(), 1);
 
-	for (int n : v)
-	{
-		std::cout << n << " ";
-	}
-
-	std::cout << std::endl;
+	std::sample(v.begin(), v.end(), std::ostream_iterator<int>{std::cout, " "}, 6, std::default_random_engine(std::random_device{}()));
 
 	Save("main.cpp");
 }
+
