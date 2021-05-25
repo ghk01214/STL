@@ -4,6 +4,8 @@ std::random_device rds;
 std::default_random_engine dres(rds());
 std::uniform_int_distribution<int> uidAlpha{ 'a', 'z' };
 
+int String::count = 0;
+
 String::String() : num{}, p{}
 {
 #ifdef 관찰
@@ -116,19 +118,19 @@ void String::set(const std::string& s)
 		p[i] = s[i];
 }
 
-bool String::operator==(const String& right)
+bool String::operator==(const String& right) const
 {
+	// 2021. 5. 20
+	// unordered_set은 operator==() 원소를 find한다.
+	++count;
+
 	if (num != right.num)
-	{
 		return false;
-	}
 
 	for (int i{ 0 }; i < num; ++i)
 	{
 		if (p[i] != right.p[i])
-		{
 			return false;
-		}
 	}
 
 	return true;

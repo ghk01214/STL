@@ -102,13 +102,20 @@ public:
 	std::string get() const;
 	void set(const std::string& s);
 public:
-	bool operator==(const String& right);
+	// 2021. 5. 20
+	void setCount(int n) { count = n; }
+	int getCount() const { return count; }
+public:
+	bool operator==(const String& right) const;
 	// 2021. 5. 11 set의 원소로 사용할 수 있도록 기본 정렬 연산자인 <를 정의
 	// 2021. 5. 18 기본 정렬을 길이 오름차순으로 변경
 	bool operator<(const String& right) const { return num < right.num; }
 private:
 	size_t num;												// 확보한 자원의 수
 	char* p;												// 확보한 자원의 위치
+	// 2021. 5. 20
+	// int String::count = 0로 선언 필요
+	static int count;
 private:
 	friend std::ostream& operator<<(std::ostream& os, const String& s);
 	// 2021. 5. 4
