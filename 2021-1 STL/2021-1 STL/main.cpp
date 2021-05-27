@@ -1,5 +1,5 @@
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// 5월 25일 화요일 (13주 1일)
+// 5월 27일 목요일 (13주 2일)
 // 
 // 알고리즘 함수 살펴보기
 // 알고리즘 사용 예제(anagram)
@@ -14,23 +14,19 @@
 #include "save.h"		// string_view, filesystem, fstream
 #include "String.h"		// random, string
 
-// [문제] 홀짝으로 분리
+// [문제] "단어들.txt"를 벡터에 저장하라
+// 단어개 총 몇 개인지 출력하라
+// vector<string>에 담아라
 
 int main()
 {
-	std::vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-	
-	std::stable_partition(v.begin(), v.end(), [](int n)
-		{
-			return n & 1;
-		});
-
-	for (int n : v)
-	{
-		std::cout << n << " ";
-	}
-
-	std::cout << std::endl;
+	std::ifstream in{ "단어들.txt" };
+	std::vector<String> v{ std::istream_iterator<String>{in}, {} };
 
 	Save("main.cpp");
+
+	while (true)
+	{
+
+	}
 }

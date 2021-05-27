@@ -1,0 +1,418 @@
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-27 ¿ÀÈÄ 1:39:01 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 27ÀÏ ¸ñ¿äÀÏ (13ÁÖ 2ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <thread>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+using namespace std::literals::chrono_literals;
+
+// [¹®Á¦] Àü±¤ÆÇ
+
+int main()
+{
+	String s{ "¾È³çÇÏ¼¼¿ä! C++´Â ³Ê¹«³Ê¹« Àç¹ÌÀÖ¾î¿ä." };
+
+	Save("main.cpp");
+
+	while (true)
+	{
+		std::cout << s;
+
+		std::rotate(s.begin(), s.begin() + 2, s.end());
+
+		std::this_thread::sleep_for(200ms);
+
+		std::cout << "\r";
+	}
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-27 ¿ÀÈÄ 1:49:35 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 27ÀÏ ¸ñ¿äÀÏ (13ÁÖ 2ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] sort °ü·Ã ÇÔ¼öµéÀ» ±¸ºÐÇÏ¿© »ç¿ëÇÒ ¼ö ÀÖ¾î¾ß ÇÑ´Ù.
+// sort¿Í stable_sort ±¸ºÐ
+
+int main()
+{
+	std::vector<std::pair<int, int>> v;
+
+	for (int i{ 0 }; i < 100; ++i)
+	{
+		v.push_back(std::make_pair((i + 1) % 10, 100 - i));
+	}
+
+	std::sort(v.begin(), v.end(), [](const auto& a, const auto& b)
+		{
+			return a.first < b.first;
+		});
+
+	for (const auto& [base, confirm] : v)
+	{
+		std::cout << base << ", " << confirm << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-27 ¿ÀÈÄ 1:50:57 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 27ÀÏ ¸ñ¿äÀÏ (13ÁÖ 2ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] sort °ü·Ã ÇÔ¼öµéÀ» ±¸ºÐÇÏ¿© »ç¿ëÇÒ ¼ö ÀÖ¾î¾ß ÇÑ´Ù.
+// sort¿Í stable_sort ±¸ºÐ
+
+int main()
+{
+	std::vector<std::pair<int, int>> v;
+
+	for (int i{ 0 }; i < 100; ++i)
+	{
+		v.push_back(std::make_pair((i + 1) % 10, 100 - i));
+	}
+
+	std::stable_sort(v.begin(), v.end(), [](const auto& a, const auto& b)
+		{
+			return a.first < b.first;
+		});
+
+	for (const auto& [base, confirm] : v)
+	{
+		std::cout << base << ", " << confirm << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-27 ¿ÀÈÄ 2:10:42 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 27ÀÏ ¸ñ¿äÀÏ (13ÁÖ 2ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <numeric>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] sort °ü·Ã ÇÔ¼öµéÀ» ±¸ºÐÇÏ¿© »ç¿ëÇÒ ¼ö ÀÖ¾î¾ß ÇÑ´Ù.
+// sort				- 1µîºÎÅÍ Nµî±îÁö Á¤·Ä
+// stable_sort		- equivalence ÆÇ´ÜÀÌ °°Àº ¿ø¼ÒÀÇ »ó´ë ¼øÀ§ À¯Áö
+// partial_sort		- 1µîºÎÅÍ Æ¯Á¤ µî¼ö±îÁö¸¸ Á¤·Ä
+// nth_element		- Æ¯Á¤ µî¼ö¿Í ³ª¸ÓÁö·Î ºÐ·ù
+
+void Sort(std::vector<int> v);
+void PartialSort(std::vector<int> v);
+void NthElement(std::vector<int> v);
+
+int main()
+{
+	// º¤ÅÍ¿¡ 1ºÎÅÍ 100±îÁö ¿ø¼Ò¸¦ ³Ö´Â´Ù.
+	std::vector<int> v(100);
+	std::iota(v.begin(), v.end(), 1);
+
+	std::random_device rd;
+	std::default_random_engine dre(rd());		// pseudo-random(°¡Â¥ ·£´ý)
+
+	// º¤ÅÍ¸¦ ¼¯´Â´Ù.
+	std::shuffle(v.begin(), v.end(), dre);
+
+	// sortÇÑ´Ù.
+	// Ãâ·ÂÇÑ´Ù.
+	
+	Sort(v);
+	PartialSort(v);
+	NthElement(v);
+
+	Save("main.cpp");
+}
+
+void Sort(std::vector<int> v)
+{
+	std::cout << "sort" << std::endl;
+
+	std::sort(v.begin(), v.end());
+
+	for (int n : v)
+	{
+		std::cout << n << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+}
+
+void PartialSort(std::vector<int> v)
+{
+	std::cout << "partial_sort" << std::endl;
+
+	std::partial_sort(v.begin(), v.begin() + 30, v.end());
+
+	for (int n : v)
+	{
+		std::cout << n << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+}
+
+void NthElement(std::vector<int> v)
+{
+	std::cout << "nth_element" << std::endl;
+
+	std::nth_element(v.begin(), v.begin() + 30, v.end());
+
+	for (int n : v)
+	{
+		std::cout << n << " ";
+	}
+
+	std::cout << std::endl << std::endl;
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-27 ¿ÀÈÄ 2:35:04 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 27ÀÏ ¸ñ¿äÀÏ (13ÁÖ 2ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <numeric>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] Á¤·ÄµÇ¾îÀÖ´Â ÀÚ·á°¡ ÀÖ´Ù¸é
+// binary_search
+// equal_range
+// lower_bound
+// upper_bound
+
+// [ÁØºñ] "main.cpp"ÀÇ ¾ËÆÄºªÀ» º¤ÅÍ¿¡ ´ã¾Æ¶ó
+
+int main()
+{
+	std::vector<char> v;
+	std::ifstream in("main.cpp");
+
+	std::copy_if(std::istream_iterator<char>{in}, {}, std::back_inserter(v), [](char c)
+		{
+			return std::isalpha(c);
+		});
+
+	for (char c : v)
+	{
+		std::cout << c << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-27 ¿ÀÈÄ 2:37:37 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 27ÀÏ ¸ñ¿äÀÏ (13ÁÖ 2ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <numeric>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] Á¤·ÄµÇ¾îÀÖ´Â ÀÚ·á°¡ ÀÖ´Ù¸é
+// binary_search
+// equal_range
+// lower_bound
+// upper_bound
+
+// [ÁØºñ] "main.cpp"ÀÇ ¾ËÆÄºªÀ» º¤ÅÍ¿¡ ´ã¾Æ¶ó
+
+int main()
+{
+	std::vector<char> v;
+	std::ifstream in("main.cpp");
+	char c;
+
+	while (in >> c)
+	{
+		if (std::isalpha(c))
+			v.push_back(c);
+	}
+
+	// v¸¦ ¿À¸§Â÷¼ø Á¤·Ä
+	std::sort(v.begin(), v.end());
+
+	for (char c : v)
+	{
+		std::cout << c << " ";
+	}
+
+	std::cout << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-27 ¿ÀÈÄ 2:56:35 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 27ÀÏ ¸ñ¿äÀÏ (13ÁÖ 2ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <numeric>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] Á¤·ÄµÇ¾îÀÖ´Â ÀÚ·á°¡ ÀÖ´Ù¸é »ç¿ëÀÚ°¡ Ã£´Â ¹®ÀÚ°¡ ÀÖ³ª ´ë´äÇÏ´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ¶ó
+// ¾øÀ¸¸é ¾ø´Ù°í Ãâ·ÂÇÏ°í ÀÖÀ¸¸é ¸î °³ÀÎÁö Ãâ·ÂÇÏ¶ó
+// binary_search
+// equal_range
+// lower_bound
+// upper_bound
+
+int main()
+{
+	std::vector<char> v;
+	std::ifstream in("main.cpp");
+	char c;
+
+	while (in >> c)
+	{
+		if (std::isalpha(c))
+			v.push_back(c);
+	}
+
+	// v¸¦ ¿À¸§Â÷¼ø Á¤·Ä
+	std::sort(v.begin(), v.end());
+
+	Save("main.cpp");
+
+	while (true)
+	{
+		std::cout << "Ã£´Â ¹®ÀÚ : ";
+		char c;							// loop optimization(·çÇÁ ÃÖÀûÈ­), ÄÄÆÄÀÏ·¯°¡ c¸¦ ÀÚµ¿À¸·Î ·çÇÁ ¹ÛÀ¸·Î ¿Å±ä´Ù.
+		std::cin >> c;
+
+		if (!std::binary_search(v.begin(), v.end(), c))
+		{
+			std::cout << "¾ø´Â ¹®ÀÚ" << std::endl;
+			continue;
+		}
+
+		auto [lower, upper] { std::equal_range(v.begin(), v.end(), c) };
+
+		std::cout << c << "°¡ " << upper - lower << "°³ ÀÖ´Ù." << std::endl;
+		std::cout << std::endl;
+	}
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-05-27 ¿ÀÈÄ 3:07:31 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 27ÀÏ ¸ñ¿äÀÏ (13ÁÖ 2ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <numeric>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] abced·Î ¸¸µé ¼ö ÀÖ´Â ¸ðµç ¼ø¿­À» Ãâ·ÂÇÏ¶ó
+
+int main()
+{
+	String s{ "abcde" };
+
+	// s Á¤·Ä
+
+	int i{ 0 };
+
+	do
+	{
+		std::cout << "[" << ++i << "] " << s << std::endl;
+	} while (std::next_permutation(s.begin(), s.end()));
+
+	Save("main.cpp");
+}
+
