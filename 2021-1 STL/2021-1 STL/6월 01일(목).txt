@@ -1,0 +1,365 @@
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-06-01 ¿ÀÈÄ 1:33:27 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 01ÀÏ È­¿äÀÏ (14ÁÖ 1ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] "´Ü¾îµé.txt"¸¦ º¤ÅÍ¿¡ ÀúÀåÇÏ¶ó
+// ´Ü¾î°³ ÃÑ ¸î °³ÀÎÁö Ãâ·ÂÇÏ¶ó
+// vector<string>¿¡ ´ã¾Æ¶ó
+
+int main()
+{
+	std::ifstream in{ "´Ü¾îµé.txt" };
+	std::vector<String> v{ std::istream_iterator<String>{in}, {} };
+	
+	// ´Ü¾îµéÀÌ Á¤·ÄµÇ¾î ÀÖ´Â°¡?
+	// Áßº¹µÇ´Â ´Ü¾î´Â ¾ø´Â°¡?
+	
+	std::cout << "Á¤·Ä ¿©ºÎ : " << std::boolalpha << std::is_sorted(v.begin(), v.end()) << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-06-01 ¿ÀÈÄ 1:34:12 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 01ÀÏ È­¿äÀÏ (14ÁÖ 1ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] "´Ü¾îµé.txt"¸¦ º¤ÅÍ¿¡ ÀúÀåÇÏ¶ó
+// ´Ü¾î°³ ÃÑ ¸î °³ÀÎÁö Ãâ·ÂÇÏ¶ó
+// vector<string>¿¡ ´ã¾Æ¶ó
+
+int main()
+{
+	std::ifstream in{ "´Ü¾îµé.txt" };
+	std::vector<String> v{ std::istream_iterator<String>{in}, {} };
+	
+	// ´Ü¾îµéÀÌ Á¤·ÄµÇ¾î ÀÖ´Â°¡?
+	// Áßº¹µÇ´Â ´Ü¾î´Â ¾ø´Â°¡?
+
+	std::sort(v.begin(), v.end());
+	std::cout << "Á¤·Ä ¿©ºÎ : " << std::boolalpha << std::is_sorted(v.begin(), v.end()) << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-06-01 ¿ÀÈÄ 1:37:18 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 01ÀÏ È­¿äÀÏ (14ÁÖ 1ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] "´Ü¾îµé.txt"¸¦ º¤ÅÍ¿¡ ÀúÀåÇÏ¶ó
+// ´Ü¾î°³ ÃÑ ¸î °³ÀÎÁö Ãâ·ÂÇÏ¶ó
+// vector<string>¿¡ ´ã¾Æ¶ó
+
+int main()
+{
+	std::ifstream in{ "´Ü¾îµé.txt" };
+	std::vector<String> v{ std::istream_iterator<String>{in}, {} };
+	
+	// ´Ü¾îµéÀÌ Á¤·ÄµÇ¾î ÀÖ´Â°¡?
+	// Áßº¹µÇ´Â ´Ü¾î´Â ¾ø´Â°¡?
+
+	std::sort(v.begin(), v.end());
+	std::cout << "Á¤·Ä ¿©ºÎ : " << std::boolalpha << std::is_sorted(v.begin(), v.end()) << std::endl;
+	
+	auto p{ std::unique(v.begin(), v.end()) };
+
+	if (p == v.end())
+		std::cout << "Áßº¹ ¿©ºÎ : true" << std::endl;
+	else
+		std::cout << "Áßº¹ ¿©ºÎ : false" << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-06-01 ¿ÀÈÄ 1:39:20 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 01ÀÏ È­¿äÀÏ (14ÁÖ 1ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <set>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] "´Ü¾îµé.txt"¸¦ º¤ÅÍ¿¡ ÀúÀåÇÏ¶ó
+// ´Ü¾î°³ ÃÑ ¸î °³ÀÎÁö Ãâ·ÂÇÏ¶ó
+// vector<string>¿¡ ´ã¾Æ¶ó
+
+int main()
+{
+	std::ifstream in{ "´Ü¾îµé.txt" };
+	std::vector<std::string> v{ std::istream_iterator<std::string>{in}, {} };
+	
+	// ´Ü¾îµéÀÌ Á¤·ÄµÇ¾î ÀÖ´Â°¡?
+	// Áßº¹µÇ´Â ´Ü¾î´Â ¾ø´Â°¡?
+
+	std::sort(v.begin(), v.end());
+	std::cout << "Á¤·Ä ¿©ºÎ : " << std::boolalpha << std::is_sorted(v.begin(), v.end()) << std::endl;
+	
+	auto p{ std::unique(v.begin(), v.end()) };
+
+	if (p == v.end())
+		std::cout << "Áßº¹ ¿©ºÎ : true" << std::endl;
+	else
+		std::cout << "Áßº¹ ¿©ºÎ : false" << std::endl;
+
+	std::set<std::string> s{ v.begin(), v.end() };
+
+	if (s.size() == v.size())
+		std::cout << "¿ø¼ÒÀÇ ¼ö°¡ °°À¸¹Ç·Î Áßº¹ µÇ´Â ´Ü¾î´Â ¾ø´Ù." << std::endl;
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-06-01 ¿ÀÈÄ 2:01:10 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 01ÀÏ È­¿äÀÏ (14ÁÖ 1ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <set>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] "´Ü¾îµé.txt"¸¦ º¤ÅÍ¿¡ ÀúÀåÇÏ¶ó
+// ´Ü¾î°³ ÃÑ ¸î °³ÀÎÁö Ãâ·ÂÇÏ¶ó
+// vector<string>¿¡ ´ã¾Æ¶ó
+// »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ´Ü¾î¸¦ ³» »çÀü¿¡¼­ Ã£´Â´Ù
+// »çÀü¿¡ ´Ü¾î°¡ ¾øÀ¸¸é "¾ø´Â ´Ü¾î"¶ó°í Ãâ·ÂÇÑ´Ù
+// »çÀü¿¡ ÀÖ´Â ´Ü¾î¶ó¸é ÀÌ ´Ü¾î¿Í anagram °ü°è¿¡ ÀÖ´Â ´Ü¾î¸¦ ¸ðµÎ Ãâ·ÂÇÑ´Ù
+
+int main()
+{
+	std::ifstream in{ "´Ü¾îµé.txt" };
+	std::vector<std::string> v{ std::istream_iterator<std::string>{in}, {} };
+	
+	std::sort(v.begin(), v.end());
+
+	std::cout << "AnagramÀ» Ã£´Â ÇÁ·Î±×·¥ÀÌ´Ù." << std::endl;
+	std::cout << "ÃÑ " << v.size() << "°³ÀÇ Á¤·ÄµÈ ´Ü¾î°¡ ÀÖ´Ù." << std::endl << std::endl;
+
+	Save("main.cpp");
+
+	while (true)
+	{
+		std::cout << "Ã£À» ´Ü¾î¸¦ ÀÔ·Â : ";
+		std::string s;
+		std::cin >> s;
+
+		if (!std::binary_search(v.begin(), v.end(), s))
+		{
+			std::cout << "\n¾ø´Â ´Ü¾î" << std::endl;
+			continue;
+		}
+
+		std::sort(s.begin(), s.end());
+
+		do
+		{
+			if (std::binary_search(v.begin(), v.end(), s))
+				std::cout << s << std::endl;
+			
+		} while (std::next_permutation(s.begin(), s.end()));
+
+		std::cout << std::endl;
+	}
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-06-01 ¿ÀÈÄ 2:45:01 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 01ÀÏ È­¿äÀÏ (14ÁÖ 1ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <map>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] "´Ü¾îµé.txt"¸¦ º¤ÅÍ¿¡ ÀúÀåÇÏ¶ó
+// ´Ü¾î°³ ÃÑ ¸î °³ÀÎÁö Ãâ·ÂÇÏ¶ó
+// vector<string>¿¡ ´ã¾Æ¶ó
+// »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ´Ü¾î¸¦ ³» »çÀü¿¡¼­ Ã£´Â´Ù
+// »çÀü¿¡ ´Ü¾î°¡ ¾øÀ¸¸é "¾ø´Â ´Ü¾î"¶ó°í Ãâ·ÂÇÑ´Ù
+// »çÀü¿¡ ÀÖ´Â ´Ü¾î¶ó¸é ÀÌ ´Ü¾î¿Í anagram °ü°è¿¡ ÀÖ´Â ´Ü¾î¸¦ ¸ðµÎ Ãâ·ÂÇÑ´Ù
+
+class ps : public std::pair<std::string, std::string>
+{
+public:
+	ps() = default;
+	ps(std::string s) : pair<std::string, std::string>(s, s) { std::sort(second.begin(), second.end()); }
+private:
+	
+};
+
+int main()
+{
+	std::ifstream in{ "´Ü¾îµé.txt" };
+	std::vector<ps> v{ std::istream_iterator<std::string>{in}, {} };
+	
+	for (int i = 100000; i < 100100; ++i)
+	{
+		std::cout << v[i].first << " - " << v[i].second << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-06-01 ¿ÀÈÄ 3:08:58 È­¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 5¿ù 01ÀÏ È­¿äÀÏ (14ÁÖ 1ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <map>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] "´Ü¾îµé.txt"¸¦ º¤ÅÍ¿¡ ÀúÀåÇÏ¶ó
+// ´Ü¾î°³ ÃÑ ¸î °³ÀÎÁö Ãâ·ÂÇÏ¶ó
+// vector<string>¿¡ ´ã¾Æ¶ó
+// »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ´Ü¾î¸¦ ³» »çÀü¿¡¼­ Ã£´Â´Ù
+// »çÀü¿¡ ´Ü¾î°¡ ¾øÀ¸¸é "¾ø´Â ´Ü¾î"¶ó°í Ãâ·ÂÇÑ´Ù
+// »çÀü¿¡ ÀÖ´Â ´Ü¾î¶ó¸é ÀÌ ´Ü¾î¿Í anagram °ü°è¿¡ ÀÖ´Â ´Ü¾î¸¦ ¸ðµÎ Ãâ·ÂÇÑ´Ù
+
+class ps : public std::pair<std::string, std::string>
+{
+public:
+	ps() = default;
+	ps(std::string s) : pair<std::string, std::string>(s, s) { std::sort(first.begin(), first.end()); }
+private:
+	
+};
+
+int main()
+{
+	std::ifstream in{ "´Ü¾îµé.txt" };
+	std::vector<ps> v{ std::istream_iterator<std::string>{in}, {} };
+	
+	std::sort(v.begin(), v.end(), [](const ps& a, const ps& b)
+		{
+			return a.first < b.first;
+		});
+
+	// ±æÀÌ°¡ ±ä ¼ø¼­´ë·Î ´Ü¾î 10°³¸¦ Ãâ·ÂÇÏ¶ó.
+
+	std::cout << "AnagramÀ» Ã£´Â ÇÁ·Î±×·¥ÀÌ´Ù." << std::endl;
+	std::cout << "ÃÑ " << v.size() << "°³ÀÇ Á¤·ÄµÈ ´Ü¾î°¡ ÀÖ´Ù." << std::endl << std::endl;
+
+	Save("main.cpp");
+
+	while (true)
+	{
+		std::cout << "Ã£À» ´Ü¾î¸¦ ÀÔ·Â : ";
+		std::string s;
+		std::cin >> s;
+
+		if (!std::binary_search(v.begin(), v.end(), ps{ s }, [](const ps& a, const ps& b)
+			{
+				return a.second == b.second;
+			}))
+		{
+			std::cout << "\n¾ø´Â ´Ü¾î" << std::endl << std::endl;
+			continue;
+		}
+
+		std::sort(s.begin(), s.end());
+
+		auto [start, end] { std::equal_range(v.begin(), v.end(), ps{ s }, [](const ps& a, const ps& b)
+			{
+				return a.first < b.first;
+			}) };
+		
+		if (start == end)
+		{
+			std::cout << "¾ø´Â ´Ü¾î" << std::endl;
+			continue;
+		}
+
+		std::cout << "Anagram ´Ü¾îµé : " << std::endl;
+
+		for (; start != end; ++start)
+		{
+			std::cout << start->second << std::endl;
+		}
+		
+		std::cout << std::endl;
+	}
+}
+
