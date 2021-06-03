@@ -1,0 +1,352 @@
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-06-03 ¿ÀÈÄ 1:58:43 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 6¿ù 03ÀÏ ¸ñ¿äÀÏ (14ÁÖ 2ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <map>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] ÀÌ »çÀüÀÇ ¸ðµç ¾Ö³Ê±×·¥ ½ÖÀ» Ãâ·ÂÇÏ¶ó
+
+struct ps : public std::pair<std::string, std::string>
+{
+	ps(std::string s) : pair<std::string, std::string>(s, s) { std::sort(first.begin(), first.end()); }
+};
+
+int main()
+{
+	std::ifstream in{ "´Ü¾îµé.txt" };
+	std::vector<ps> v{ std::istream_iterator<std::string>{in}, {} };
+	
+	std::sort(v.begin(), v.end(), [](const ps& a, const ps& b)
+		{
+			return a.first < b.first;
+		});
+
+	std::cout << "AnagramÀ» Ã£´Â ÇÁ·Î±×·¥ÀÌ´Ù." << std::endl;
+	std::cout << "ÃÑ " << v.size() << "°³ÀÇ Á¤·ÄµÈ ´Ü¾î°¡ ÀÖ´Ù." << std::endl << std::endl;
+
+	Save("main.cpp");
+
+	auto start{ v.begin() };
+	int count{0};
+
+	while (true)
+	{
+		start = std::adjacent_find(start, v.end(), [](const ps& a, const ps& b)
+			{
+				return a.first == b.first;
+			});
+
+		if (start == v.end())
+			break;
+
+		auto end{ std::find_if_not(start + 1, v.end(), [start](const ps& a)
+			{
+				return a.first == start->first;
+			}) };
+
+		std::cout << "[" << ++count << "] : ";
+
+		for (auto i = start; i != end; ++i)
+		{
+			std::cout << i->second << " ";
+		}
+
+		std::cout << std::endl;
+
+		start = end;
+	}
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-06-03 ¿ÀÈÄ 2:00:22 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 6¿ù 03ÀÏ ¸ñ¿äÀÏ (14ÁÖ 2ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <map>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] ÀÌ »çÀüÀÇ ¸ðµç ¾Ö³Ê±×·¥ ½ÖÀ» ÆÄÀÏ¿¡ º¹»çÇÏ¶ó
+
+struct ps : public std::pair<std::string, std::string>
+{
+	ps(std::string s) : pair<std::string, std::string>(s, s) { std::sort(first.begin(), first.end()); }
+};
+
+int main()
+{
+	std::ifstream in{ "´Ü¾îµé.txt" };
+	std::vector<ps> v{ std::istream_iterator<std::string>{in}, {} };
+	
+	std::sort(v.begin(), v.end(), [](const ps& a, const ps& b)
+		{
+			return a.first < b.first;
+		});
+
+	std::cout << "AnagramÀ» Ã£´Â ÇÁ·Î±×·¥ÀÌ´Ù." << std::endl;
+	std::cout << "ÃÑ " << v.size() << "°³ÀÇ Á¤·ÄµÈ ´Ü¾î°¡ ÀÖ´Ù." << std::endl << std::endl;
+
+	Save("main.cpp");
+
+	std::ofstream out{ "¾Ö³Ê±×·¥ ¸ñ·Ï.txt" };
+
+	auto start{ v.begin() };
+	int count{0};
+
+	while (true)
+	{
+		start = std::adjacent_find(start, v.end(), [](const ps& a, const ps& b)
+			{
+				return a.first == b.first;
+			});
+
+		if (start == v.end())
+			break;
+
+		auto end{ std::find_if_not(start + 1, v.end(), [start](const ps& a)
+			{
+				return a.first == start->first;
+			}) };
+
+		out << "[" << ++count << "] : ";
+
+		for (auto i = start; i != end; ++i)
+		{
+			out << i->second << " ";
+		}
+
+		out << std::endl;
+
+		start = end;
+	}
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-06-03 ¿ÀÈÄ 2:26:45 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 6¿ù 03ÀÏ ¸ñ¿äÀÏ (14ÁÖ 2ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <list>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+#include "String.h"		// random, string
+
+// [¹®Á¦] ÀÌ »çÀüÀÇ ¸ðµç ¾Ö³Ê±×·¥ ½ÖÀ» Ãâ·ÂÇÏ¶ó
+
+struct ps : public std::pair<std::string, std::string>
+{
+	ps(std::string s) : pair<std::string, std::string>(s, s) { std::sort(first.begin(), first.end()); }
+};
+
+int main()
+{
+	std::ifstream in{ "´Ü¾îµé.txt" };
+	std::vector<ps> v{ std::istream_iterator<std::string>{in}, {} };
+
+	std::sort(v.begin(), v.end(), [](const ps& a, const ps& b)
+		{
+			return a.first < b.first;
+		});
+
+	std::cout << "AnagramÀ» Ã£´Â ÇÁ·Î±×·¥ÀÌ´Ù." << std::endl;
+	std::cout << "ÃÑ " << v.size() << "°³ÀÇ Á¤·ÄµÈ ´Ü¾î°¡ ÀÖ´Ù." << std::endl << std::endl;
+
+	Save("main.cpp");
+
+	auto start{ v.begin() };
+
+	std::vector<std::list<std::string>> anagram;
+	anagram.reserve(32000);
+
+	while (true)
+	{
+		start = std::adjacent_find(start, v.end(), [](const ps& a, const ps& b)
+			{
+				return a.first == b.first;
+			});
+
+		if (start == v.end())
+			break;
+
+		auto end{ std::find_if_not(start + 1, v.end(), [start](const ps& a)
+			{
+				return a.first == start->first;
+			}) };
+
+		std::list<std::string> ls;
+
+		for (auto i = start; i != end; ++i)
+		{
+			ls.push_back(i->second);
+		}
+
+		anagram.push_back(ls);
+
+		start = end;
+	}
+
+	std::cout << "\nÃÑ " << anagram.size() << "°³ÀÇ ¼ø¼­½ÖÀÌ ÀÖ´Ù." << std::endl;
+
+	std::sort(anagram.begin(), anagram.end(), [](auto a, auto b)
+		{
+			return a.size() > b.size();
+		});
+
+	std::cout << "1½Ö¿¡ ÃÖ´ë " << anagram.begin()->size() << "°³ÀÇ AnagramÀÌ ÀÖ´Ù." << std::endl;
+
+	std::ofstream out{ "°³¼ö¼ø ¾Ö³Ê±×·¥.txt" };
+	int count{};
+
+	for (auto word : anagram)
+	{
+		out << "[" << ++count << "] : ";
+		word.sort();
+		copy(word.begin(), word.end(), std::ostream_iterator<std::string>{ out, " " });
+		out << std::endl;
+	}
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-06-03 ¿ÀÈÄ 3:04:10 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 6¿ù 03ÀÏ ¸ñ¿äÀÏ (14ÁÖ 2ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <ranges>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+
+// [¹®Á¦] 
+
+int main()
+{
+	std::vector<int> v{ 1, 3, 5, 7, 9, 2, 4, 6, 8, 10 };
+
+	// lazy evaluation(Áö¿¬ Æò°¡)
+	auto even{ v | std::views::filter([](int n) { return !(n & 1); }) };
+
+	for (int n : even)
+	{
+		std::cout << n << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-06-03 ¿ÀÈÄ 3:12:01 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 6¿ù 03ÀÏ ¸ñ¿äÀÏ (14ÁÖ 2ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <ranges>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+
+int main()
+{
+	std::vector<int> v{ 1, 3, 5, 7, 9, 2, 4, 6, 8, 10 };
+
+	// v¿¡¼­ È¦¼ö¸¸ °ñ¶ó °ªÀ» 10¹è·Î ¸¸µç ÈÄ Ãâ·ÂÇÏ¶ó.
+
+	for (int n : v
+		| std::views::filter([](int a) { return a & 1; })
+		| std::views::transform([](int a) { return a *= 10; })
+		)
+	{
+		std::cout << n << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+ÀúÀå½Ã°£: 2021-06-03 ¿ÀÈÄ 3:14:12 ¸ñ¿äÀÏ
+¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+// 6¿ù 03ÀÏ ¸ñ¿äÀÏ (14ÁÖ 2ÀÏ)
+// 
+// ¾Ë°í¸®Áò ÇÔ¼ö »ìÆìº¸±â
+// ¾Ë°í¸®Áò »ç¿ë ¿¹Á¦(anagram)
+// range, view
+// 
+// ±â¸»°í»ç - 6¿ù 10ÀÏ ¸ñ¿äÀÏ
+//¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬¦¬
+
+#include <vector>
+#include <ranges>
+#include "pch.h"		// iostream, algorithm
+#include "save.h"		// string_view, filesystem, fstream
+
+int main()
+{
+	std::vector<int> v{ 1, 3, 5, 7, 9, 2, 4, 6, 8, 10 };
+
+	// v¿¡¼­ È¦¼ö¸¸ °ñ¶ó °ªÀ» 10¹è·Î ¸¸µç ÈÄ Ãâ·ÂÇÏ¶ó.
+
+	for (int n : v
+		| std::views::filter([](int a) { return a & 1; })
+		| std::views::transform([](int& a) { return a *= 10; })
+		)
+	{
+		std::cout << n << std::endl;
+	}
+
+	std::cout << std::endl;
+
+	for (int n : v)
+	{
+		std::cout << n << std::endl;
+	}
+
+	Save("main.cpp");
+}
+
